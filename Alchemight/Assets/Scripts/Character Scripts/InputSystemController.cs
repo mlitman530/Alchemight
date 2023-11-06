@@ -55,6 +55,7 @@ public class InputSystemController : MonoBehaviour
     void Update()
     {
         groundedPlayer = controller.isGrounded;
+        Debug.Log("Grounded: " + groundedPlayer);
 
         // Remove downwards force when player is grounded.
         if (groundedPlayer && playerVelocity.y < 0)
