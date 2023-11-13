@@ -661,7 +661,11 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
+<<<<<<< HEAD
   - {fileID: 2100000, guid: be0d8a8456d3e6c4abc39bad347a1508, type: 2}
+=======
+  - {fileID: 2100000, guid: 3fbbe3d39d4992040b037aca6bcfa913, type: 2}
+>>>>>>> 199eb5e8d5e0b73e75290d323bf31ee906f3f81e
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2165,9 +2169,15 @@ GameObject:
   m_Component:
   - component: {fileID: 936358436}
   - component: {fileID: 936358439}
+<<<<<<< HEAD
   - component: {fileID: 936358438}
   - component: {fileID: 936358437}
   - component: {fileID: 936358440}
+=======
+  - component: {fileID: 936358437}
+  - component: {fileID: 936358440}
+  - component: {fileID: 936358441}
+>>>>>>> 199eb5e8d5e0b73e75290d323bf31ee906f3f81e
   m_Layer: 0
   m_Name: Fire Potion
   m_TagString: Untagged
@@ -2239,7 +2249,34 @@ MonoBehaviour:
     m_PreInfinity: 0
     m_PostInfinity: 0
     m_RotationOrder: 4
+<<<<<<< HEAD
 --- !u!212 &936358438
+=======
+--- !u!222 &936358439
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 936358435}
+  m_CullTransparentMesh: 1
+--- !u!114 &936358440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 936358435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d47a891e58c0dd4bb3575774ce46f77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 4
+  purchaseLimit: 1
+  purchaseCount: 0
+--- !u!212 &936358441
+>>>>>>> 199eb5e8d5e0b73e75290d323bf31ee906f3f81e
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2285,12 +2322,17 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
+<<<<<<< HEAD
   m_Size: {x: 93.125, y: 99.25}
+=======
+  m_Size: {x: 7.45, y: 7.94}
+>>>>>>> 199eb5e8d5e0b73e75290d323bf31ee906f3f81e
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+<<<<<<< HEAD
 --- !u!222 &936358439
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2314,6 +2356,8 @@ MonoBehaviour:
   id: 4
   purchaseLimit: 1
   purchaseCount: 0
+=======
+>>>>>>> 199eb5e8d5e0b73e75290d323bf31ee906f3f81e
 --- !u!1 &1021875633
 GameObject:
   m_ObjectHideFlags: 0
@@ -3835,7 +3879,11 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
+<<<<<<< HEAD
   - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+=======
+  - {fileID: 2100000, guid: 99ddae0fda3079e4f8fc6ae1c2c14bb3, type: 2}
+>>>>>>> 199eb5e8d5e0b73e75290d323bf31ee906f3f81e
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4088,7 +4136,11 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
+<<<<<<< HEAD
   - {fileID: 2100000, guid: be0d8a8456d3e6c4abc39bad347a1508, type: 2}
+=======
+  - {fileID: 2100000, guid: 3fbbe3d39d4992040b037aca6bcfa913, type: 2}
+>>>>>>> 199eb5e8d5e0b73e75290d323bf31ee906f3f81e
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
