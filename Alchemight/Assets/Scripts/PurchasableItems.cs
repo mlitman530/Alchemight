@@ -37,6 +37,7 @@ public class PurchasableItems : MonoBehaviour
         { 5, item6.transform.GetChild(0).gameObject }
     };
 
+
         /*for (int i = 0; i < itemRegistry.Count; i++) {
             Debug.Log("Item: " + itemRegistry[i]); 
         }*/
@@ -44,6 +45,7 @@ public class PurchasableItems : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+ 
         
     }
 }

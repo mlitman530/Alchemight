@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ItemPurchase : MonoBehaviour
 {
@@ -9,9 +11,9 @@ public class ItemPurchase : MonoBehaviour
     public Inventory playerInventory;
     public PurchasableItems PurchasableItems;
 
-    
     void Start()
     {
+ 
         
     }
 
@@ -26,7 +28,26 @@ public class ItemPurchase : MonoBehaviour
         Item purchasedItem = GetComponentInChildren<Item>();
 
         itemId = purchasedItem.id;
-        Debug.Log(itemId);
+        Debug.Log(itemId); 
+    }
+
+    private bool checkPurchaseLimit()
+    {
+        
+        if (GetComponentInChildren<Item>().purchaseCount > GetComponentInChildren<Item>().purchaseLimit)
+        {
+            Debug.Log("Purchase Limit is reached");
+            this.gameObject.GetComponent<Button>().interactable = false;
+            return false;
+        }
+        else
+        {
+            Debug.Log("Increased Purchase Count");
+            GetComponentInChildren<Item>().purchaseCount++;
+   
+        }
+        return true;
+
     }
 
     private void addItemToInventory()
@@ -52,7 +73,10 @@ public class ItemPurchase : MonoBehaviour
     public void clickAction()
     {
         getId();
-        addItemToInventory();
+        if (checkPurchaseLimit())
+        {
+            addItemToInventory();
+        }
         //clearItem();
     }
 }
