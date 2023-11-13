@@ -44,6 +44,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Look"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""273c83de-624f-4497-923c-88ebf8af758c"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -72,7 +81,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""down"",
                     ""id"": ""a5444cd6-225c-4785-be10-bc2c839ca419"",
-                    ""path"": ""<Keyboard>/a"",
+                    ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -83,7 +92,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""left"",
                     ""id"": ""daf77edb-11e1-46dc-86fc-3b0c25d4d9f8"",
-                    ""path"": ""<Keyboard>/s"",
+                    ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -167,6 +176,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""af0b92e1-b34e-4511-8f82-285431165ad0"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Look"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -177,6 +197,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Sewers = asset.FindActionMap("Sewers", throwIfNotFound: true);
         m_Sewers_Move = m_Sewers.FindAction("Move", throwIfNotFound: true);
         m_Sewers_Jump = m_Sewers.FindAction("Jump", throwIfNotFound: true);
+        m_Sewers_Look = m_Sewers.FindAction("Look", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -240,12 +261,14 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private List<ISewersActions> m_SewersActionsCallbackInterfaces = new List<ISewersActions>();
     private readonly InputAction m_Sewers_Move;
     private readonly InputAction m_Sewers_Jump;
+    private readonly InputAction m_Sewers_Look;
     public struct SewersActions
     {
         private @Controls m_Wrapper;
         public SewersActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Sewers_Move;
         public InputAction @Jump => m_Wrapper.m_Sewers_Jump;
+        public InputAction @Look => m_Wrapper.m_Sewers_Look;
         public InputActionMap Get() { return m_Wrapper.m_Sewers; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -261,6 +284,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
+            @Look.started += instance.OnLook;
+            @Look.performed += instance.OnLook;
+            @Look.canceled += instance.OnLook;
         }
 
         private void UnregisterCallbacks(ISewersActions instance)
@@ -271,6 +297,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
+            @Look.started -= instance.OnLook;
+            @Look.performed -= instance.OnLook;
+            @Look.canceled -= instance.OnLook;
         }
 
         public void RemoveCallbacks(ISewersActions instance)
@@ -292,5 +321,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnLook(InputAction.CallbackContext context);
     }
 }

@@ -4,7 +4,7 @@ using Cinemachine;
 /// <summary>
 /// Cinemachine extension to override camera orientation values
 /// </summary>
-public class FollowPlayer : CinemachineExtension
+public class CinemachinePOVExtension : CinemachineExtension
 {
 
     [SerializeField, Tooltip("Speed for looking side to side")]
