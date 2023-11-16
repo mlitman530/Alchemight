@@ -61,6 +61,24 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Throw"",
+                    ""type"": ""Button"",
+                    ""id"": ""85c31781-8dc8-4138-b27a-4d4a552a72b0"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SwitchItem"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""708f524a-44c9-422e-b346-d85c02635d62"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
                     ""initialStateCheck"": true
                 }
             ],
@@ -207,6 +225,28 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d33348be-b028-479f-8f9c-b267d0c08dc9"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Throw"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""94942dbe-a35f-4857-8759-f37590e27337"",
+                    ""path"": ""<Mouse>/scroll/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchItem"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -219,6 +259,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Sewers_Jump = m_Sewers.FindAction("Jump", throwIfNotFound: true);
         m_Sewers_Look = m_Sewers.FindAction("Look", throwIfNotFound: true);
         m_Sewers_Pause = m_Sewers.FindAction("Pause", throwIfNotFound: true);
+        m_Sewers_Throw = m_Sewers.FindAction("Throw", throwIfNotFound: true);
+        m_Sewers_SwitchItem = m_Sewers.FindAction("SwitchItem", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -284,6 +326,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Sewers_Jump;
     private readonly InputAction m_Sewers_Look;
     private readonly InputAction m_Sewers_Pause;
+    private readonly InputAction m_Sewers_Throw;
+    private readonly InputAction m_Sewers_SwitchItem;
     public struct SewersActions
     {
         private @Controls m_Wrapper;
@@ -292,6 +336,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Jump => m_Wrapper.m_Sewers_Jump;
         public InputAction @Look => m_Wrapper.m_Sewers_Look;
         public InputAction @Pause => m_Wrapper.m_Sewers_Pause;
+        public InputAction @Throw => m_Wrapper.m_Sewers_Throw;
+        public InputAction @SwitchItem => m_Wrapper.m_Sewers_SwitchItem;
         public InputActionMap Get() { return m_Wrapper.m_Sewers; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -313,6 +359,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
+            @Throw.started += instance.OnThrow;
+            @Throw.performed += instance.OnThrow;
+            @Throw.canceled += instance.OnThrow;
+            @SwitchItem.started += instance.OnSwitchItem;
+            @SwitchItem.performed += instance.OnSwitchItem;
+            @SwitchItem.canceled += instance.OnSwitchItem;
         }
 
         private void UnregisterCallbacks(ISewersActions instance)
@@ -329,6 +381,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
+            @Throw.started -= instance.OnThrow;
+            @Throw.performed -= instance.OnThrow;
+            @Throw.canceled -= instance.OnThrow;
+            @SwitchItem.started -= instance.OnSwitchItem;
+            @SwitchItem.performed -= instance.OnSwitchItem;
+            @SwitchItem.canceled -= instance.OnSwitchItem;
         }
 
         public void RemoveCallbacks(ISewersActions instance)
@@ -352,5 +410,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnThrow(InputAction.CallbackContext context);
+        void OnSwitchItem(InputAction.CallbackContext context);
     }
 }

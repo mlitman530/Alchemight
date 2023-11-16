@@ -30,6 +30,23 @@ public class PlayerController : MonoBehaviour
     private PauseMenu pauseMenu;
     private bool currentlyPaused = false;
 
+    private GameObject swordObject;
+    private Sword sword;
+    private GameObject throwableObject;
+    private Throwable throwable;
+    private GameObject weaponHolder;
+    private WeaponSwitch weaponSwitcher;
+
+
+    private void Awake()
+    {
+        swordObject = GameObject.FindGameObjectWithTag("Melee");
+        throwableObject = GameObject.FindGameObjectWithTag("Projectile");
+        weaponHolder = GameObject.Find("Weapon Holder");
+        weaponSwitcher = weaponHolder.GetComponent<WeaponSwitch>();
+        sword = swordObject.GetComponent<Sword>();
+        throwable = throwableObject.GetComponent<Throwable>();
+    }
     private void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -80,6 +97,20 @@ public class PlayerController : MonoBehaviour
             {
                 pauseMenu.Pause();
             }
+        }
+        if (inputManager.GetPlayerSwing())
+        {
+            sword.Swing();
+        }
+
+        if (inputManager.GetPlayerThrow())
+        {
+            throwable.Throw();
+        }
+
+        if (inputManager.GetWeaponSwitch())
+        {
+            weaponSwitcher.switchItem();
         }
     }
 }
