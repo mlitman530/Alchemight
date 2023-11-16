@@ -80,6 +80,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Swing"",
+                    ""type"": ""Button"",
+                    ""id"": ""9b7de6a9-53bf-424b-a49b-981fbce80cd9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -247,6 +256,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""SwitchItem"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""74b68cda-6f99-4acb-a6b6-88cc54669e5d"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Swing"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -261,6 +281,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Sewers_Pause = m_Sewers.FindAction("Pause", throwIfNotFound: true);
         m_Sewers_Throw = m_Sewers.FindAction("Throw", throwIfNotFound: true);
         m_Sewers_SwitchItem = m_Sewers.FindAction("SwitchItem", throwIfNotFound: true);
+        m_Sewers_Swing = m_Sewers.FindAction("Swing", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -328,6 +349,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Sewers_Pause;
     private readonly InputAction m_Sewers_Throw;
     private readonly InputAction m_Sewers_SwitchItem;
+    private readonly InputAction m_Sewers_Swing;
     public struct SewersActions
     {
         private @Controls m_Wrapper;
@@ -338,6 +360,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Pause => m_Wrapper.m_Sewers_Pause;
         public InputAction @Throw => m_Wrapper.m_Sewers_Throw;
         public InputAction @SwitchItem => m_Wrapper.m_Sewers_SwitchItem;
+        public InputAction @Swing => m_Wrapper.m_Sewers_Swing;
         public InputActionMap Get() { return m_Wrapper.m_Sewers; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -365,6 +388,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @SwitchItem.started += instance.OnSwitchItem;
             @SwitchItem.performed += instance.OnSwitchItem;
             @SwitchItem.canceled += instance.OnSwitchItem;
+            @Swing.started += instance.OnSwing;
+            @Swing.performed += instance.OnSwing;
+            @Swing.canceled += instance.OnSwing;
         }
 
         private void UnregisterCallbacks(ISewersActions instance)
@@ -387,6 +413,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @SwitchItem.started -= instance.OnSwitchItem;
             @SwitchItem.performed -= instance.OnSwitchItem;
             @SwitchItem.canceled -= instance.OnSwitchItem;
+            @Swing.started -= instance.OnSwing;
+            @Swing.performed -= instance.OnSwing;
+            @Swing.canceled -= instance.OnSwing;
         }
 
         public void RemoveCallbacks(ISewersActions instance)
@@ -412,5 +441,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnPause(InputAction.CallbackContext context);
         void OnThrow(InputAction.CallbackContext context);
         void OnSwitchItem(InputAction.CallbackContext context);
+        void OnSwing(InputAction.CallbackContext context);
     }
 }

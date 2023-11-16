@@ -81,11 +81,11 @@ public class PlayerController : MonoBehaviour
         {
             // Kinematic equation
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+            Debug.Log("Jump");
         }
         // Add gravity and then move the player once again
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
-
         if (inputManager.Paused())
         {
             Debug.Log("pauseMenu.IsPaused: " + pauseMenu.IsPaused());

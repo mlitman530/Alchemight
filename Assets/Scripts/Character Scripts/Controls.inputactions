@@ -39,12 +39,6 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "name": "Swing",
-                    "type": "Button",
-                    "id": "9398a4df-c087-466f-8060-d74eece0f90a",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
                     "initialStateCheck": false
                 },
                 {
@@ -64,6 +58,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Swing",
+                    "type": "Button",
+                    "id": "9b7de6a9-53bf-424b-a49b-981fbce80cd9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -207,12 +210,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Pause",
-                    "id": "60761584-ce69-4730-a99e-0e6e1d017f97",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Swing",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -235,6 +232,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "SwitchItem",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "74b68cda-6f99-4acb-a6b6-88cc54669e5d",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Swing",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
