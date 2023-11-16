@@ -23,6 +23,8 @@ public class InputSystemController : MonoBehaviour
     private PlayerInput playerInput;
     private Animator anim;
     private CharacterController controller;
+    public GameObject sword;
+    private Sword swordScript;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
     private Transform cameraTransform;
@@ -30,7 +32,7 @@ public class InputSystemController : MonoBehaviour
     // Reference to the player actions.
     private InputAction moveAction;
     private InputAction jumpAction;
-
+    private InputAction swingAction;
     // Reference to the animations and animation parameters.
     private int jumpAnimationId;
     private int blendAnimationParameterId;
@@ -44,13 +46,19 @@ public class InputSystemController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
         playerInput = GetComponent<PlayerInput>();
+        swordScript = sword.GetComponent<Sword>();
+        if(swordScript != null)
+        {
+            Debug.Log("Sword Script Found");
+        }
         //cameraTransform = Camera.main.transform;
         moveAction = playerInput.actions["Move"];
         jumpAction = playerInput.actions["Jump"];
+        swingAction = playerInput.actions["Swing"];
         jumpAnimationId = Animator.StringToHash("Jump");
         blendAnimationParameterId = Animator.StringToHash("Blend");
-    }
 
+    }
 
     void Update()
     {
@@ -88,5 +96,11 @@ public class InputSystemController : MonoBehaviour
             Quaternion rotation = Quaternion.Euler(0, targetAngle, 0);
             transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * rotationSpeed);
         }
+
+        if (swingAction.triggered)
+        {
+            swordScript.Swing();
+        }
+
     }
 }

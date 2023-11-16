@@ -26,12 +26,29 @@ public class PlayerController : MonoBehaviour
     private Transform cameraTransform;
     private Vector2 currentInputVector;
     private Vector2 animationVelocity;
+    private GameObject swordObject;
+    private Sword sword;
+    private GameObject throwableObject;
+    private Throwable throwable;
+    private GameObject weaponHolder;
+    private WeaponSwitch weaponSwitcher;
 
+
+    private void Awake()
+    {
+        swordObject = GameObject.FindGameObjectWithTag("Melee");
+        throwableObject = GameObject.FindGameObjectWithTag("Projectile");
+        weaponHolder = GameObject.Find("Weapon Holder");
+        weaponSwitcher = weaponHolder.GetComponent<WeaponSwitch>();
+        sword = swordObject.GetComponent<Sword>();
+        throwable = throwableObject.GetComponent<Throwable>();
+    }
     private void Start()
     {
         controller = GetComponent<CharacterController>();
         inputManager = InputManager.Instance;
         cameraTransform = Camera.main.transform;
+        
     }
 
     void Update()
@@ -63,5 +80,20 @@ public class PlayerController : MonoBehaviour
         // Add gravity and then move the player once again
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
+
+        if (inputManager.GetPlayerSwing())
+        {
+            sword.Swing();    
+        }
+
+        if (inputManager.GetPlayerThrow())
+        {
+            throwable.Throw();
+        }
+
+        if (inputManager.GetWeaponSwitch())
+        {
+            weaponSwitcher.switchItem();
+        }
     }
 }

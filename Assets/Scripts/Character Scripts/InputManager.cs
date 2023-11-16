@@ -1,3 +1,4 @@
+using Unity.Properties;
 using UnityEngine;
 
 public class InputManager : MonoBehaviour
@@ -5,7 +6,9 @@ public class InputManager : MonoBehaviour
 
     // Singleton for this class
     private static InputManager _instance;
-
+    public Sword sword;
+    public WeaponSwitch weaponSwitcher;
+    
     public static InputManager Instance {
         get {
             return _instance;
@@ -46,6 +49,16 @@ public class InputManager : MonoBehaviour
         return controls.Sewers.Move.ReadValue<Vector2>();
     }
 
+    public bool GetPlayerSwing()
+    {
+        return controls.Sewers.Swing.triggered;
+    }
+
+    public bool GetPlayerThrow()
+    {
+        return controls.Sewers.Throw.triggered;
+    }
+
     /// <summary>
     /// Difference in mouse position from the current and previous frame
     /// </summary>
@@ -60,5 +73,26 @@ public class InputManager : MonoBehaviour
     /// <returns>True if player jumped on this frame</returns>
     public bool PlayerJumpedThisFrame() {
         return controls.Sewers.Jump.triggered;
+    }
+
+    public bool GetWeaponSwitch()
+    {
+        return controls.Sewers.SwitchItem.triggered;
+    }
+
+    public void swing()
+    {
+        if (GetPlayerSwing())
+        {
+            sword.Swing();
+        }
+    }
+
+    public void switchItem()
+    {
+        if (GetWeaponSwitch())
+        {
+            weaponSwitcher.switchItem();
+        }
     }
 }
