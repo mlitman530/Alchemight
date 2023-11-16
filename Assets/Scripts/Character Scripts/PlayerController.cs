@@ -7,12 +7,13 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField, Tooltip("Player speed multiplier.")]
-    private float playerSpeed = 10f;
+    private float playerSpeed = 8f;
     [SerializeField, Tooltip("How how the player should jump.")]
-    private float jumpHeight = 2f;
+    private float jumpHeight = 1f;
     [SerializeField, Tooltip("Downwards force on the player.")]
     private float gravityValue = -18f;
     [SerializeField, Tooltip("Rotation Speed multiplier.")]
+    private float playerStrength = 10f;
     private float rotationSpeed = 5f;
     [SerializeField, Tooltip("Animation blend speed multiplier.")]
     private float animationBlendDamp = .5f;
@@ -53,6 +54,7 @@ public class PlayerController : MonoBehaviour
         pauseMenu = GetComponentInChildren<PauseMenu>();
         Debug.Log("Pause menu instance: " + pauseMenu);
         cameraTransform = Camera.main.transform;
+        SetStats();
     }
 
     void Update()
@@ -113,5 +115,13 @@ public class PlayerController : MonoBehaviour
         {
             weaponSwitcher.switchItem();
         }
+    }
+
+    private void SetStats()
+    {
+        playerStrength += PlayerPrefs.GetInt("Strength");
+        playerSpeed += PlayerPrefs.GetInt("Speed");
+        jumpHeight += (PlayerPrefs.GetInt("Jump") / 5);
+        //Debug.Log("Strength: " + playerStrength + " Speed: " + playerSpeed + " Jump: " + jumpHeight);
     }
 }
