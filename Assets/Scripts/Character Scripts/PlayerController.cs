@@ -28,7 +28,6 @@ public class PlayerController : MonoBehaviour
     private Vector2 animationVelocity;
 
     private PauseMenu pauseMenu;
-    private bool currentlyPaused = false;
 
     private GameObject swordObject;
     private Sword sword;
@@ -86,6 +85,7 @@ public class PlayerController : MonoBehaviour
         // Add gravity and then move the player once again
         playerVelocity.y += gravityValue * Time.deltaTime;
         controller.Move(playerVelocity * Time.deltaTime);
+
         if (inputManager.Paused())
         {
             Debug.Log("pauseMenu.IsPaused: " + pauseMenu.IsPaused());
@@ -98,6 +98,7 @@ public class PlayerController : MonoBehaviour
                 pauseMenu.Pause();
             }
         }
+
         if (inputManager.GetPlayerSwing())
         {
             sword.Swing();
