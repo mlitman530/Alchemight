@@ -101,12 +101,18 @@ public class PlayerController : MonoBehaviour
 
         if (inputManager.GetPlayerSwing())
         {
-            sword.Swing();
+            if (sword.isActiveAndEnabled)
+            {
+                sword.Swing();
+            }
         }
 
         if (inputManager.GetPlayerThrow())
         {
-            throwable.Throw();
+            if (throwable.isActiveAndEnabled)
+            {
+                throwable.Throw();
+            }
         }
 
         if (inputManager.GetWeaponSwitch())

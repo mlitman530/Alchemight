@@ -52,12 +52,12 @@
                 },
                 {
                     "name": "SwitchItem",
-                    "type": "PassThrough",
+                    "type": "Button",
                     "id": "708f524a-44c9-422e-b346-d85c02635d62",
-                    "expectedControlType": "",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": true
+                    "initialStateCheck": false
                 },
                 {
                     "name": "Swing",
@@ -227,7 +227,7 @@
                 {
                     "name": "",
                     "id": "94942dbe-a35f-4857-8759-f37590e27337",
-                    "path": "<Mouse>/scroll/down",
+                    "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -238,7 +238,7 @@
                 {
                     "name": "",
                     "id": "74b68cda-6f99-4acb-a6b6-88cc54669e5d",
-                    "path": "",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
