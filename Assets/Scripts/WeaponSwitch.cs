@@ -60,7 +60,7 @@ public class WeaponSwitch : MonoBehaviour
 
     public void switchItem()
     {
-        Debug.Log("Switched Item");
+       
 
         currentItemIndex = getCurrentItemIndex();
 
@@ -82,6 +82,8 @@ public class WeaponSwitch : MonoBehaviour
             currentItemIndex = 0;
             currentItem.activateItem();
         }
+
+        Debug.Log("Switched Item To: " + getCurrentItem());
     }
 
 
