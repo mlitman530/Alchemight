@@ -11,7 +11,7 @@ public class StatCustomizationController : MonoBehaviour
     public Button[] decreaseButtons; // Array of decrease buttons corresponding to each stat
 
     private int totalStatPoints = 10;
-    private int[] statValues = new int[3]; // Assuming 3 stats for demonstration purposes
+    private int[] statValues = new int[4]; // CHANGE THIS IF YOU ADD OR REMOVE A STAT
 
     void Start()
     {
@@ -75,6 +75,7 @@ public class StatCustomizationController : MonoBehaviour
         PlayerPrefs.SetInt("Strength", statValues[0]);
         PlayerPrefs.SetInt("Speed", statValues[1]);
         PlayerPrefs.SetInt("Jump", statValues[2]);
+        PlayerPrefs.SetInt("Health", statValues[3]);
         SceneManager.LoadScene("SewerLayout");
     }
 }

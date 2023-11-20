@@ -4099,6 +4099,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6244476974955763839, guid: 47bbb568f5389a541b238aa196af1823, type: 3}
+      propertyPath: gravityValue
+      value: -40
+      objectReference: {fileID: 0}
     - target: {fileID: 6469368684182806573, guid: 47bbb568f5389a541b238aa196af1823, type: 3}
       propertyPath: m_LocalPosition.y
       value: 1.73
@@ -5580,7 +5584,7 @@ MonoBehaviour:
   playerSpeed: 10
   jumpHeight: 2
   gravityValue: -18
-  rotationSpeed: 5
+  playerStrength: 10
   animationBlendDamp: 0.5
   inputSmoothDamp: 0.1
 --- !u!143 &1899275219
