@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SewerLayout.unity
     guid: 60f45efeea6a3c14b8ef1f8d1572add1
+  - enabled: 1
+    path: Assets/Scenes/StatCustomization.unity
+    guid: 0524d78fd9a8ada4192b0c6400c7f699
   m_configObjects: {}

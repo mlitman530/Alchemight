@@ -4109,6 +4109,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6244476974955763839, guid: 47bbb568f5389a541b238aa196af1823, type: 3}
+      propertyPath: gravityValue
+      value: -40
+      objectReference: {fileID: 0}
     - target: {fileID: 6469368684182806573, guid: 47bbb568f5389a541b238aa196af1823, type: 3}
       propertyPath: m_LocalPosition.y
       value: 1.73
@@ -5589,7 +5593,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1028925470}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!143 &1899275219
+--- !u!114 &1899275218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1899275216}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 454fe7dc16178cc4b90075168b50e2db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerSpeed: 10
+  jumpHeight: 2
+  gravityValue: -18
+  playerStrength: 10
+  animationBlendDamp: 0.5
+  inputSmoothDamp: 0.1
 CharacterController:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5606,7 +5627,7 @@ CharacterController:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Height: 2
   m_Radius: 0.5

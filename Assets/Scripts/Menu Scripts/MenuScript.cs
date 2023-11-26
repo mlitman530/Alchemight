@@ -7,7 +7,7 @@ public class MenuScript : MonoBehaviour
 {
     public void PlayGame()
     {
-        SceneManager.LoadScene("SewerLayout");
+        SceneManager.LoadScene("StatCustomization");
     }
     public void QuitGame()
     {
