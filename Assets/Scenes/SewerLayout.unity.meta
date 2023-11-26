@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scenes/SewerLayout.unity.meta
 guid: 60f45efeea6a3c14b8ef1f8d1572add1
+========
+guid: 9b88557274af985438aa8b654669592c
+>>>>>>>> origin:Assets/Scripts.zip.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

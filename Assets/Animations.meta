@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/Menu Scripts.meta
+guid: 4ff6885fee95e454aa6be7da1e5c43fd
+========
 guid: 3ca864517899daa4cabce8291bd319b5
+>>>>>>>> origin:Assets/Animations.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

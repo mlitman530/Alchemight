@@ -33,9 +33,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Swing",
+                    "name": "Pause",
                     "type": "Button",
-                    "id": "9398a4df-c087-466f-8060-d74eece0f90a",
+                    "id": "f487ec69-27c0-4c61-ac0d-c24c7c987d72",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -52,12 +52,21 @@
                 },
                 {
                     "name": "SwitchItem",
-                    "type": "PassThrough",
+                    "type": "Button",
                     "id": "708f524a-44c9-422e-b346-d85c02635d62",
-                    "expectedControlType": "",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": true
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Swing",
+                    "type": "Button",
+                    "id": "9b7de6a9-53bf-424b-a49b-981fbce80cd9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -195,12 +204,12 @@
                 },
                 {
                     "name": "",
-                    "id": "60761584-ce69-4730-a99e-0e6e1d017f97",
-                    "path": "<Mouse>/leftButton",
+                    "id": "b0144f24-d572-440f-8519-f6651de0da4d",
+                    "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Swing",
+                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -218,11 +227,22 @@
                 {
                     "name": "",
                     "id": "94942dbe-a35f-4857-8759-f37590e27337",
-                    "path": "<Mouse>/scroll/down",
+                    "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "SwitchItem",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "74b68cda-6f99-4acb-a6b6-88cc54669e5d",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Swing",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

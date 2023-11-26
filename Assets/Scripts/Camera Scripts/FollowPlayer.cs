@@ -7,10 +7,10 @@ using Cinemachine;
 public class FollowPlayer : CinemachineExtension
 {
 
-    [SerializeField, Tooltip("Speed for looking side to side")]
-    private float horizontalSpeed = 10f;
-    [SerializeField, Tooltip("Speed for looking up and down")]
-    private float verticalSpeed = 10f;
+    //[SerializeField, Tooltip("Speed for looking side to side")]
+    private float horizontalSpeed;
+    //[SerializeField, Tooltip("Speed for looking up and down")]
+    private float verticalSpeed;
     [SerializeField, Tooltip("Maximum angle at which the player can look up and down")]
     private float clampAngle = 80f;
     
@@ -19,6 +19,8 @@ public class FollowPlayer : CinemachineExtension
     private Vector3 startingRotation;
 
     protected override void Awake() {
+        float sensitivity = GetComponent<MouseSensitivity>().GetSensitivity();
+        SetSensitivity(sensitivity);
         inputManager = InputManager.Instance;
         startingRotation = transform.localRotation.eulerAngles;
         base.Awake();
@@ -48,5 +50,13 @@ public class FollowPlayer : CinemachineExtension
                 state.RawOrientation = Quaternion.Euler(-startingRotation.y, startingRotation.x, 0f);
             }
         }
+    }
+
+    public void SetSensitivity(float val)
+    {
+        val = val + 1;
+        horizontalSpeed = val;
+        verticalSpeed = val;
+        Debug.Log("Sensitivity Set to " + val);
     }
 }
