@@ -50,6 +50,21 @@ public class ItemPurchase : MonoBehaviour
 
     }
 
+    private bool checkCost()
+    {
+        if(GetComponentInChildren<Item>().cost > playerInventory.currentGoldCount)
+        {
+            Debug.Log("Not enough gold");
+            return false;
+        }
+        else
+        {
+            Debug.Log("Item Can Be Purchased");
+            playerInventory.currentGoldCount -= GetComponentInChildren<Item>().cost;
+        }
+        return true;
+    }
+
     private void addItemToInventory()
     {
         playerInventory.inventory.Add(itemId);
@@ -73,7 +88,7 @@ public class ItemPurchase : MonoBehaviour
     public void clickAction()
     {
         getId();
-        if (checkPurchaseLimit())
+        if (checkPurchaseLimit() && checkCost())
         {
             addItemToInventory();
         }

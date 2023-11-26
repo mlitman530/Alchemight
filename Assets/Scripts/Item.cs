@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Item : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class Item : MonoBehaviour
     public int heldCount;
     public int purchaseLimit;
     public int purchaseCount;
+    public int cost;
     public bool isHeld;
 
     // Start is called before the first frame update
@@ -22,9 +24,12 @@ public class Item : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(heldCount == 0)
+        if (SceneManager.GetActiveScene().name == "SewerLayout")
         {
-            deactivateItem();
+            if (heldCount == 0)
+            {
+                deactivateItem();
+            }
         }
     }
 
