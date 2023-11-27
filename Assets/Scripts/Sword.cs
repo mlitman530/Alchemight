@@ -41,6 +41,7 @@ public class Sword : MonoBehaviour
                 audios[1].Play();
                 hit.collider.GetComponent<Damageable>().TakeDamage(damage);
             }
+            
         }
     }
 }
