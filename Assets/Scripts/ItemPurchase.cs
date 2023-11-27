@@ -25,12 +25,12 @@ public class ItemPurchase : MonoBehaviour
         shop = GameObject.Find("Shop");
 
         audioSource = shop.GetComponent<AudioSource>();
-        
+
 
     }
     void Start()
     {
-        
+
         purchaseLimitObject.SetActive(false);
         insufficientGoldObject.SetActive(false);
 
@@ -41,20 +41,20 @@ public class ItemPurchase : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    private void getId() 
+    private void getId()
     {
         Item purchasedItem = GetComponentInChildren<Item>();
 
         itemId = purchasedItem.id;
-        Debug.Log(itemId); 
+        Debug.Log(itemId);
     }
 
     private bool checkPurchaseLimit()
     {
-        
+
         if (GetComponentInChildren<Item>().purchaseCount > GetComponentInChildren<Item>().purchaseLimit)
         {
             Debug.Log("Purchase Limit is reached");
@@ -67,7 +67,7 @@ public class ItemPurchase : MonoBehaviour
         {
             Debug.Log("Increased Purchase Count");
             GetComponentInChildren<Item>().purchaseCount++;
-   
+
         }
         return true;
 
@@ -76,7 +76,7 @@ public class ItemPurchase : MonoBehaviour
 
     private bool checkCost()
     {
-        if(GetComponentInChildren<Item>().cost > playerInventory.currentGoldCount)
+        if (GetComponentInChildren<Item>().cost > playerInventory.currentGoldCount)
         {
             Debug.Log("Not enough gold");
             insufficientGoldObject.SetActive(true);
@@ -87,7 +87,7 @@ public class ItemPurchase : MonoBehaviour
         {
             Debug.Log("Item Can Be Purchased");
             playerInventory.currentGoldCount -= GetComponentInChildren<Item>().cost;
-            
+
         }
         return true;
     }
@@ -100,8 +100,8 @@ public class ItemPurchase : MonoBehaviour
         if (PurchasableItems.itemRegistry.ContainsKey(itemId))
         {
             GameObject itemObject = PurchasableItems.itemRegistry[itemId];
-           
-            
+
+
             Debug.Log("Item added to inventory: " + itemObject.name);
         }
         else
@@ -118,7 +118,7 @@ public class ItemPurchase : MonoBehaviour
     public void clickAction()
     {
         getId();
-        if (checkPurchaseLimit())
+        if (checkPurchaseLimit() && checkCost())
         {
             addItemToInventory();
 

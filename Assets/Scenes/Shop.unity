@@ -280,10 +280,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 1
+  heldCount: 0
   purchaseLimit: 4
   purchaseCount: 0
-  cost: 5
   isHeld: 0
+  cost: 5
 --- !u!1 &65007657
 GameObject:
   m_ObjectHideFlags: 0
@@ -776,6 +777,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PurchasableItems: {fileID: 2020399721}
   inventory: 
+  currentGoldCount: 0
 --- !u!65 &385513391
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1243,8 +1245,8 @@ MonoBehaviour:
   heldCount: 0
   purchaseLimit: 20
   purchaseCount: 0
-  cost: 2
   isHeld: 0
+  cost: 2
 --- !u!1 &655088048
 GameObject:
   m_ObjectHideFlags: 0
@@ -1680,8 +1682,8 @@ MonoBehaviour:
   heldCount: 0
   purchaseLimit: 5
   purchaseCount: 0
-  cost: 4
   isHeld: 0
+  cost: 4
 --- !u!1 &727349616
 GameObject:
   m_ObjectHideFlags: 0
@@ -2627,8 +2629,8 @@ MonoBehaviour:
   heldCount: 0
   purchaseLimit: 1
   purchaseCount: 0
-  cost: 50
   isHeld: 0
+  cost: 50
 --- !u!114 &853919508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2708,7 +2710,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1029, y: 342}
+  m_AnchoredPosition: {x: -936, y: 342}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &862530280
@@ -3902,6 +3904,7 @@ RectTransform:
   - {fileID: 802129522}
   - {fileID: 409236547}
   - {fileID: 862530279}
+  - {fileID: 890621162}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -28.938, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -4171,10 +4174,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 3
+  heldCount: 0
   purchaseLimit: 1
   purchaseCount: 0
-  cost: 5
   isHeld: 0
+  cost: 5
 --- !u!1 &1505808964
 GameObject:
   m_ObjectHideFlags: 0
@@ -4437,10 +4441,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 2
+  heldCount: 0
   purchaseLimit: 1
   purchaseCount: 0
-  cost: 8
   isHeld: 0
+  cost: 8
 --- !u!1 &1531295549
 GameObject:
   m_ObjectHideFlags: 0
