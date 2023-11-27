@@ -18,7 +18,7 @@ public class IdleState : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
        timer += Time.deltaTime;
-       if (timer > 1) {
+       if (timer > 1.7) {
             animator.SetBool("isPatrolling", true);
        }
        float distance = Vector3.Distance(player.position, animator.transform.position);

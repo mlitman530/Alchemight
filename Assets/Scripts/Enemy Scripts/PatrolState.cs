@@ -10,14 +10,14 @@ public class PatrollState : StateMachineBehaviour
     NavMeshAgent agent;
 
     Transform player;
-    float chaseRange = 25;
+    float chaseRange = 15;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         agent = animator.GetComponent<NavMeshAgent>();
-        agent.speed = 3.5f;
+        agent.speed = 1.5f;
         timer = 0;
         GameObject go = GameObject.FindGameObjectWithTag("WayPoints");
         foreach (Transform t in go.transform) {
