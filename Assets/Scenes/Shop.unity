@@ -283,8 +283,8 @@ MonoBehaviour:
   heldCount: 0
   purchaseLimit: 4
   purchaseCount: 0
-  isHeld: 0
   cost: 5
+  isHeld: 0
 --- !u!1 &65007657
 GameObject:
   m_ObjectHideFlags: 0
@@ -1246,8 +1246,8 @@ MonoBehaviour:
   heldCount: 0
   purchaseLimit: 20
   purchaseCount: 0
-  isHeld: 0
   cost: 2
+  isHeld: 0
 --- !u!1 &655088048
 GameObject:
   m_ObjectHideFlags: 0
@@ -1683,8 +1683,8 @@ MonoBehaviour:
   heldCount: 0
   purchaseLimit: 5
   purchaseCount: 0
-  isHeld: 0
   cost: 4
+  isHeld: 0
 --- !u!1 &727349616
 GameObject:
   m_ObjectHideFlags: 0
@@ -2631,8 +2631,8 @@ MonoBehaviour:
   heldCount: 0
   purchaseLimit: 1
   purchaseCount: 0
-  isHeld: 0
   cost: 50
+  isHeld: 0
 --- !u!114 &853919508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3997,7 +3997,6 @@ RectTransform:
   - {fileID: 802129522}
   - {fileID: 409236547}
   - {fileID: 862530279}
-  - {fileID: 890621162}
   - {fileID: 1372555486}
   - {fileID: 1249065677}
   m_Father: {fileID: 0}
@@ -4406,8 +4405,8 @@ MonoBehaviour:
   heldCount: 0
   purchaseLimit: 1
   purchaseCount: 0
-  isHeld: 0
   cost: 5
+  isHeld: 0
 --- !u!1 &1372555485
 GameObject:
   m_ObjectHideFlags: 0
@@ -4822,8 +4821,8 @@ MonoBehaviour:
   heldCount: 0
   purchaseLimit: 1
   purchaseCount: 0
-  isHeld: 0
   cost: 8
+  isHeld: 0
 --- !u!1 &1531295549
 GameObject:
   m_ObjectHideFlags: 0
