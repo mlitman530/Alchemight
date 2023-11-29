@@ -76,6 +76,6 @@ public class StatCustomizationController : MonoBehaviour
         PlayerPrefs.SetInt("Speed", statValues[1]);
         PlayerPrefs.SetInt("Jump", statValues[2]);
         PlayerPrefs.SetInt("Health", statValues[3]);
-        SceneManager.LoadScene("SewerLayout");
+        SceneManager.LoadScene("Shop");
     }
 }
