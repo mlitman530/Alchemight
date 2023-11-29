@@ -17,7 +17,9 @@ public class Inventory : MonoBehaviour
     private TextMeshProUGUI inventoryTitle;
     private GameObject goldTextObject;
     private TextMeshProUGUI goldText;
+
     private int startingGoldCount = 20;
+
     public int currentGoldCount;
 
 
@@ -31,7 +33,6 @@ public class Inventory : MonoBehaviour
         goldTextObject = GameObject.Find("Gold");
         goldText = goldTextObject.GetComponent<TextMeshProUGUI>();
         currentGoldCount = startingGoldCount;
-
     }
 
     // Update is called once per frame
@@ -40,12 +41,14 @@ public class Inventory : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.I))
         {
             inventoryText.enabled = true;
+            goldText.enabled = true;
             inventoryTitle.enabled = true;
             DisplayInventory();
         }
         if (Input.GetKeyUp(KeyCode.I))
         {
             inventoryText.enabled = false;
+            goldText.enabled = false;
             inventoryTitle.enabled = false;
 
         }

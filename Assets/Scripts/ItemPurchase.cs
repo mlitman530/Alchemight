@@ -73,7 +73,6 @@ public class ItemPurchase : MonoBehaviour
 
     }
 
-
     private bool checkCost()
     {
         if (GetComponentInChildren<Item>().cost > playerInventory.currentGoldCount)
@@ -87,7 +86,6 @@ public class ItemPurchase : MonoBehaviour
         {
             Debug.Log("Item Can Be Purchased");
             playerInventory.currentGoldCount -= GetComponentInChildren<Item>().cost;
-
         }
         return true;
     }

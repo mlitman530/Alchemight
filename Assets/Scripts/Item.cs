@@ -10,6 +10,7 @@ public class Item : MonoBehaviour
     public int heldCount;
     public int purchaseLimit;
     public int purchaseCount;
+    public int cost;
     public bool isHeld;
     public int cost;
 
