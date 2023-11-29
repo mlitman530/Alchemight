@@ -109,4 +109,14 @@ public class InputManager : MonoBehaviour
             weaponSwitcher.switchItem();
         }
     }
+
+    public float GetWeaponScroll()
+    {
+        return controls.Sewers.HotbarScroll.ReadValue<float>();
+    }
+
+    public float GetHotbarSwitch()
+    {
+        return controls.Sewers.HotbarSwitch.ReadValue<float>();
+    }
 }

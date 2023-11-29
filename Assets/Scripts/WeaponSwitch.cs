@@ -38,7 +38,7 @@ public class WeaponSwitch : MonoBehaviour
                     inventory[i].activateItem();
                     currentItem = inventory[i];
                     currentItemIndex = i;
-                    Debug.Log("Item Initialized: " + currentItem.name + " at Index: " + currentItemIndex);
+                    //Debug.Log("Item Initialized: " + currentItem.name + " at Index: " + currentItemIndex);
                 }
                 else
                 {

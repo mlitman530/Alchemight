@@ -37,7 +37,6 @@ public class PlayerController : MonoBehaviour
     private GameObject weaponHolder;
     private WeaponSwitch weaponSwitcher;
 
-
     private void Awake()
     {
         swordObject = GameObject.FindGameObjectWithTag("Melee");
@@ -52,7 +51,7 @@ public class PlayerController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         inputManager = InputManager.Instance;
         pauseMenu = GetComponentInChildren<PauseMenu>();
-        Debug.Log("Pause menu instance: " + pauseMenu);
+        //Debug.Log("Pause menu instance: " + pauseMenu);
         cameraTransform = Camera.main.transform;
         SetStats();
     }
@@ -82,7 +81,7 @@ public class PlayerController : MonoBehaviour
         {
             // Kinematic equation
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
-            Debug.Log("Jump");
+            //Debug.Log("Jump");
         }
         // Add gravity and then move the player once again
         playerVelocity.y += gravityValue * Time.deltaTime;
@@ -90,7 +89,7 @@ public class PlayerController : MonoBehaviour
 
         if (inputManager.Paused())
         {
-            Debug.Log("pauseMenu.IsPaused: " + pauseMenu.IsPaused());
+            //Debug.Log("pauseMenu.IsPaused: " + pauseMenu.IsPaused());
             if (pauseMenu.IsPaused())
             {
                 pauseMenu.Resume();
@@ -121,6 +120,26 @@ public class PlayerController : MonoBehaviour
         {
             weaponSwitcher.switchItem();
         }
+
+        PlayerController playerController = GetComponent<PlayerController>();
+        SelectionManager selectionManager = playerController.gameObject.GetComponent<SelectionManager>();
+
+        float scrollValue = inputManager.GetWeaponScroll();
+        if (scrollValue > 0)
+        {
+            Debug.Log("Scroll up");
+            selectionManager.ScrollUp();
+        }
+        else if (scrollValue < 0)
+        {
+            Debug.Log("Scroll down");
+            selectionManager.ScrollDown();
+        }
+        float hotbarKey = inputManager.GetHotbarSwitch();
+        if (hotbarKey > 0)
+        {
+            selectionManager.UpdateSelection(hotbarKey - 1);
+        }
     }
 
     private void SetStats()
@@ -130,4 +149,14 @@ public class PlayerController : MonoBehaviour
         jumpHeight += (PlayerPrefs.GetInt("Jump") / 5);
         //Debug.Log("Strength: " + playerStrength + " Speed: " + playerSpeed + " Jump: " + jumpHeight);
     }
+
+    // private void OnControllerColliderHit(ControllerColliderHit hit)
+    // {
+    //     IHotbarItem item = hit.collider.GetComponent<IHotbarItem>();
+    //     Debug.Log("Item: " + item);
+    //     if (item != null)
+    //     {
+    //         hotbar.AddItem(item);
+    //     }
+    // }
 }

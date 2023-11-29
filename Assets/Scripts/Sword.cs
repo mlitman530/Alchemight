@@ -27,7 +27,7 @@ using UnityEngine.SocialPlatforms.Impl;
 
         public void Swing()
         {
-            Debug.Log("Swung");
+            //Debug.Log("Swung");
 
             RaycastHit hit;
 

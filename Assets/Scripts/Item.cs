@@ -43,7 +43,7 @@ public class Item : MonoBehaviour
 
     public void deactivateItem()
     {
-        Debug.Log("Deactivated");
+        //Debug.Log("Deactivated");
         isHeld = false;
         
         gameObject.SetActive(false);
