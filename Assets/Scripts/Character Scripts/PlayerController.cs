@@ -37,6 +37,9 @@ public class PlayerController : MonoBehaviour
     private GameObject weaponHolder;
     private WeaponSwitch weaponSwitcher;
 
+    private PlayerController playerController;
+    private SelectionManager selectionManager;
+
     private void Awake()
     {
         swordObject = GameObject.FindGameObjectWithTag("Melee");
@@ -53,6 +56,8 @@ public class PlayerController : MonoBehaviour
         pauseMenu = GetComponentInChildren<PauseMenu>();
         //Debug.Log("Pause menu instance: " + pauseMenu);
         cameraTransform = Camera.main.transform;
+        playerController = GetComponent<PlayerController>();
+        selectionManager = playerController.gameObject.GetComponent<SelectionManager>();
         SetStats();
     }
 
@@ -120,9 +125,6 @@ public class PlayerController : MonoBehaviour
         {
             weaponSwitcher.switchItem();
         }
-
-        PlayerController playerController = GetComponent<PlayerController>();
-        SelectionManager selectionManager = playerController.gameObject.GetComponent<SelectionManager>();
 
         float scrollValue = inputManager.GetWeaponScroll();
         if (scrollValue > 0)

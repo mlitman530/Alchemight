@@ -8,20 +8,13 @@ public class ItemPickup : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            HotbarManager hotbarManager = other.GetComponent<HotbarManager>();
+            HotbarManager hotbarManager = other.GetComponent<HotbarManager>();            
+            bool itemAdded = hotbarManager.AddItem(itemImage);
 
-            Debug.Log("Hotbar manager: " + hotbarManager);
-            
-            if (hotbarManager != null)
+            if (itemAdded)
             {
-                // Attempt to add the item to the hotbar
-                bool itemAdded = hotbarManager.AddItem(itemImage);
-
-                if (itemAdded)
-                {
-                    // Item successfully added, destroy the pickup object
-                    Destroy(gameObject);
-                }
+                // Item successfully added, destroy the pickup object
+                Destroy(gameObject);
             }
         }
     }
