@@ -43,5 +43,6 @@ using UnityEngine.SocialPlatforms.Impl;
                     hit.collider.GetComponent<Damageable>().TakeDamage(damage);
                 }
             }
+            
         }
     }
