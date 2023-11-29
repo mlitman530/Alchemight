@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class WeaponSway : MonoBehaviour
 {
+    public int damageAmount = 20;
 
     [Header("Sway Settings")]
     [SerializeField] private float speed;

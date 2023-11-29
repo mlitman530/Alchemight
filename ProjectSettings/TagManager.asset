@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Melee
   - Projectile
+  - WayPoints
+  - Enemy
   layers:
   - Default
   - TransparentFX
