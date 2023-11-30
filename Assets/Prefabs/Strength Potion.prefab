@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 5526939874728288760}
   - component: {fileID: 7498395055338923430}
   - component: {fileID: 5400910709433441259}
-  - component: {fileID: 6914956589399356029}
+  - component: {fileID: 1719752855783963575}
   m_Layer: 0
-  m_Name: Potion
+  m_Name: Strength Potion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,7 +125,7 @@ MonoBehaviour:
   purchaseCount: 0
   cost: 0
   isHeld: 0
---- !u!114 &6914956589399356029
+--- !u!114 &1719752855783963575
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

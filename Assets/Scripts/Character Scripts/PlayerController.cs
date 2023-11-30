@@ -129,12 +129,10 @@ public class PlayerController : MonoBehaviour
         float scrollValue = inputManager.GetWeaponScroll();
         if (scrollValue > 0)
         {
-            Debug.Log("Scroll up");
             selectionManager.ScrollUp();
         }
         else if (scrollValue < 0)
         {
-            Debug.Log("Scroll down");
             selectionManager.ScrollDown();
         }
         float hotbarKey = inputManager.GetHotbarSwitch();
