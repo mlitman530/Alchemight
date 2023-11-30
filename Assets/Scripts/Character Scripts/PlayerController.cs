@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
         weaponHolder = GameObject.Find("Weapon Holder");
         weaponSwitcher = weaponHolder.GetComponent<WeaponSwitch>();
         sword = swordObject.GetComponent<Sword>();
-        throwable = throwableObject.GetComponent<Throwable>();
+        
     }
     private void Start()
     {
