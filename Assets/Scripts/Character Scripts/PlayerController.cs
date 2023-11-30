@@ -123,17 +123,19 @@ public class PlayerController : MonoBehaviour
 
         if (inputManager.GetWeaponSwitch())
         {
-            weaponSwitcher.switchItem();
+            weaponSwitcher.switchItem(true);
         }
 
         float scrollValue = inputManager.GetWeaponScroll();
         if (scrollValue > 0)
         {
             selectionManager.ScrollUp();
+            weaponSwitcher.switchItem(false);
         }
         else if (scrollValue < 0)
         {
             selectionManager.ScrollDown();
+            weaponSwitcher.switchItem(true);
         }
         float hotbarKey = inputManager.GetHotbarSwitch();
         if (hotbarKey > 0)

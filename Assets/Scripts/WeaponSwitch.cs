@@ -58,7 +58,7 @@ public class WeaponSwitch : MonoBehaviour
         return currentItemIndex;
     }
 
-    public void switchItem()
+    public void switchItem(bool increment)
     {
        
 
@@ -67,24 +67,53 @@ public class WeaponSwitch : MonoBehaviour
 
         // Deactivate the current item first
         getCurrentItem().deactivateItem();
-
-        if (currentItemIndex + 1 < inventory.Length)
+        if (increment)
         {
-            Debug.Log(currentItem);
-            currentItemIndex += 1;
-            currentItem = inventory[currentItemIndex];
-            Debug.Log(currentItem);
-            currentItem.activateItem();
+            if (currentItemIndex + 1 < inventory.Length)
+            {
+                Debug.Log(currentItem);
+                currentItemIndex += 1;
+                currentItem = inventory[currentItemIndex];
+                Debug.Log(currentItem);
+                currentItem.activateItem();
+            }
+            else
+            {
+                currentItem = inventory[0];
+                currentItemIndex = 0;
+                currentItem.activateItem();
+            }
         }
         else
         {
-            currentItem = inventory[0];
-            currentItemIndex = 0;
-            currentItem.activateItem();
+            if (currentItemIndex != 0)
+            {
+                Debug.Log(currentItem);
+                currentItemIndex -= 1;
+                currentItem = inventory[currentItemIndex];
+                Debug.Log(currentItem);
+                currentItem.activateItem();
+            }
+            else
+            {
+                currentItem = inventory[0];
+                currentItemIndex = inventory.Length - 1;
+                currentItem.activateItem();
+            }
         }
 
         Debug.Log("Switched Item To: " + getCurrentItem());
     }
 
+    public void IncrementHeldCount(int itemID)
+    {
+        for (int i = 0; i < inventory.Length; i++)
+        {
+            if (inventory[i].id == itemID)
+            {
+                inventory[i].heldCount++;
+            }
+        }
+    }
 
 }

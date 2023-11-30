@@ -8,7 +8,7 @@ public class HotbarManager : MonoBehaviour
     public Color selectedColor = Color.white;
     public Color unselectedColor = Color.black;
 
-    private int nextAvailableSlot = 0;  // New variable to keep track of the next available slot
+    private Dictionary<int, int> heldCounts = new Dictionary<int, int>();
 
     private void Start()
     {
@@ -49,14 +49,37 @@ public class HotbarManager : MonoBehaviour
         return slots.Count;
     }
 
-    public bool AddItem(Sprite itemImage)
+    public void IncrementHeldCount(int itemID, int count)
     {
-        if (nextAvailableSlot < slots.Count)
+        if (heldCounts.ContainsKey(itemID))
         {
-            slots[nextAvailableSlot].AddItem(itemImage);
-            nextAvailableSlot = (nextAvailableSlot + 1) % slots.Count;
-            return true;
+            heldCounts[itemID] = count;
         }
-        return false;  // No available slots
+        else
+        {
+            heldCounts.Add(itemID, count);
+        }
+
+        UpdateHeldCounts();
+    }
+
+    private void UpdateHeldCounts()
+    {
+        for (int i = 0; i < slots.Count; i++)
+        {
+            if (slots[i].IsOccupied())
+            {
+                int itemID = slots[i].GetItemID();
+                if (heldCounts.ContainsKey(itemID))
+                {
+                    slots[i].AddItem(slots[i].itemImage.sprite, heldCounts[itemID], itemID);
+                }
+            }
+        }
+    }
+
+    public int GetHeldCount(int itemID)
+    {
+        return heldCounts.ContainsKey(itemID) ? heldCounts[itemID] : 0;
     }
 }

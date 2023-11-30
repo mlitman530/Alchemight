@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5400910709433441259}
   - component: {fileID: 1719752855783963575}
   m_Layer: 0
-  m_Name: Strength Potion
+  m_Name: Speed Potion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 657f4b6a59b2643449495a7cbf1d7f1f, type: 2}
+  - {fileID: 2100000, guid: 18bfd920213201e4aad115741406d555, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d47a891e58c0dd4bb3575774ce46f77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 2
+  id: 3
   heldCount: 0
   purchaseLimit: 0
   purchaseCount: 0

@@ -106,7 +106,7 @@ public class InputManager : MonoBehaviour
     {
         if (GetWeaponSwitch())
         {
-            weaponSwitcher.switchItem();
+            weaponSwitcher.switchItem(true);
         }
     }
 

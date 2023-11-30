@@ -14,8 +14,9 @@ GameObject:
   - component: {fileID: 7498395055338923430}
   - component: {fileID: 5400910709433441259}
   - component: {fileID: 1719752855783963575}
+  - component: {fileID: -315505910738915253}
   m_Layer: 0
-  m_Name: Strength Potion
+  m_Name: Fire Potion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 657f4b6a59b2643449495a7cbf1d7f1f, type: 2}
+  - {fileID: 2100000, guid: 1996695293709e2479211a9610d53f45, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -119,7 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d47a891e58c0dd4bb3575774ce46f77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 2
+  id: 1
   heldCount: 0
   purchaseLimit: 0
   purchaseCount: 0
@@ -137,4 +138,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60012bb5b63793449bdb52cbfcd3bb7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemImage: {fileID: 21300000, guid: 2cf1580821ae7504b925da9751427b5f, type: 3}
+  itemImage: {fileID: 21300000, guid: 05402b40272c4c3419f8b1ab137c2205, type: 3}
+--- !u!114 &-315505910738915253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2853248324769065545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3616bd6c58c73764493afaa6d0126116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Target: {fileID: 0}
+  firingAngle: 45
+  gravity: 9.8
+  Projectile: {fileID: 0}
