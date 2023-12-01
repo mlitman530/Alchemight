@@ -75,7 +75,7 @@ public class StatCustomizationController : MonoBehaviour
         PlayerPrefs.SetInt("Strength", statValues[0]);
         PlayerPrefs.SetInt("Speed", statValues[1]);
         PlayerPrefs.SetInt("Jump", statValues[2]);
-        PlayerPrefs.SetInt("Health", statValues[3]);
+        PlayerPrefs.SetInt("MaxHealth", statValues[3]);
         SceneManager.LoadScene("Shop");
     }
 }

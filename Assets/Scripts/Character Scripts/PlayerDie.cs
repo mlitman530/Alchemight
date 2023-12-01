@@ -6,9 +6,11 @@ using UnityEngine.SceneManagement;
 public class PlayerDie : MonoBehaviour
 {
     public HotbarManager hotbarManager;
+    public PlayerController playerController;
 
     public void ToShop()
     {
+        Dictionary<string, float> stats = playerController.GetStats();
         // Dictionary<int, int> inv = hotbarManager.GetHeldCounts();
 
         // PlayerPrefs.SetInt("NumHealthPotions", inv[5]);
@@ -17,6 +19,13 @@ public class PlayerDie : MonoBehaviour
         // PlayerPrefs.SetInt("NumJumpPotions", inv[4]);
         // PlayerPrefs.SetInt("SwordPurchased", inv[0]);
         // PlayerPrefs.SetInt("NumFirePotions", inv[1]);
+
+        PlayerPrefs.SetFloat("Strength", stats["Strength"]);
+        PlayerPrefs.SetFloat("Speed", stats["Speed"]);
+        PlayerPrefs.SetFloat("Jump", stats["Jump"]);
+        PlayerPrefs.SetFloat("MaxHealth", stats["MaxHealth"]);
+
+        PlayerPrefs.SetInt("Gold", hotbarManager.GetGold());
 
         SceneManager.LoadScene("Shop");
     }

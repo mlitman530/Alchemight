@@ -9,6 +9,7 @@ public class HotbarManager : MonoBehaviour
     public Color unselectedColor = Color.black;
 
     private Dictionary<int, int> heldCounts = new Dictionary<int, int>();
+    private int goldCount = 0;
 
     public WeaponSwitch weaponSwitch;
 
@@ -77,6 +78,10 @@ public class HotbarManager : MonoBehaviour
     public Dictionary<int, int> GetHeldCounts()
     {
         return heldCounts;
+    }
+    public int GetGold()
+    {
+        return goldCount;
     }
 
     private void InitializeHeldCounts()

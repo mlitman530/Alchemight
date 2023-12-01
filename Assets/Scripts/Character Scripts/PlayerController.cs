@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using System.Collections.Generic;
 
 /// <summary>
 /// First person player controller using the new input system
@@ -20,6 +21,8 @@ public class PlayerController : MonoBehaviour
     private float animationBlendDamp = .5f;
     [SerializeField, Tooltip("Input smooth damp speed.")]
     private float inputSmoothDamp = .1f;
+    [SerializeField]
+    private float playerMaxHealth = 100;
 
     private CharacterController controller;
     private Vector3 playerVelocity;
@@ -49,7 +52,7 @@ public class PlayerController : MonoBehaviour
         weaponHolder = GameObject.Find("Weapon Holder");
         weaponSwitcher = weaponHolder.GetComponent<WeaponSwitch>();
         sword = swordObject.GetComponent<Sword>();
-        
+        //SetPlayerPrefs();
     }
     private void Start()
     {
@@ -171,7 +174,28 @@ public class PlayerController : MonoBehaviour
         playerStrength += PlayerPrefs.GetInt("Strength");
         playerSpeed += PlayerPrefs.GetInt("Speed");
         jumpHeight += (PlayerPrefs.GetInt("Jump") / 5);
+        playerMaxHealth += (PlayerPrefs.GetFloat("MaxHealth") * 10);
         //Debug.Log("Strength: " + playerStrength + " Speed: " + playerSpeed + " Jump: " + jumpHeight);
+    }
+
+    public Dictionary<string, float> GetStats()
+    {
+        Dictionary<string, float> stats = new Dictionary<string, float>();
+        stats.Add("Strength", playerStrength);
+        stats.Add("Speed", playerSpeed);
+        stats.Add("MaxHealth", playerMaxHealth);
+        stats.Add("Jump", jumpHeight);
+        return stats;
+    }
+
+    private void SetPlayerPrefs()
+    {
+        PlayerPrefs.SetInt("NumHealthPotions", 0);
+        PlayerPrefs.SetInt("NumStrengthPotions", 0);
+        PlayerPrefs.SetInt("NumSpeedPotions", 0);
+        PlayerPrefs.SetInt("NumJumpPotions", 0);
+        PlayerPrefs.SetInt("SwordPurchased", 0);
+        PlayerPrefs.SetInt("NumFirePotions", 0);
     }
 
     // private void OnControllerColliderHit(ControllerColliderHit hit)
