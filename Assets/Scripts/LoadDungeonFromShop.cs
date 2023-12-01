@@ -11,6 +11,8 @@ public class LoadDungeonFromShop : MonoBehaviour
     public Image fadePanel;
     public ImageFade ImageFade;
 
+    public Inventory inventory;
+
     void Awake()
     {
         fadePanelObject = GameObject.Find("Fade Out");
@@ -28,14 +30,29 @@ public class LoadDungeonFromShop : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void toDungeon()
     {
+        Dictionary<int, int> inv = inventory.GetItemCounts();
+        for (int i = 0; i < 6; i++)
+        {
+            int test;
+            if (!inv.TryGetValue(i, out test))
+            {
+                inv.Add(i, 0);
+            }
+            Debug.Log("Item " + i + " count: " + inv[i]);
+        }
+        PlayerPrefs.SetInt("NumHealthPotions", inv[0]);
+        PlayerPrefs.SetInt("NumStrengthPotions", inv[1]);
+        PlayerPrefs.SetInt("NumSpeedPotions", inv[2]);
+        PlayerPrefs.SetInt("NumJumpPotions", inv[3]);
+        PlayerPrefs.SetInt("SwordPurchased", inv[4]);
+        PlayerPrefs.SetInt("NumFirePotions", inv[5]);
         fadePanelObject.SetActive(true);
         ImageFade.fadeIn();
-
         // Assuming that ImageFade.fadeIn() handles the fade-in animation asynchronously
         StartCoroutine(LoadSceneAfterFade("SewerLayout"));
     }

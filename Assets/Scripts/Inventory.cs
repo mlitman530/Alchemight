@@ -59,6 +59,17 @@ public class Inventory : MonoBehaviour
     void DisplayInventory()
     {
         // Dictionary to store item counts
+        Dictionary<int, int> itemCounts = GetItemCounts();
+
+        // Update the inventoryText based on the itemCounts dictionary
+        //goldText.text = "Gold: ";
+
+        inventoryText.text = string.Join("\n", itemCounts.Select(pair =>
+            $"{PurchasableItems.itemRegistry[pair.Key].name} x{pair.Value}"));
+    }
+
+    public Dictionary<int, int> GetItemCounts()
+    {
         Dictionary<int, int> itemCounts = new Dictionary<int, int>();
 
         for (int i = 0; i < inventory.Count; i++)
@@ -77,15 +88,8 @@ public class Inventory : MonoBehaviour
                 itemCounts[itemId] = 1;
             }
         }
-
-        // Update the inventoryText based on the itemCounts dictionary
-        //goldText.text = "Gold: ";
-
-        inventoryText.text = string.Join("\n", itemCounts.Select(pair =>
-            $"{PurchasableItems.itemRegistry[pair.Key].name} x{pair.Value}"));
+        return itemCounts;
     }
-
-
 }
 
 

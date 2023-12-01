@@ -71,10 +71,10 @@ public class WeaponSwitch : MonoBehaviour
         {
             if (currentItemIndex + 1 < inventory.Length)
             {
-                Debug.Log(currentItem);
+                //Debug.Log(currentItem);
                 currentItemIndex += 1;
                 currentItem = inventory[currentItemIndex];
-                Debug.Log(currentItem);
+                //.Log(currentItem);
                 currentItem.activateItem();
             }
             else
@@ -88,10 +88,10 @@ public class WeaponSwitch : MonoBehaviour
         {
             if (currentItemIndex != 0)
             {
-                Debug.Log(currentItem);
+                //Debug.Log(currentItem);
                 currentItemIndex -= 1;
                 currentItem = inventory[currentItemIndex];
-                Debug.Log(currentItem);
+                //Debug.Log(currentItem);
                 currentItem.activateItem();
             }
             else
@@ -102,7 +102,7 @@ public class WeaponSwitch : MonoBehaviour
             }
         }
 
-        Debug.Log("Switched Item To: " + getCurrentItem());
+        //Debug.Log("Switched Item To: " + getCurrentItem());
     }
 
     public void IncrementHeldCount(int itemID)
@@ -114,6 +114,15 @@ public class WeaponSwitch : MonoBehaviour
                 inventory[i].heldCount++;
             }
         }
+    }
+
+    public void InitializeHeldCounts()
+    {
+        inventory[1].heldCount = PlayerPrefs.GetInt("NumFirePotions");
+        inventory[2].heldCount  = PlayerPrefs.GetInt("NumStrengthPotions");
+        inventory[3].heldCount  = PlayerPrefs.GetInt("NumSpeedPotions");
+        inventory[4].heldCount  = PlayerPrefs.GetInt("NumJumpPotions");
+        inventory[5].heldCount  = PlayerPrefs.GetInt("NumHealthPotions");
     }
 
 }

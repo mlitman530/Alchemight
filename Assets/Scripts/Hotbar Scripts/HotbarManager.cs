@@ -10,6 +10,8 @@ public class HotbarManager : MonoBehaviour
 
     private Dictionary<int, int> heldCounts = new Dictionary<int, int>();
 
+    public WeaponSwitch weaponSwitch;
+
     private void Start()
     {
         // Ensure slots list is initialized properly
@@ -27,6 +29,8 @@ public class HotbarManager : MonoBehaviour
 
         // Initial selection
         UpdateSelection(0);
+        InitializeHeldCounts();
+        UpdateHeldCounts();
     }
 
     public void UpdateSelection(float selectedIndex)
@@ -51,35 +55,32 @@ public class HotbarManager : MonoBehaviour
 
     public void IncrementHeldCount(int itemID, int count)
     {
-        if (heldCounts.ContainsKey(itemID))
-        {
-            heldCounts[itemID] = count;
-        }
-        else
-        {
-            heldCounts.Add(itemID, count);
-        }
-
+        heldCounts[itemID] = count;
         UpdateHeldCounts();
     }
 
     private void UpdateHeldCounts()
     {
-        for (int i = 0; i < slots.Count; i++)
+        for (int i = 1; i < slots.Count - 3; i++)
         {
-            if (slots[i].IsOccupied())
-            {
-                int itemID = slots[i].GetItemID();
-                if (heldCounts.ContainsKey(itemID))
-                {
-                    slots[i].AddItem(slots[i].itemImage.sprite, heldCounts[itemID], itemID);
-                }
-            }
+            //int itemID = slots[i].GetItemID();
+            slots[i].AddItem(slots[i].itemImage.sprite, heldCounts[i], i);
         }
+        //Debug.Log("Held count for ID 5: " + GetHeldCount(5));
     }
 
     public int GetHeldCount(int itemID)
     {
         return heldCounts.ContainsKey(itemID) ? heldCounts[itemID] : 0;
+    }
+
+    private void InitializeHeldCounts()
+    {
+        heldCounts[1] = PlayerPrefs.GetInt("NumFirePotions");
+        heldCounts[2] = PlayerPrefs.GetInt("NumStrengthPotions");
+        heldCounts[3] = PlayerPrefs.GetInt("NumSpeedPotions");
+        heldCounts[4] = PlayerPrefs.GetInt("NumJumpPotions");
+        heldCounts[5] = PlayerPrefs.GetInt("NumHealthPotions");
+        weaponSwitch.InitializeHeldCounts();
     }
 }

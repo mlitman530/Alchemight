@@ -29,7 +29,7 @@ public class HotbarSlot
 
         if (heldCountText != null)
         {
-            heldCountText.text = "";  // Reset held count text
+            heldCountText.text = "0";  // Reset held count text
         }
 
         itemID = 0;  // Reset item ID
@@ -63,7 +63,7 @@ public class HotbarSlot
         if (heldCountText != null)
         {
             // Set held count text
-            heldCountText.text = "x" + heldCount;
+            heldCountText.text = heldCount.ToString();
         }
     }
 
