@@ -119,10 +119,10 @@ public class WeaponSwitch : MonoBehaviour
     public void InitializeHeldCounts()
     {
         inventory[1].heldCount = PlayerPrefs.GetInt("NumFirePotions");
-        inventory[2].heldCount  = PlayerPrefs.GetInt("NumStrengthPotions");
-        inventory[3].heldCount  = PlayerPrefs.GetInt("NumSpeedPotions");
-        inventory[4].heldCount  = PlayerPrefs.GetInt("NumJumpPotions");
-        inventory[5].heldCount  = PlayerPrefs.GetInt("NumHealthPotions");
+        inventory[2].heldCount = PlayerPrefs.GetInt("NumStrengthPotions");
+        inventory[3].heldCount = PlayerPrefs.GetInt("NumSpeedPotions");
+        inventory[4].heldCount = PlayerPrefs.GetInt("NumJumpPotions");
+        inventory[5].heldCount = PlayerPrefs.GetInt("NumHealthPotions");
     }
 
 }

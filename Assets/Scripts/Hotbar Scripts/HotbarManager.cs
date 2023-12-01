@@ -74,6 +74,11 @@ public class HotbarManager : MonoBehaviour
         return heldCounts.ContainsKey(itemID) ? heldCounts[itemID] : 0;
     }
 
+    public Dictionary<int, int> GetHeldCounts()
+    {
+        return heldCounts;
+    }
+
     private void InitializeHeldCounts()
     {
         heldCounts[1] = PlayerPrefs.GetInt("NumFirePotions");
