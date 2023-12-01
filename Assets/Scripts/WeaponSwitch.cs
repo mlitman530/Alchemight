@@ -38,7 +38,7 @@ public class WeaponSwitch : MonoBehaviour
                     inventory[i].activateItem();
                     currentItem = inventory[i];
                     currentItemIndex = i;
-                    Debug.Log("Item Initialized: " + currentItem.name + " at Index: " + currentItemIndex);
+                    //Debug.Log("Item Initialized: " + currentItem.name + " at Index: " + currentItemIndex);
                 }
                 else
                 {
@@ -58,33 +58,72 @@ public class WeaponSwitch : MonoBehaviour
         return currentItemIndex;
     }
 
-    public void switchItem()
+    public void switchItem(int index)
     {
-       
+        currentItem.deactivateItem();
+        currentItemIndex = index;
+        Debug.Log("Current Item Index: " + currentItemIndex);
+        currentItem = inventory[currentItemIndex];
+        currentItem.activateItem();
+        // currentItemIndex = getCurrentItemIndex();
+        // // Deactivate the current item first
+        // getCurrentItem().deactivateItem();
+        // if (increment)
+        // {
+        //     if (currentItemIndex + 1 < inventory.Length)
+        //     {
+        //         //Debug.Log(currentItem);
+        //         currentItemIndex += 1;
+        //         currentItem = inventory[currentItemIndex];
+        //         //.Log(currentItem);
+        //         currentItem.activateItem();
+        //     }
+        //     else
+        //     {
+        //         currentItem = inventory[0];
+        //         currentItemIndex = 0;
+        //         currentItem.activateItem();
+        //     }
+        // }
+        // else
+        // {
+        //     if (currentItemIndex != 0)
+        //     {
+        //         //Debug.Log(currentItem);
+        //         currentItemIndex -= 1;
+        //         currentItem = inventory[currentItemIndex];
+        //         //Debug.Log(currentItem);
+        //         currentItem.activateItem();
+        //     }
+        //     else
+        //     {
+        //         currentItem = inventory[0];
+        //         currentItemIndex = inventory.Length - 1;
+        //         currentItem.activateItem();
+        //     }
+        // }
 
-        currentItemIndex = getCurrentItemIndex();
-
-
-        // Deactivate the current item first
-        getCurrentItem().deactivateItem();
-
-        if (currentItemIndex + 1 < inventory.Length)
-        {
-            Debug.Log(currentItem);
-            currentItemIndex += 1;
-            currentItem = inventory[currentItemIndex];
-            Debug.Log(currentItem);
-            currentItem.activateItem();
-        }
-        else
-        {
-            currentItem = inventory[0];
-            currentItemIndex = 0;
-            currentItem.activateItem();
-        }
-
-        Debug.Log("Switched Item To: " + getCurrentItem());
+        //Debug.Log("Switched Item To: " + getCurrentItem());
     }
 
+    public void IncrementHeldCount(int itemID)
+    {
+        for (int i = 0; i < inventory.Length; i++)
+        {
+            if (inventory[i].id == itemID)
+            {
+                inventory[i].heldCount++;
+            }
+        }
+    }
+
+    public void InitializeHeldCounts()
+    {
+        inventory[1].heldCount = PlayerPrefs.GetInt("NumFirePotions");
+        inventory[2].heldCount = PlayerPrefs.GetInt("NumStrengthPotions");
+        inventory[3].heldCount = PlayerPrefs.GetInt("NumSpeedPotions");
+        inventory[4].heldCount = PlayerPrefs.GetInt("NumJumpPotions");
+        inventory[5].heldCount = PlayerPrefs.GetInt("NumHealthPotions");
+    }
 
 }

@@ -12,7 +12,7 @@ public class Item : MonoBehaviour
     public int purchaseCount;
     public int cost;
     public bool isHeld;
-   
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -43,7 +43,7 @@ public class Item : MonoBehaviour
 
     public void deactivateItem()
     {
-        Debug.Log("Deactivated");
+        //Debug.Log("Deactivated");
         isHeld = false;
         
         gameObject.SetActive(false);

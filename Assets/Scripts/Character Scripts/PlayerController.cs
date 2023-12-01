@@ -1,4 +1,6 @@
 using UnityEngine;
+using System;
+using System.Collections.Generic;
 
 /// <summary>
 /// First person player controller using the new input system
@@ -19,6 +21,8 @@ public class PlayerController : MonoBehaviour
     private float animationBlendDamp = .5f;
     [SerializeField, Tooltip("Input smooth damp speed.")]
     private float inputSmoothDamp = .1f;
+    [SerializeField]
+    private float playerMaxHealth = 100;
 
     private CharacterController controller;
     private Vector3 playerVelocity;
@@ -37,6 +41,9 @@ public class PlayerController : MonoBehaviour
     private GameObject weaponHolder;
     private WeaponSwitch weaponSwitcher;
 
+    private PlayerController playerController;
+    private SelectionManager selectionManager;
+    private int currentlySelected = 0;
 
     private void Awake()
     {
@@ -45,15 +52,17 @@ public class PlayerController : MonoBehaviour
         weaponHolder = GameObject.Find("Weapon Holder");
         weaponSwitcher = weaponHolder.GetComponent<WeaponSwitch>();
         sword = swordObject.GetComponent<Sword>();
-        
+        //SetPlayerPrefs();
     }
     private void Start()
     {
         controller = GetComponent<CharacterController>();
         inputManager = InputManager.Instance;
         pauseMenu = GetComponentInChildren<PauseMenu>();
-        Debug.Log("Pause menu instance: " + pauseMenu);
+        //Debug.Log("Pause menu instance: " + pauseMenu);
         cameraTransform = Camera.main.transform;
+        playerController = GetComponent<PlayerController>();
+        selectionManager = playerController.gameObject.GetComponent<SelectionManager>();
         SetStats();
     }
 
@@ -82,7 +91,7 @@ public class PlayerController : MonoBehaviour
         {
             // Kinematic equation
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
-            Debug.Log("Jump");
+            //Debug.Log("Jump");
         }
         // Add gravity and then move the player once again
         playerVelocity.y += gravityValue * Time.deltaTime;
@@ -90,7 +99,7 @@ public class PlayerController : MonoBehaviour
 
         if (inputManager.Paused())
         {
-            Debug.Log("pauseMenu.IsPaused: " + pauseMenu.IsPaused());
+            //Debug.Log("pauseMenu.IsPaused: " + pauseMenu.IsPaused());
             if (pauseMenu.IsPaused())
             {
                 pauseMenu.Resume();
@@ -109,17 +118,54 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (inputManager.GetPlayerThrow())
-        {
-            if (throwable.isActiveAndEnabled)
-            {
-                throwable.Throw();
-            }
-        }
+        // if (inputManager.GetPlayerThrow())
+        // {
+        //     if (throwable.isActiveAndEnabled)
+        //     {
+        //         throwable.Throw();
+        //     }
+        // }
 
         if (inputManager.GetWeaponSwitch())
         {
-            weaponSwitcher.switchItem();
+            // weaponSwitcher.switchItem(true);
+        }
+
+        float scrollValue = inputManager.GetWeaponScroll();
+        if (scrollValue > 0)
+        {
+            selectionManager.ScrollUp();
+            if (currentlySelected <= 0)
+            {
+                currentlySelected = 8;
+                weaponSwitcher.switchItem(8);
+            }
+            else
+            {
+                currentlySelected--;
+                weaponSwitcher.switchItem(currentlySelected);
+            }
+        }
+        else if (scrollValue < 0)
+        {
+            selectionManager.ScrollDown();
+            if (currentlySelected >= 8)
+            {
+                currentlySelected = 0;
+                weaponSwitcher.switchItem(0);
+            }
+            else
+            {
+                currentlySelected++;
+                weaponSwitcher.switchItem(currentlySelected);
+            }
+        }
+        float hotbarKey = inputManager.GetHotbarSwitch();
+        if (hotbarKey > 0)
+        {
+            currentlySelected = (int)hotbarKey - 1;
+            selectionManager.UpdateSelection(hotbarKey - 1);
+            weaponSwitcher.switchItem((int)hotbarKey - 1);
         }
     }
 
@@ -128,6 +174,37 @@ public class PlayerController : MonoBehaviour
         playerStrength += PlayerPrefs.GetInt("Strength");
         playerSpeed += PlayerPrefs.GetInt("Speed");
         jumpHeight += (PlayerPrefs.GetInt("Jump") / 5);
+        playerMaxHealth += (PlayerPrefs.GetFloat("MaxHealth") * 10);
         //Debug.Log("Strength: " + playerStrength + " Speed: " + playerSpeed + " Jump: " + jumpHeight);
     }
+
+    public Dictionary<string, float> GetStats()
+    {
+        Dictionary<string, float> stats = new Dictionary<string, float>();
+        stats.Add("Strength", playerStrength);
+        stats.Add("Speed", playerSpeed);
+        stats.Add("MaxHealth", playerMaxHealth);
+        stats.Add("Jump", jumpHeight);
+        return stats;
+    }
+
+    private void SetPlayerPrefs()
+    {
+        PlayerPrefs.SetInt("NumHealthPotions", 0);
+        PlayerPrefs.SetInt("NumStrengthPotions", 0);
+        PlayerPrefs.SetInt("NumSpeedPotions", 0);
+        PlayerPrefs.SetInt("NumJumpPotions", 0);
+        PlayerPrefs.SetInt("SwordPurchased", 0);
+        PlayerPrefs.SetInt("NumFirePotions", 0);
+    }
+
+    // private void OnControllerColliderHit(ControllerColliderHit hit)
+    // {
+    //     IHotbarItem item = hit.collider.GetComponent<IHotbarItem>();
+    //     Debug.Log("Item: " + item);
+    //     if (item != null)
+    //     {
+    //         hotbar.AddItem(item);
+    //     }
+    // }
 }

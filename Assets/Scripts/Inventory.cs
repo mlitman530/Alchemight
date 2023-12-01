@@ -33,6 +33,7 @@ public class Inventory : MonoBehaviour
         goldTextObject = GameObject.Find("Gold");
         goldText = goldTextObject.GetComponent<TextMeshProUGUI>();
         currentGoldCount = startingGoldCount;
+        RefreshInventory();
     }
 
     // Update is called once per frame
@@ -59,6 +60,17 @@ public class Inventory : MonoBehaviour
     void DisplayInventory()
     {
         // Dictionary to store item counts
+        Dictionary<int, int> itemCounts = GetItemCounts();
+
+        // Update the inventoryText based on the itemCounts dictionary
+        //goldText.text = "Gold: ";
+
+        inventoryText.text = string.Join("\n", itemCounts.Select(pair =>
+            $"{PurchasableItems.itemRegistry[pair.Key].name} x{pair.Value}"));
+    }
+
+    public Dictionary<int, int> GetItemCounts()
+    {
         Dictionary<int, int> itemCounts = new Dictionary<int, int>();
 
         for (int i = 0; i < inventory.Count; i++)
@@ -77,15 +89,52 @@ public class Inventory : MonoBehaviour
                 itemCounts[itemId] = 1;
             }
         }
-
-        // Update the inventoryText based on the itemCounts dictionary
-        //goldText.text = "Gold: ";
-
-        inventoryText.text = string.Join("\n", itemCounts.Select(pair =>
-            $"{PurchasableItems.itemRegistry[pair.Key].name} x{pair.Value}"));
+        return itemCounts;
     }
 
-
+    private void RefreshInventory()
+    {
+        int numHealthPotions = PlayerPrefs.GetInt("NumHealthPotions");
+        if (numHealthPotions > 0)
+        {
+            for (int i = 0; i < numHealthPotions; i++)
+            {
+                inventory.Add(0);
+            }
+        }
+        int numStrengthPotions = PlayerPrefs.GetInt("NumStrengthPotions");
+        if (numStrengthPotions > 0)
+        {
+            for (int i = 0; i < numStrengthPotions; i++)
+            {
+                inventory.Add(1);
+            }
+        }
+        int numSpeedPotions = PlayerPrefs.GetInt("NumSpeedPotions");
+        if (numSpeedPotions > 0)
+        {
+            for (int i = 0; i < numSpeedPotions; i++)
+            {
+                inventory.Add(2);
+            }
+        }
+        int numJumpPotions = PlayerPrefs.GetInt("NumJumpPotions");
+        if (numJumpPotions > 0)
+        {
+            for (int i = 0; i < numJumpPotions; i++)
+            {
+                inventory.Add(3);
+            }
+        }
+        int numFirePotions = PlayerPrefs.GetInt("NumFirePotions");
+        if (numFirePotions > 0)
+        {
+            for (int i = 0; i < numFirePotions; i++)
+            {
+                inventory.Add(5);
+            }
+        }
+    }
 }
 
 
