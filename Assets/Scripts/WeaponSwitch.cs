@@ -58,49 +58,50 @@ public class WeaponSwitch : MonoBehaviour
         return currentItemIndex;
     }
 
-    public void switchItem(bool increment)
+    public void switchItem(int index)
     {
-       
-
-        currentItemIndex = getCurrentItemIndex();
-
-
-        // Deactivate the current item first
-        getCurrentItem().deactivateItem();
-        if (increment)
-        {
-            if (currentItemIndex + 1 < inventory.Length)
-            {
-                //Debug.Log(currentItem);
-                currentItemIndex += 1;
-                currentItem = inventory[currentItemIndex];
-                //.Log(currentItem);
-                currentItem.activateItem();
-            }
-            else
-            {
-                currentItem = inventory[0];
-                currentItemIndex = 0;
-                currentItem.activateItem();
-            }
-        }
-        else
-        {
-            if (currentItemIndex != 0)
-            {
-                //Debug.Log(currentItem);
-                currentItemIndex -= 1;
-                currentItem = inventory[currentItemIndex];
-                //Debug.Log(currentItem);
-                currentItem.activateItem();
-            }
-            else
-            {
-                currentItem = inventory[0];
-                currentItemIndex = inventory.Length - 1;
-                currentItem.activateItem();
-            }
-        }
+        currentItem.deactivateItem();
+        currentItemIndex = index;
+        Debug.Log("Current Item Index: " + currentItemIndex);
+        currentItem = inventory[currentItemIndex];
+        currentItem.activateItem();
+        // currentItemIndex = getCurrentItemIndex();
+        // // Deactivate the current item first
+        // getCurrentItem().deactivateItem();
+        // if (increment)
+        // {
+        //     if (currentItemIndex + 1 < inventory.Length)
+        //     {
+        //         //Debug.Log(currentItem);
+        //         currentItemIndex += 1;
+        //         currentItem = inventory[currentItemIndex];
+        //         //.Log(currentItem);
+        //         currentItem.activateItem();
+        //     }
+        //     else
+        //     {
+        //         currentItem = inventory[0];
+        //         currentItemIndex = 0;
+        //         currentItem.activateItem();
+        //     }
+        // }
+        // else
+        // {
+        //     if (currentItemIndex != 0)
+        //     {
+        //         //Debug.Log(currentItem);
+        //         currentItemIndex -= 1;
+        //         currentItem = inventory[currentItemIndex];
+        //         //Debug.Log(currentItem);
+        //         currentItem.activateItem();
+        //     }
+        //     else
+        //     {
+        //         currentItem = inventory[0];
+        //         currentItemIndex = inventory.Length - 1;
+        //         currentItem.activateItem();
+        //     }
+        // }
 
         //Debug.Log("Switched Item To: " + getCurrentItem());
     }

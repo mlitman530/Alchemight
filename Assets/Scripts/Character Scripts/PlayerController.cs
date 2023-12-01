@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 /// <summary>
 /// First person player controller using the new input system
@@ -39,6 +40,7 @@ public class PlayerController : MonoBehaviour
 
     private PlayerController playerController;
     private SelectionManager selectionManager;
+    private int currentlySelected = 0;
 
     private void Awake()
     {
@@ -113,34 +115,54 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (inputManager.GetPlayerThrow())
-        {
-            if (throwable.isActiveAndEnabled)
-            {
-                throwable.Throw();
-            }
-        }
+        // if (inputManager.GetPlayerThrow())
+        // {
+        //     if (throwable.isActiveAndEnabled)
+        //     {
+        //         throwable.Throw();
+        //     }
+        // }
 
         if (inputManager.GetWeaponSwitch())
         {
-            weaponSwitcher.switchItem(true);
+            // weaponSwitcher.switchItem(true);
         }
 
         float scrollValue = inputManager.GetWeaponScroll();
         if (scrollValue > 0)
         {
             selectionManager.ScrollUp();
-            weaponSwitcher.switchItem(false);
+            if (currentlySelected <= 0)
+            {
+                currentlySelected = 8;
+                weaponSwitcher.switchItem(8);
+            }
+            else
+            {
+                currentlySelected--;
+                weaponSwitcher.switchItem(currentlySelected);
+            }
         }
         else if (scrollValue < 0)
         {
             selectionManager.ScrollDown();
-            weaponSwitcher.switchItem(true);
+            if (currentlySelected >= 8)
+            {
+                currentlySelected = 0;
+                weaponSwitcher.switchItem(0);
+            }
+            else
+            {
+                currentlySelected++;
+                weaponSwitcher.switchItem(currentlySelected);
+            }
         }
         float hotbarKey = inputManager.GetHotbarSwitch();
         if (hotbarKey > 0)
         {
+            currentlySelected = (int)hotbarKey - 1;
             selectionManager.UpdateSelection(hotbarKey - 1);
+            weaponSwitcher.switchItem((int)hotbarKey - 1);
         }
     }
 

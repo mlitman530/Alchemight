@@ -104,10 +104,10 @@ public class InputManager : MonoBehaviour
 
     public void switchItem()
     {
-        if (GetWeaponSwitch())
-        {
-            weaponSwitcher.switchItem(true);
-        }
+        // if (GetWeaponSwitch())
+        // {
+        //     weaponSwitcher.switchItem(true);
+        // }
     }
 
     public float GetWeaponScroll()
