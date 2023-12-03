@@ -8,9 +8,9 @@ public class FollowPlayer : CinemachineExtension
 {
 
     //[SerializeField, Tooltip("Speed for looking side to side")]
-    private float horizontalSpeed;
+    private float horizontalSpeed = 100000000f;
     //[SerializeField, Tooltip("Speed for looking up and down")]
-    private float verticalSpeed;
+    private float verticalSpeed = 10000000f;
     [SerializeField, Tooltip("Maximum angle at which the player can look up and down")]
     private float clampAngle = 80f;
     
@@ -48,15 +48,20 @@ public class FollowPlayer : CinemachineExtension
                 // thus put startingRotation.y in the x value for Euler calculation.
                 // We add a negative in front of startingRotation.y to invert the axis.
                 state.RawOrientation = Quaternion.Euler(-startingRotation.y, startingRotation.x, 0f);
+
+                Debug.Log("Starting Rotation x: " + startingRotation.x);
+                Debug.Log("Starting Rotation y: " + startingRotation.y);
             }
         }
+        Debug.Log("Starting Rotation x: " + startingRotation.x);
+        Debug.Log("Starting Rotation y: " + startingRotation.y);
     }
 
     public void SetSensitivity(float val)
     {
-        val = val + 1;
-        horizontalSpeed = val;
-        verticalSpeed = val;
-        Debug.Log("Sensitivity Set to " + val);
+        float newVal = val + 25;
+        horizontalSpeed = newVal + 25;
+        verticalSpeed = newVal + 25;
+        Debug.Log("Sensitivity Set to " + newVal);
     }
 }

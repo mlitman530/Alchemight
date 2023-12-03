@@ -8424,6 +8424,14 @@ PrefabInstance:
       propertyPath: near clip plane
       value: 0.01
       objectReference: {fileID: 0}
+    - target: {fileID: 2096504566033119579, guid: 47bbb568f5389a541b238aa196af1823, type: 3}
+      propertyPath: verticalSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2096504566033119579, guid: 47bbb568f5389a541b238aa196af1823, type: 3}
+      propertyPath: horizontalSpeed
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2765175369677650675, guid: 47bbb568f5389a541b238aa196af1823, type: 3}
       propertyPath: m_LocalScale.y
       value: 1
@@ -8667,6 +8675,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseSlider: {fileID: 1874716978}
   sensitivity: 50
+  cinemachinePOVExtension: {fileID: 2025064214}
 --- !u!114 &1494252270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11371,6 +11380,17 @@ MonoBehaviour:
     m_PreInfinity: 0
     m_PostInfinity: 0
     m_RotationOrder: 4
+--- !u!114 &2025064214 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2096504566033119579, guid: 47bbb568f5389a541b238aa196af1823, type: 3}
+  m_PrefabInstance: {fileID: 1489492260}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a1c8227508216141baf64e97c2676a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2040590352
 GameObject:
   m_ObjectHideFlags: 0

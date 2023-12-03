@@ -6,11 +6,8 @@ using Cinemachine;
 /// </summary>
 public class CinemachinePOVExtension : CinemachineExtension
 {
-
-    [SerializeField, Tooltip("Speed for looking side to side")]
-    private float horizontalSpeed = 10f;
-    [SerializeField, Tooltip("Speed for looking up and down")]
-    private float verticalSpeed = 10f;
+    private float horizontalSpeed;
+    private float verticalSpeed;
     [SerializeField, Tooltip("Maximum angle at which the player can look up and down")]
     private float clampAngle = 80f;
     
@@ -22,6 +19,8 @@ public class CinemachinePOVExtension : CinemachineExtension
         inputManager = InputManager.Instance;
         startingRotation = transform.localRotation.eulerAngles;
         base.Awake();
+        horizontalSpeed = PlayerPrefs.GetFloat("Saved Mouse Sensitivity") + 25;
+        verticalSpeed = PlayerPrefs.GetFloat("Saved Mouse Sensitivity") + 25;
     }
 
     /// <summary>
@@ -35,10 +34,13 @@ public class CinemachinePOVExtension : CinemachineExtension
     protected override void PostPipelineStageCallback(CinemachineVirtualCameraBase vcam, CinemachineCore.Stage stage, ref CameraState state, float deltaTime) {
         if (Application.IsPlaying(gameObject) && vcam.Follow) { 
             if (stage == CinemachineCore.Stage.Aim) {
+                Debug.Log("Horizontal speed: " + horizontalSpeed);
+                Debug.Log("Vertical speed: " + verticalSpeed);
+                //horizontalSpeed = 9999;
                 // Get input system mouse delta values and add them to the starting rotation along with speed
                 Vector2 deltaInput = inputManager.GetMouseDelta();
-                startingRotation.x += deltaInput.x * verticalSpeed * Time.deltaTime;
-                startingRotation.y += deltaInput.y * horizontalSpeed * Time.deltaTime;
+                startingRotation.x += deltaInput.x * horizontalSpeed * Time.deltaTime;
+                startingRotation.y += deltaInput.y * verticalSpeed * Time.deltaTime;
                 // Clamp the values to make sure the player can't keep looking up (it would rotate over their head)
                 startingRotation.y = Mathf.Clamp(startingRotation.y, -clampAngle, clampAngle);
                 // Rotate the orientation of the camera to match the new delta values.
@@ -48,5 +50,12 @@ public class CinemachinePOVExtension : CinemachineExtension
                 state.RawOrientation = Quaternion.Euler(-startingRotation.y, startingRotation.x, 0f);
             }
         }
+    }
+
+    public void SetSensitivity(float val)
+    {
+        horizontalSpeed = val + 25;
+        verticalSpeed = val + 25;
+        Debug.Log("Sensitivity Set to " + (val + 25));
     }
 }
