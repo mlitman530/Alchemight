@@ -12,6 +12,8 @@ public class Item : MonoBehaviour
     public int purchaseCount;
     public int cost;
     public bool isHeld;
+
+    public GameObject throwableVersion;
     
     // Start is called before the first frame update
     void Start()

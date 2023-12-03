@@ -7,8 +7,9 @@ public class InputManager : MonoBehaviour
     // Singleton for this class
     private static InputManager _instance;
     public Sword sword;
-    public WeaponSwitch weaponSwitcher;
 
+    public WeaponSwitch weaponSwitcher;
+    private Item currentItem;
     public static InputManager Instance
     {
         get
@@ -18,6 +19,8 @@ public class InputManager : MonoBehaviour
     }
 
     private Controls controls;
+    private DrinkablePotion currentPotion;
+    private ThrowablePotion throwablePotion;
 
     private void Awake()
     {
@@ -62,6 +65,11 @@ public class InputManager : MonoBehaviour
         return controls.Sewers.Swing.triggered;
     }
 
+    public bool GetPlayerDrink()
+    {
+        return controls.Sewers.Drink.triggered;
+    }
+
     public bool GetPlayerThrow()
     {
         return controls.Sewers.Throw.triggered;
@@ -98,10 +106,37 @@ public class InputManager : MonoBehaviour
     {
         if (GetPlayerSwing())
         {
+            
             sword.Swing();
         }
     }
 
+    
+
+    public void drink()
+    {
+       
+        if (GetPlayerDrink())
+        {
+            currentItem = weaponSwitcher.getCurrentItem();
+            Debug.Log(currentItem);
+
+            if (currentItem.GetComponent<DrinkablePotion>() != null)
+            {
+                currentPotion = currentItem.GetComponent<DrinkablePotion>();
+
+                currentPotion.drinkPotion();
+            }
+        }
+    }
+
+    public void Throw()
+    {
+        if (GetPlayerThrow())
+        {
+            throwablePotion.Throw();  
+        }
+    }
     public void switchItem()
     {
         // if (GetWeaponSwitch())

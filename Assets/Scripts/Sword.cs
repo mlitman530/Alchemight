@@ -12,7 +12,7 @@ using UnityEngine.SocialPlatforms.Impl;
         public AudioSource[] audios;
 
         [SerializeField] float range = 5f;
-        [SerializeField] float damage = 20f;
+        [SerializeField] float damage;
         //[SerializeField] float swingDelay = .5f;
 
         private void OnEnable()
@@ -23,14 +23,14 @@ using UnityEngine.SocialPlatforms.Impl;
             //Debug.Log(range);
         }
 
-
+        public void Update()
+        {
+            damage = PlayerPrefs.GetInt("Strength");
+        }
 
         public void Swing()
-        {
-            //Debug.Log("Swung");
-
+           {
             RaycastHit hit;
-
             audios[0].Play();
             anim.SetTrigger("Swing");
             if (Physics.Raycast(cam.position, cam.forward, out hit, range))
@@ -43,6 +43,5 @@ using UnityEngine.SocialPlatforms.Impl;
                     hit.collider.GetComponent<Damageable>().TakeDamage(damage);
                 }
             }
-            
         }
     }
