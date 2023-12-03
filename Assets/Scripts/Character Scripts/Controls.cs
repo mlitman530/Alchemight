@@ -107,6 +107,15 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Drink"",
+                    ""type"": ""Button"",
+                    ""id"": ""411a26cf-0e05-433c-b680-f1b4bdc82bc7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -256,7 +265,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""d33348be-b028-479f-8f9c-b267d0c08dc9"",
-                    ""path"": ""<Mouse>/leftButton"",
+                    ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -395,6 +404,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""action"": ""HotbarSwitch"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""37ef9c0f-efd6-4619-b08b-ec0073a0864a"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": ""Hold"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Drink"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -412,6 +432,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         m_Sewers_Swing = m_Sewers.FindAction("Swing", throwIfNotFound: true);
         m_Sewers_HotbarScroll = m_Sewers.FindAction("HotbarScroll", throwIfNotFound: true);
         m_Sewers_HotbarSwitch = m_Sewers.FindAction("HotbarSwitch", throwIfNotFound: true);
+        m_Sewers_Drink = m_Sewers.FindAction("Drink", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -482,6 +503,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Sewers_Swing;
     private readonly InputAction m_Sewers_HotbarScroll;
     private readonly InputAction m_Sewers_HotbarSwitch;
+    private readonly InputAction m_Sewers_Drink;
     public struct SewersActions
     {
         private @Controls m_Wrapper;
@@ -495,6 +517,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         public InputAction @Swing => m_Wrapper.m_Sewers_Swing;
         public InputAction @HotbarScroll => m_Wrapper.m_Sewers_HotbarScroll;
         public InputAction @HotbarSwitch => m_Wrapper.m_Sewers_HotbarSwitch;
+        public InputAction @Drink => m_Wrapper.m_Sewers_Drink;
         public InputActionMap Get() { return m_Wrapper.m_Sewers; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -531,6 +554,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @HotbarSwitch.started += instance.OnHotbarSwitch;
             @HotbarSwitch.performed += instance.OnHotbarSwitch;
             @HotbarSwitch.canceled += instance.OnHotbarSwitch;
+            @Drink.started += instance.OnDrink;
+            @Drink.performed += instance.OnDrink;
+            @Drink.canceled += instance.OnDrink;
         }
 
         private void UnregisterCallbacks(ISewersActions instance)
@@ -562,6 +588,9 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @HotbarSwitch.started -= instance.OnHotbarSwitch;
             @HotbarSwitch.performed -= instance.OnHotbarSwitch;
             @HotbarSwitch.canceled -= instance.OnHotbarSwitch;
+            @Drink.started -= instance.OnDrink;
+            @Drink.performed -= instance.OnDrink;
+            @Drink.canceled -= instance.OnDrink;
         }
 
         public void RemoveCallbacks(ISewersActions instance)
@@ -590,5 +619,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         void OnSwing(InputAction.CallbackContext context);
         void OnHotbarScroll(InputAction.CallbackContext context);
         void OnHotbarSwitch(InputAction.CallbackContext context);
+        void OnDrink(InputAction.CallbackContext context);
     }
 }

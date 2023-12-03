@@ -36,21 +36,22 @@ public class PlayerController : MonoBehaviour
 
     private GameObject swordObject;
     private Sword sword;
-    private GameObject throwableObject;
-    private Throwable throwable;
     private GameObject weaponHolder;
     private WeaponSwitch weaponSwitcher;
 
     private PlayerController playerController;
     private SelectionManager selectionManager;
     private int currentlySelected = 0;
-
+    private Item currentItem;
+    private DrinkablePotion currentPotion;
+    private ThrowablePotion throwablePotion;
     private void Awake()
     {
         swordObject = GameObject.FindGameObjectWithTag("Melee");
-        throwableObject = GameObject.FindGameObjectWithTag("Projectile");
+       
         weaponHolder = GameObject.Find("Weapon Holder");
         weaponSwitcher = weaponHolder.GetComponent<WeaponSwitch>();
+        throwablePotion = GetComponent<ThrowablePotion>();
         sword = swordObject.GetComponent<Sword>();
         //SetPlayerPrefs();
     }
@@ -118,6 +119,30 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        if (inputManager.GetPlayerDrink())
+        {
+            currentItem = weaponSwitcher.getCurrentItem();
+            Debug.Log(currentItem);
+
+            if (currentItem.GetComponent<DrinkablePotion>() != null)
+            {
+                currentPotion = currentItem.GetComponent<DrinkablePotion>();
+
+                currentPotion.drinkPotion();
+            }
+        }
+        if (inputManager.GetPlayerThrow())
+        {
+            currentItem = weaponSwitcher.getCurrentItem();
+            Debug.Log(currentItem);
+
+            if (currentItem.GetComponent<DrinkablePotion>() == null)
+            {
+               
+                throwablePotion.Throw();
+            }
+        }
+
         // if (inputManager.GetPlayerThrow())
         // {
         //     if (throwable.isActiveAndEnabled)
@@ -169,14 +194,19 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void SetStats()
+    public void SetStats()
     {
         playerStrength += PlayerPrefs.GetInt("Strength");
         playerSpeed += PlayerPrefs.GetInt("Speed");
         jumpHeight += (PlayerPrefs.GetInt("Jump") / 5);
         playerMaxHealth += (PlayerPrefs.GetFloat("MaxHealth") * 10);
-        //Debug.Log("Strength: " + playerStrength + " Speed: " + playerSpeed + " Jump: " + jumpHeight);
+        Debug.Log("Strength: " + playerStrength + " Speed: " + playerSpeed + " Jump: " + jumpHeight);
     }
+
+    /*public void SetDefaultStats()
+    {
+       
+    }*/
 
     public Dictionary<string, float> GetStats()
     {

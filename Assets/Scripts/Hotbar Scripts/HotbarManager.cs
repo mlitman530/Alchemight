@@ -13,6 +13,10 @@ public class HotbarManager : MonoBehaviour
 
     public WeaponSwitch weaponSwitch;
 
+    private void Awake()
+    {
+        InitializeHeldCounts();
+    }
     private void Start()
     {
         // Ensure slots list is initialized properly

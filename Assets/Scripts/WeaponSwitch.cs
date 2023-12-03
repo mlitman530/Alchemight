@@ -10,6 +10,11 @@ public class WeaponSwitch : MonoBehaviour
     public Item[] inventory;
     private Item currentItem;
     private int currentItemIndex;
+
+    private void Awake()
+    {
+        
+    }
     void Start()
     {
         inventory = GetComponentsInChildren<Item>();
@@ -62,7 +67,7 @@ public class WeaponSwitch : MonoBehaviour
     {
         currentItem.deactivateItem();
         currentItemIndex = index;
-        Debug.Log("Current Item Index: " + currentItemIndex);
+        //Debug.Log("Current Item Index: " + currentItemIndex);
         currentItem = inventory[currentItemIndex];
         currentItem.activateItem();
         // currentItemIndex = getCurrentItemIndex();
