@@ -34,7 +34,7 @@ public class ProjectileAddon : MonoBehaviour
 
             }
             Debug.Log("Hit " + collision.gameObject.name);
-            this.gameObject.GetComponent<ParticleSystem>().Play();
+            //this.gameObject.GetComponent<ParticleSystem>().Play();
             Destroy(this.gameObject);
         }
     }
