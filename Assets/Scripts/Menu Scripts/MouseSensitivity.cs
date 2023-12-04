@@ -5,6 +5,7 @@ public class MouseSensitivity : MonoBehaviour
 {
     [SerializeField] Slider mouseSlider;
     [SerializeField] float sensitivity;
+    public CinemachinePOVExtension cinemachinePOVExtension;
     private void Start()
     {
         SetSensitivity(PlayerPrefs.GetFloat("Saved Mouse Sensitivity", 50));
@@ -19,8 +20,11 @@ public class MouseSensitivity : MonoBehaviour
 
         RefreshSlider(_value);
         sensitivity = _value;
-        PlayerPrefs.SetFloat("SavedMasterVolume", _value);
-        
+        PlayerPrefs.SetFloat("Saved Mouse Sensitivity", _value);  
+        if (cinemachinePOVExtension != null)
+        {
+            cinemachinePOVExtension.SetSensitivity(_value);
+        }
     }
     public void SetSensitivityFromSlider()
     {
