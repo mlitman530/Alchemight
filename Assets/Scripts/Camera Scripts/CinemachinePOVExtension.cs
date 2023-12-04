@@ -34,9 +34,8 @@ public class CinemachinePOVExtension : CinemachineExtension
     protected override void PostPipelineStageCallback(CinemachineVirtualCameraBase vcam, CinemachineCore.Stage stage, ref CameraState state, float deltaTime) {
         if (Application.IsPlaying(gameObject) && vcam.Follow) { 
             if (stage == CinemachineCore.Stage.Aim) {
-                Debug.Log("Horizontal speed: " + horizontalSpeed);
-                Debug.Log("Vertical speed: " + verticalSpeed);
-                //horizontalSpeed = 9999;
+                // Debug.Log("Horizontal speed: " + horizontalSpeed);
+                // Debug.Log("Vertical speed: " + verticalSpeed);
                 // Get input system mouse delta values and add them to the starting rotation along with speed
                 Vector2 deltaInput = inputManager.GetMouseDelta();
                 startingRotation.x += deltaInput.x * horizontalSpeed * Time.deltaTime;

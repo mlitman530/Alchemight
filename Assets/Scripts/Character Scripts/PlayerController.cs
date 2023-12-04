@@ -134,7 +134,7 @@ public class PlayerController : MonoBehaviour
         if (inputManager.GetPlayerThrow() && !pauseMenu.IsPaused())
         {
             currentItem = weaponSwitcher.getCurrentItem();
-            Debug.Log(currentItem);
+            //Debug.Log(currentItem);
 
             if (currentItem.GetComponent<DrinkablePotion>() == null)
             {
@@ -198,9 +198,21 @@ public class PlayerController : MonoBehaviour
     {
         playerStrength += PlayerPrefs.GetInt("Strength");
         playerSpeed += PlayerPrefs.GetInt("Speed");
-        jumpHeight += (PlayerPrefs.GetInt("Jump") / 5);
+        jumpHeight += (PlayerPrefs.GetInt("Jump") / 5) + 2;
         playerMaxHealth += (PlayerPrefs.GetFloat("MaxHealth") * 10);
         Debug.Log("Strength: " + playerStrength + " Speed: " + playerSpeed + " Jump: " + jumpHeight);
+        PlayerPrefs.SetInt("Strength", (int) playerStrength);
+        PlayerPrefs.SetInt("Speed", (int) playerSpeed);
+        PlayerPrefs.SetInt("Health", (int) playerMaxHealth);
+        PlayerPrefs.SetInt("Jump", (int) jumpHeight);
+    }
+
+    public void ApplyStats(int strength, int speed, int jump, int health)
+    {
+        playerStrength = strength;
+        playerSpeed = speed;
+        jumpHeight = jump;
+        playerMaxHealth = health;
     }
 
     /*public void SetDefaultStats()
@@ -213,8 +225,8 @@ public class PlayerController : MonoBehaviour
         Dictionary<string, float> stats = new Dictionary<string, float>();
         stats.Add("Strength", playerStrength);
         stats.Add("Speed", playerSpeed);
-        stats.Add("MaxHealth", playerMaxHealth);
         stats.Add("Jump", jumpHeight);
+        stats.Add("MaxHealth", playerMaxHealth); // Swapping jump and max health could be causing a bug
         return stats;
     }
 

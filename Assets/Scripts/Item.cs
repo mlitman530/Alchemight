@@ -38,9 +38,7 @@ public class Item : MonoBehaviour
     public void activateItem()
     {
         isHeld = true;
-        
         gameObject.SetActive(true);
-        
     }
 
     public void deactivateItem()
@@ -50,5 +48,10 @@ public class Item : MonoBehaviour
         
         gameObject.SetActive(false);
         
+    }
+
+    public void SetHeldCount(int count)
+    {
+        heldCount = count;
     }
 }

@@ -23,7 +23,7 @@ public class PatrollState : StateMachineBehaviour
         foreach (Transform t in go.transform) {
             wayPoints.Add(t);
         }
-        Debug.Log(wayPoints.Count);
+        //Debug.Log(wayPoints.Count);
         agent.SetDestination(wayPoints[Random.Range(0, wayPoints.Count)].position);
     }
 

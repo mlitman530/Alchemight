@@ -6,7 +6,7 @@ using static UnityEditor.Progress;
 public class DrinkablePotion : MonoBehaviour
 {
     private bool currentlyHeld;
-    
+
     public int tempStrength;
     public int tempSpeed;
     public int tempHealth;
@@ -23,34 +23,47 @@ public class DrinkablePotion : MonoBehaviour
 
     void Start()
     {
+        PlayerPrefs.SetInt("Current Strength", PlayerPrefs.GetInt("Strength"));
+        PlayerPrefs.SetInt("Current Speed", PlayerPrefs.GetInt("Speed"));
+        PlayerPrefs.SetInt("Current Health", PlayerPrefs.GetInt("Health"));
+        PlayerPrefs.SetInt("Current Jump", PlayerPrefs.GetInt("Jump"));
+
         currentStrength = PlayerPrefs.GetInt("Strength");
         currentSpeed = PlayerPrefs.GetInt("Speed");
         currentHealth = PlayerPrefs.GetInt("Health");
         currentJump = PlayerPrefs.GetInt("Jump");
+
         hotbarManager = FindObjectOfType<HotbarManager>();  // Find the HotbarManager
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-        
+
+
     }
 
     public void drinkPotion()
     {
-
-        Debug.Log("Drinking");
-        if (GetComponent<Item>().isHeld)
+        Item potionItem = GetComponent<Item>();
+        Debug.Log("Potion is held: " + potionItem.isHeld);
+        if (potionItem.isHeld)
         {
-            PlayerPrefs.SetInt("Strength", currentStrength + tempStrength);
-            PlayerPrefs.SetInt("Speed", currentSpeed + tempSpeed);
-            PlayerPrefs.SetInt("Health", currentHealth + tempHealth);
-            PlayerPrefs.SetInt("Jump", currentJump + tempJump);
-            hotbarManager.IncrementHeldCount(GetComponent<Item>().id, GetComponent<Item>().heldCount - 1);
+            currentStrength = PlayerPrefs.GetInt("Current Strength");
+            currentSpeed = PlayerPrefs.GetInt("Current Speed");
+            currentHealth = PlayerPrefs.GetInt("Current Health");
+            currentJump = PlayerPrefs.GetInt("Current Jump");
+
+            PlayerPrefs.SetInt("Current Strength", currentStrength + tempStrength);
+            PlayerPrefs.SetInt("Current Speed", currentSpeed + tempSpeed);
+            PlayerPrefs.SetInt("Current Health", currentHealth + tempHealth);
+            PlayerPrefs.SetInt("Current Jump", currentJump + (tempJump / 5));
+
+            potionItem.SetHeldCount(potionItem.heldCount - 1);
+            hotbarManager.IncrementHeldCount(potionItem.id, potionItem.heldCount - 1);
             uses++;
             trackTempStats();
-            controller.SetStats();
+            controller.ApplyStats(currentStrength, currentSpeed, currentJump, currentHealth);
         }
     }
 
