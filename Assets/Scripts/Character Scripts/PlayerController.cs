@@ -111,7 +111,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (inputManager.GetPlayerSwing())
+        if (inputManager.GetPlayerSwing() && !pauseMenu.IsPaused())
         {
             if (sword.isActiveAndEnabled)
             {
@@ -119,7 +119,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (inputManager.GetPlayerDrink())
+        if (inputManager.GetPlayerDrink() && !pauseMenu.IsPaused())
         {
             currentItem = weaponSwitcher.getCurrentItem();
             Debug.Log(currentItem);
@@ -131,7 +131,7 @@ public class PlayerController : MonoBehaviour
                 currentPotion.drinkPotion();
             }
         }
-        if (inputManager.GetPlayerThrow())
+        if (inputManager.GetPlayerThrow() && !pauseMenu.IsPaused())
         {
             currentItem = weaponSwitcher.getCurrentItem();
             Debug.Log(currentItem);
@@ -151,13 +151,13 @@ public class PlayerController : MonoBehaviour
         //     }
         // }
 
-        if (inputManager.GetWeaponSwitch())
+        if (inputManager.GetWeaponSwitch() && !pauseMenu.IsPaused())
         {
             // weaponSwitcher.switchItem(true);
         }
 
         float scrollValue = inputManager.GetWeaponScroll();
-        if (scrollValue > 0)
+        if (scrollValue > 0 && !pauseMenu.IsPaused())
         {
             selectionManager.ScrollUp();
             if (currentlySelected <= 0)
@@ -171,7 +171,7 @@ public class PlayerController : MonoBehaviour
                 weaponSwitcher.switchItem(currentlySelected);
             }
         }
-        else if (scrollValue < 0)
+        else if (scrollValue < 0 && !pauseMenu.IsPaused())
         {
             selectionManager.ScrollDown();
             if (currentlySelected >= 8)
@@ -186,7 +186,7 @@ public class PlayerController : MonoBehaviour
             }
         }
         float hotbarKey = inputManager.GetHotbarSwitch();
-        if (hotbarKey > 0)
+        if (hotbarKey > 0 && !pauseMenu.IsPaused())
         {
             currentlySelected = (int)hotbarKey - 1;
             selectionManager.UpdateSelection(hotbarKey - 1);
