@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 /// <summary>
 /// First person player controller using the new input system
@@ -15,7 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField, Tooltip("Downwards force on the player.")]
     private float gravityValue = -18f;
     [SerializeField, Tooltip("Rotation Speed multiplier.")]
-    private float playerStrength = 10f;
+    public float playerStrength = 10f;
     private float rotationSpeed = 5f;
     [SerializeField, Tooltip("Animation blend speed multiplier.")]
     private float animationBlendDamp = .5f;
@@ -23,7 +24,8 @@ public class PlayerController : MonoBehaviour
     private float inputSmoothDamp = .1f;
     [SerializeField]
     private float playerMaxHealth = 100;
-
+    private float currentPlayerHealth;
+    public Slider healthBar;
     private CharacterController controller;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
@@ -53,6 +55,7 @@ public class PlayerController : MonoBehaviour
         weaponSwitcher = weaponHolder.GetComponent<WeaponSwitch>();
         throwablePotion = GetComponent<ThrowablePotion>();
         sword = swordObject.GetComponent<Sword>();
+        currentPlayerHealth = playerMaxHealth;
         //SetPlayerPrefs();
     }
     private void Start()
@@ -239,7 +242,18 @@ public class PlayerController : MonoBehaviour
         PlayerPrefs.SetInt("SwordPurchased", 0);
         PlayerPrefs.SetInt("NumFirePotions", 0);
     }
-
+    
+    public void TakeDamage(float damage)
+    {
+        Debug.Log("TAKINGGGG DAMAGE");
+        currentPlayerHealth -= damage;
+        healthBar.value = currentPlayerHealth;
+        if (currentPlayerHealth <= 0)
+        {
+            // TODO: SHOW DEATH SCENE
+            GetComponent<Collider>().enabled = false;
+        }
+    }
     // private void OnControllerColliderHit(ControllerColliderHit hit)
     // {
     //     IHotbarItem item = hit.collider.GetComponent<IHotbarItem>();

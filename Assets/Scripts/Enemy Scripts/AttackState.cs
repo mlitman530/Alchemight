@@ -6,20 +6,28 @@ public class AttackState : StateMachineBehaviour
 {
     Transform player;
     RaycastHit hit;
+    AnimatorStateInfo stateInfo;
     public AudioClip attackAudio;
     public AudioClip deathAudio;
     AudioSource audioSource;
-    [SerializeField] float damage = 20f;
-    private Damageable playerDamageable;
+    [SerializeField] float basicDamage = 20f;
+    [SerializeField] float tankDamage = 40f;
+    [SerializeField] float smallerDamage = 10f;
+
+    private Damageable damageable;
+    private PlayerController playerDamageable; 
     private float lastAttackTime;
-    public float attackCooldown = 2f;
+    public float attackCooldown = 3f;
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        playerDamageable = player.GetComponent<Damageable>();
+        damageable = player.GetComponent<Damageable>();
+        playerDamageable = player.GetComponent<PlayerController>();
         lastAttackTime = -attackCooldown;
         audioSource = animator.GetComponent<AudioSource>();
+        stateInfo = animator.GetCurrentAnimatorStateInfo(0);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -42,13 +50,27 @@ public class AttackState : StateMachineBehaviour
     private void AttackPlayer()
     {
         // Attack the player
-        
          if (attackAudio != null && audioSource != null)
         {
             audioSource.PlayOneShot(attackAudio);
         }
-        
-        playerDamageable.TakeDamage(damage);
+        // NOT WORKING YET
+        // if (stateInfo.IsTag("BasicAttack"))
+        // {
+        //     Debug.Log("BASIC ATTACK");
+        //     playerDamageable.TakeDamage(basicDamage);
+        // }
+        // if (stateInfo.IsTag("TankAttack"))
+        // {
+        //     Debug.Log("TANK ATTACK");
+        //     playerDamageable.TakeDamage(tankDamage);
+        // }
+        // if (stateInfo.IsTag("SmallerAttack"))
+        // {
+        //     Debug.Log("SMALLER ATTACK");
+        //     playerDamageable.TakeDamage(smallerDamage);
+        // }
+        playerDamageable.TakeDamage(basicDamage);
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

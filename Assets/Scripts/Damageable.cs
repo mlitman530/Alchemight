@@ -16,11 +16,13 @@ public class Damageable : MonoBehaviour
     public AudioSource[] audios;
     public LootDrop lootDrops;
     public Slider healthBar;
+    public Slider enemyHealthBar;
 
     // Start is called before the first frame update
     void Awake()
     {
         currentHealth = maxHealth;
+        currentPlayerHealth = maxPlayerHealth;
     }
 
     public void TakeDamage(float damage)
@@ -30,31 +32,30 @@ public class Damageable : MonoBehaviour
             return;
         else
         {
-            if (this.gameObject.tag == "Enemy") 
-            { 
-                currentHealth -= damage;
-                {
-                    if (currentHealth <= 0)
-                    {
-                        Die();
-                        GetComponent<Collider>().enabled = false;
-                    }
-                    else
-                    {
-                        animator.SetTrigger("damage");
-                    }
-                }
-            }
-            if (this.gameObject.tag == "Player") 
+            currentHealth -= damage;
+            enemyHealthBar.value = currentHealth; // enemy health bar
+                
+            if (currentHealth <= 0)
             {
-                currentPlayerHealth -= damage;
-                healthBar.value = currentPlayerHealth;
-                if (currentPlayerHealth <= 0) 
-                {
-                    Die();
-                    GetComponent<Collider>().enabled = false;
-                }
+                Die();
+                GetComponent<Collider>().enabled = false;
             }
+            else
+            {
+                animator.SetTrigger("damage");
+                //flash red???
+            }
+                
+            // if (this.gameObject.tag == "Player") 
+            // {
+            //     currentPlayerHealth -= damage;
+            //     healthBar.value = currentPlayerHealth;
+            //     if (currentPlayerHealth <= 0) 
+            //     {
+            //         Die();
+            //         GetComponent<Collider>().enabled = false;
+            //     }
+            // }
             
         }
     }
@@ -69,7 +70,7 @@ public class Damageable : MonoBehaviour
             return;
         }
 
-        if (this.gameObject.tag == "Enemy") 
+        if (this.gameObject.tag == "BasicEnemy" || this.gameObject.tag == "TankEnemy" || this.gameObject.tag == "SmallerEnemy") 
         {
             animator.SetTrigger("die");
             lootDrops = GetComponent<LootDrop>();
