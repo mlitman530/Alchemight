@@ -100,7 +100,6 @@ public class PlayerController : MonoBehaviour
 
         if (inputManager.Paused())
         {
-            //Debug.Log("pauseMenu.IsPaused: " + pauseMenu.IsPaused());
             if (pauseMenu.IsPaused())
             {
                 pauseMenu.Resume();
@@ -198,7 +197,7 @@ public class PlayerController : MonoBehaviour
     {
         playerStrength += PlayerPrefs.GetInt("Strength");
         playerSpeed += PlayerPrefs.GetInt("Speed");
-        jumpHeight += (PlayerPrefs.GetInt("Jump") / 5) + 2;
+        jumpHeight += (PlayerPrefs.GetInt("Jump") / 5) + 1;
         playerMaxHealth += (PlayerPrefs.GetFloat("MaxHealth") * 10);
         Debug.Log("Strength: " + playerStrength + " Speed: " + playerSpeed + " Jump: " + jumpHeight);
         PlayerPrefs.SetInt("Strength", (int) playerStrength);

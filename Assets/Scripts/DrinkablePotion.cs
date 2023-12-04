@@ -60,7 +60,7 @@ public class DrinkablePotion : MonoBehaviour
             PlayerPrefs.SetInt("Current Jump", currentJump + (tempJump / 5));
 
             potionItem.SetHeldCount(potionItem.heldCount - 1);
-            hotbarManager.IncrementHeldCount(potionItem.id, potionItem.heldCount - 1);
+            hotbarManager.IncrementHeldCount(potionItem.id, potionItem.heldCount);
             uses++;
             trackTempStats();
             controller.ApplyStats(currentStrength, currentSpeed, currentJump, currentHealth);
