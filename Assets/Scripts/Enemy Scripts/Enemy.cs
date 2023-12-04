@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
     // Start is called before the first frame update
     public int HP = 100;
@@ -19,6 +19,11 @@ public class NewBehaviourScript : MonoBehaviour
             //play hit animation
             animator.SetTrigger("damage");
         }
+    }
+
+    public void Freeze()
+    {
+        animator.SetTrigger("freeze");
     }
 
 }

@@ -45,6 +45,8 @@ public class PlayerController : MonoBehaviour
     private Item currentItem;
     private DrinkablePotion currentPotion;
     private ThrowablePotion throwablePotion;
+
+    private int numAttempts = 0;
     private void Awake()
     {
         swordObject = GameObject.FindGameObjectWithTag("Melee");
@@ -195,10 +197,21 @@ public class PlayerController : MonoBehaviour
 
     public void SetStats()
     {
-        playerStrength += PlayerPrefs.GetInt("Strength");
-        playerSpeed += PlayerPrefs.GetInt("Speed");
-        jumpHeight += (PlayerPrefs.GetInt("Jump") / 5) + 1;
-        playerMaxHealth += (PlayerPrefs.GetFloat("MaxHealth") * 10);
+        if (numAttempts == 0)
+        {
+            playerStrength += PlayerPrefs.GetInt("Strength") + PlayerPrefs.GetInt("StrengthAddition");
+            playerSpeed += PlayerPrefs.GetInt("Speed") + PlayerPrefs.GetInt("SpeedAddition");
+            jumpHeight += (PlayerPrefs.GetInt("Jump") / 5) + PlayerPrefs.GetInt("JumpAddition") + 1;
+            playerMaxHealth += (PlayerPrefs.GetFloat("MaxHealth") * 10) + PlayerPrefs.GetInt("HealthAddition");
+        }
+        else
+        {
+            playerStrength += PlayerPrefs.GetInt("StrengthAddition");
+            playerSpeed += PlayerPrefs.GetInt("SpeedAddition");
+            jumpHeight += PlayerPrefs.GetInt("JumpAddition") + 1;
+            playerMaxHealth += PlayerPrefs.GetInt("HealthAddition");
+        }
+        
         Debug.Log("Strength: " + playerStrength + " Speed: " + playerSpeed + " Jump: " + jumpHeight);
         PlayerPrefs.SetInt("Strength", (int) playerStrength);
         PlayerPrefs.SetInt("Speed", (int) playerSpeed);
@@ -237,6 +250,7 @@ public class PlayerController : MonoBehaviour
         PlayerPrefs.SetInt("NumJumpPotions", 0);
         PlayerPrefs.SetInt("SwordPurchased", 0);
         PlayerPrefs.SetInt("NumFirePotions", 0);
+        PlayerPrefs.SetInt("NumFreezePotions", 0);
     }
 
     // private void OnControllerColliderHit(ControllerColliderHit hit)

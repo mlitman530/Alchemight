@@ -130,6 +130,7 @@ public class WeaponSwitch : MonoBehaviour
         inventory[3].heldCount = PlayerPrefs.GetInt("NumSpeedPotions");
         inventory[4].heldCount = PlayerPrefs.GetInt("NumJumpPotions");
         inventory[5].heldCount = PlayerPrefs.GetInt("NumHealthPotions");
+        inventory[6].heldCount = PlayerPrefs.GetInt("NumFreezePotions");
     }
 
 }
