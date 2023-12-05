@@ -45,11 +45,17 @@ public class LoadDungeonFromShop : MonoBehaviour
             }
             Debug.Log("Item " + i + " count: " + inv[i]);
         }
-        PlayerPrefs.SetInt("NumHealthPotions", inv[0]);
-        PlayerPrefs.SetInt("NumStrengthPotions", inv[1]);
-        PlayerPrefs.SetInt("NumSpeedPotions", inv[2]);
-        PlayerPrefs.SetInt("NumJumpPotions", inv[3]);
-        PlayerPrefs.SetInt("SwordPurchased", inv[4]);
+        // PlayerPrefs.SetInt("NumHealthPotions", inv[0]);
+        PlayerPrefs.SetInt("HealthAddition", inv[0]*5);
+        // PlayerPrefs.SetInt("NumStrengthPotions", inv[1]);
+        PlayerPrefs.SetInt("StrengthAddition", inv[1]*5);
+        // PlayerPrefs.SetInt("NumSpeedPotions", inv[2]);
+        PlayerPrefs.SetInt("SpeedAddition", inv[2]*5);
+        // PlayerPrefs.SetInt("NumJumpPotions", inv[3]);
+        PlayerPrefs.SetInt("JumpAddition", inv[3]);
+        // PlayerPrefs.SetInt("SwordPurchased", inv[4]);
+        PlayerPrefs.SetInt("SwordStrengthBoost", inv[4]*60);
+
         PlayerPrefs.SetInt("NumFirePotions", inv[5]);
         fadePanelObject.SetActive(true);
         ImageFade.fadeIn();
