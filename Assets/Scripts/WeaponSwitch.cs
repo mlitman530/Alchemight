@@ -10,6 +10,7 @@ public class WeaponSwitch : MonoBehaviour
     public Item[] inventory;
     private Item currentItem;
     private int currentItemIndex;
+    public HotbarManager hotbarManager;
 
     private void Awake()
     {
@@ -119,6 +120,18 @@ public class WeaponSwitch : MonoBehaviour
             if (inventory[i].id == itemID)
             {
                 inventory[i].heldCount++;
+                hotbarManager.IncrementHeldCount(itemID, inventory[i].heldCount);
+            }
+        }
+    }
+    public void DecrementHeldCount(int itemID)
+    {
+        for (int i = 0; i < inventory.Length; i++)
+        {
+            if (inventory[i].id == itemID)
+            {
+                inventory[i].heldCount--;
+                hotbarManager.IncrementHeldCount(itemID, inventory[i].heldCount);
             }
         }
     }
@@ -131,6 +144,7 @@ public class WeaponSwitch : MonoBehaviour
         inventory[4].heldCount = PlayerPrefs.GetInt("NumJumpPotions");
         inventory[5].heldCount = PlayerPrefs.GetInt("NumHealthPotions");
         inventory[6].heldCount = PlayerPrefs.GetInt("NumFreezePotions");
+        inventory[7].heldCount = PlayerPrefs.GetInt("NumPoisonPotions");
     }
 
 }

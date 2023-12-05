@@ -26,4 +26,21 @@ public class Enemy : MonoBehaviour
         animator.SetTrigger("freeze");
     }
 
+    public void Poison(int damageOverTime)
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            HP -= damageOverTime;
+            if (HP <= 0) {
+                //play enemy death animation
+                animator.SetTrigger("die");
+
+            } else {
+                //play hit animation
+                animator.SetTrigger("damage");
+            }
+            // Wait 1 second
+        }
+    }
+
 }

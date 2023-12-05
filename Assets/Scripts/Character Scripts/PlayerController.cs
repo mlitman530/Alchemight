@@ -142,7 +142,6 @@ public class PlayerController : MonoBehaviour
 
             if (currentItem.GetComponent<DrinkablePotion>() == null)
             {
-               
                 throwablePotion.Throw();
             }
         }
@@ -254,6 +253,7 @@ public class PlayerController : MonoBehaviour
         PlayerPrefs.SetInt("SwordPurchased", 0);
         PlayerPrefs.SetInt("NumFirePotions", 0);
         PlayerPrefs.SetInt("NumFreezePotions", 0);
+        PlayerPrefs.SetInt("NumPoisonPotions", 0);
     }
     
     public void TakeDamage(float damage)
@@ -267,13 +267,4 @@ public class PlayerController : MonoBehaviour
             GetComponent<Collider>().enabled = false;
         }
     }
-    // private void OnControllerColliderHit(ControllerColliderHit hit)
-    // {
-    //     IHotbarItem item = hit.collider.GetComponent<IHotbarItem>();
-    //     Debug.Log("Item: " + item);
-    //     if (item != null)
-    //     {
-    //         hotbar.AddItem(item);
-    //     }
-    // }
 }

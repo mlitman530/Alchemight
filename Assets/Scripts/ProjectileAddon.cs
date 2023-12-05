@@ -10,6 +10,7 @@ public class ProjectileAddon : MonoBehaviour
     public float radius;
     private bool targetHit;
     public int damage;
+    public int damageOverTime;
     public string effect;
     // Start is called before the first frame update
     void Start()
@@ -34,6 +35,10 @@ public class ProjectileAddon : MonoBehaviour
                 if (effect == "freeze")
                 {
                     FreezeEnemy(collision.contacts[0].point, radius);
+                }
+                else if (effect == "poison")
+                {
+
                 }
                 else
                 {
@@ -68,6 +73,17 @@ public class ProjectileAddon : MonoBehaviour
             if (hitCollider.gameObject.tag == "Enemy" && hitCollider.gameObject.GetComponent<Damageable>())
             {
                 hitCollider.gameObject.GetComponent<Enemy>().Freeze();
+            }
+        }
+    }
+    private void PoisonEnemy(Vector3 center, float radius)
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(center, radius);
+        foreach (var hitCollider in hitColliders)
+        {
+            if (hitCollider.gameObject.tag == "Enemy" && hitCollider.gameObject.GetComponent<Damageable>())
+            {
+                hitCollider.gameObject.GetComponent<Enemy>().Poison(damageOverTime);
             }
         }
     }
