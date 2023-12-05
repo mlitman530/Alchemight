@@ -8,6 +8,14 @@ TagManager:
   - Projectile
   - WayPoints
   - Enemy
+  - Gold
+  - TankEnemy
+  - BasicEnemy
+  - SmallerEnemy
+  - Black
+  - Green
+  - Red
+  - GoldChest
   layers:
   - Default
   - TransparentFX

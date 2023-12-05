@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class Damageable : MonoBehaviour
 {
@@ -15,12 +16,15 @@ public class Damageable : MonoBehaviour
     public Animator animator;
     public AudioSource[] audios;
     public LootDrop lootDrops;
-    public Slider healthBar;
+    public UnityEngine.UI.Slider healthBar;
+    public UnityEngine.UI.Slider enemyHealthBar;
+    
 
     // Start is called before the first frame update
     void Awake()
     {
         currentHealth = maxHealth;
+        currentPlayerHealth = maxPlayerHealth;
     }
 
     public void TakeDamage(float damage)
@@ -30,31 +34,30 @@ public class Damageable : MonoBehaviour
             return;
         else
         {
-            if (this.gameObject.tag == "Enemy") 
-            { 
-                currentHealth -= damage;
-                {
-                    if (currentHealth <= 0)
-                    {
-                        Die();
-                        GetComponent<Collider>().enabled = false;
-                    }
-                    else
-                    {
-                        animator.SetTrigger("damage");
-                    }
-                }
-            }
-            if (this.gameObject.tag == "Player") 
+            currentHealth -= damage;
+            enemyHealthBar.value = currentHealth; // enemy health bar
+                
+            if (currentHealth <= 0)
             {
-                currentPlayerHealth -= damage;
-                healthBar.value = currentPlayerHealth;
-                if (currentPlayerHealth <= 0) 
-                {
-                    Die();
-                    GetComponent<Collider>().enabled = false;
-                }
+                Die();
+                GetComponent<Collider>().enabled = false;
             }
+            else
+            {
+                animator.SetTrigger("damage");
+                //flash red???
+            }
+                
+            // if (this.gameObject.tag == "Player") 
+            // {
+            //     currentPlayerHealth -= damage;
+            //     healthBar.value = currentPlayerHealth;
+            //     if (currentPlayerHealth <= 0) 
+            //     {
+            //         Die();
+            //         GetComponent<Collider>().enabled = false;
+            //     }
+            // }
             
         }
     }
@@ -63,19 +66,23 @@ public class Damageable : MonoBehaviour
     {
         if (this.gameObject.tag == "Player")
         {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+            UnityEngine.Cursor.lockState = CursorLockMode.None;
+            UnityEngine.Cursor.visible = true;
             SceneManager.LoadScene("Dead");
             return;
         }
 
-        if (this.gameObject.tag == "Enemy") 
+        if (this.gameObject.tag == "BasicEnemy" || this.gameObject.tag == "TankEnemy" || this.gameObject.tag == "SmallerEnemy") 
         {
             animator.SetTrigger("die");
-            lootDrops = GetComponent<LootDrop>();
+            lootDrops = this.GetComponent<LootDrop>();
+
             if (lootDrops != null)
             {
+                lootDrops.setHeightOffset(this.gameObject.transform.position.y);
                 lootDrops.DropCoins(); // Trigger dropping coins on enemy death
+                lootDrops.DropPotions();
+                lootDrops.DropKey();
             }
         }
         else
