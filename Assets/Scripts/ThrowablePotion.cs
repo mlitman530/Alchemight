@@ -35,8 +35,9 @@ public class ThrowablePotion : MonoBehaviour
         {
             objectToThrowParent = weaponSwitch.getCurrentItem().gameObject;
             objectToThrow = objectToThrowParent.GetComponent<Item>().throwableVersion;
+            totalThrows = objectToThrowParent.GetComponent<Item>().heldCount;
         }
-        totalThrows = objectToThrowParent.GetComponent<Item>().heldCount;
+        
         
     }
 

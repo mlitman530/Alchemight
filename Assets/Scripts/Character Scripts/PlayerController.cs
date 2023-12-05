@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     private float inputSmoothDamp = .1f;
     [SerializeField]
     private float playerMaxHealth = 100;
-    private float currentPlayerHealth;
+    public float currentPlayerHealth;
     public Slider healthBar;
     private CharacterController controller;
     private Vector3 playerVelocity;
@@ -244,7 +244,7 @@ public class PlayerController : MonoBehaviour
     
     public void TakeDamage(float damage)
     {
-        Debug.Log("TAKINGGGG DAMAGE");
+        
         currentPlayerHealth -= damage;
         healthBar.value = currentPlayerHealth;
         if (currentPlayerHealth <= 0)

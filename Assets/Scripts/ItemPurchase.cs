@@ -75,7 +75,7 @@ public class ItemPurchase : MonoBehaviour
 
     private bool checkCost()
     {
-        if (GetComponentInChildren<Item>().cost > playerInventory.currentGoldCount)
+        if (GetComponentInChildren<Item>().cost > PlayerPrefs.GetInt("Gold"))
         {
             Debug.Log("Not enough gold");
             insufficientGoldObject.SetActive(true);
@@ -85,7 +85,8 @@ public class ItemPurchase : MonoBehaviour
         else
         {
             Debug.Log("Item Can Be Purchased");
-            playerInventory.currentGoldCount -= GetComponentInChildren<Item>().cost;
+            PlayerPrefs.SetInt("Gold", PlayerPrefs.GetInt("Gold") - GetComponentInChildren<Item>().cost);
+            
         }
         return true;
     }

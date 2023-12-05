@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class Damageable : MonoBehaviour
 {
@@ -15,8 +16,9 @@ public class Damageable : MonoBehaviour
     public Animator animator;
     public AudioSource[] audios;
     public LootDrop lootDrops;
-    public Slider healthBar;
-    public Slider enemyHealthBar;
+    public UnityEngine.UI.Slider healthBar;
+    public UnityEngine.UI.Slider enemyHealthBar;
+    
 
     // Start is called before the first frame update
     void Awake()
@@ -64,8 +66,8 @@ public class Damageable : MonoBehaviour
     {
         if (this.gameObject.tag == "Player")
         {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
+            UnityEngine.Cursor.lockState = CursorLockMode.None;
+            UnityEngine.Cursor.visible = true;
             SceneManager.LoadScene("Dead");
             return;
         }
@@ -73,10 +75,14 @@ public class Damageable : MonoBehaviour
         if (this.gameObject.tag == "BasicEnemy" || this.gameObject.tag == "TankEnemy" || this.gameObject.tag == "SmallerEnemy") 
         {
             animator.SetTrigger("die");
-            lootDrops = GetComponent<LootDrop>();
+            lootDrops = this.GetComponent<LootDrop>();
+
             if (lootDrops != null)
             {
+                lootDrops.setHeightOffset(this.gameObject.transform.position.y);
                 lootDrops.DropCoins(); // Trigger dropping coins on enemy death
+                lootDrops.DropPotions();
+                lootDrops.DropKey();
             }
         }
         else

@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class AttackState : StateMachineBehaviour
 {
     Transform player;
     RaycastHit hit;
-    AnimatorStateInfo stateInfo;
+    bool isBasic;
+    bool isTank;
+    bool isSmaller;
     public AudioClip attackAudio;
     public AudioClip deathAudio;
     AudioSource audioSource;
@@ -18,6 +21,7 @@ public class AttackState : StateMachineBehaviour
     private PlayerController playerDamageable; 
     private float lastAttackTime;
     public float attackCooldown = 3f;
+    
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -27,13 +31,38 @@ public class AttackState : StateMachineBehaviour
         playerDamageable = player.GetComponent<PlayerController>();
         lastAttackTime = -attackCooldown;
         audioSource = animator.GetComponent<AudioSource>();
-        stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+        if (animator.GetBool("Basic"))
+        {
+            isBasic = animator.GetBool("Basic");
+        }
+        else
+        {
+            isBasic = false;
+        }
+        if (animator.GetBool("Tank"))
+        {
+            isTank = animator.GetBool("Tank");
+        }
+        else
+        {
+            isTank = false;
+        }
+        if (animator.GetBool("Smaller"))
+        {
+            isSmaller = animator.GetBool("Smaller");
+        }
+        else
+        {
+            isSmaller = false;
+        }
+
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.transform.LookAt(player);
+        animator.transform.LookAt(new Vector3(player.transform.position.x, 0, player.transform.position.z));
+        ;
         float distance = Vector3.Distance(player.position, animator.transform.position);
         if (distance > 3.5f) {
             animator.SetBool("isAttacking", false);
@@ -49,28 +78,30 @@ public class AttackState : StateMachineBehaviour
     }
     private void AttackPlayer()
     {
+        
         // Attack the player
          if (attackAudio != null && audioSource != null)
         {
             audioSource.PlayOneShot(attackAudio);
         }
-        // NOT WORKING YET
-        // if (stateInfo.IsTag("BasicAttack"))
-        // {
-        //     Debug.Log("BASIC ATTACK");
-        //     playerDamageable.TakeDamage(basicDamage);
-        // }
-        // if (stateInfo.IsTag("TankAttack"))
-        // {
-        //     Debug.Log("TANK ATTACK");
-        //     playerDamageable.TakeDamage(tankDamage);
-        // }
-        // if (stateInfo.IsTag("SmallerAttack"))
-        // {
-        //     Debug.Log("SMALLER ATTACK");
-        //     playerDamageable.TakeDamage(smallerDamage);
-        // }
-        playerDamageable.TakeDamage(basicDamage);
+        
+
+        if (isBasic)
+         {
+             Debug.Log("BASIC ATTACK: " + basicDamage);
+             playerDamageable.TakeDamage(basicDamage);
+         }
+         if (isTank)
+         {
+             Debug.Log("TANK ATTACK: " + tankDamage);
+             playerDamageable.TakeDamage(tankDamage);
+         }
+        if (isSmaller)
+        {
+            Debug.Log("SMALLER ATTACK: " + smallerDamage);
+             playerDamageable.TakeDamage(smallerDamage);
+        }
+        //playerDamageable.TakeDamage(basicDamage);
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
