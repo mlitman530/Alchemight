@@ -4,32 +4,35 @@ using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 
 
-    public class Sword : MonoBehaviour
-    {
-        Transform cam;
+public class Sword : MonoBehaviour
+{
+    Transform cam;
 
-        private Animator anim;
-        public AudioSource[] audios;
+    private Animator anim;
+    public AudioSource[] audios;
+    private bool cooldown = false;
 
         [SerializeField] float range = 5f;
-        [SerializeField] float damage;
-        //[SerializeField] float swingDelay = .5f;
+    [SerializeField] float damage;
+    //[SerializeField] float swingDelay = .5f;
 
-        private void OnEnable()
+    private void OnEnable()
+    {
+        cam = Camera.main.transform;
+        anim = GetComponent<Animator>();
+
+        //Debug.Log(range);
+    }
+
+    public void Update()
+    {
+        damage = PlayerPrefs.GetInt("Strength");
+    }
+
+    public void Swing()
+    {
+        if (!cooldown)
         {
-            cam = Camera.main.transform;
-            anim = GetComponent<Animator>();
-
-            //Debug.Log(range);
-        }
-
-        public void Update()
-        {
-            damage = PlayerPrefs.GetInt("Strength");
-        }
-
-        public void Swing()
-           {
             RaycastHit hit;
             audios[0].Play();
             anim.SetTrigger("Swing");
@@ -43,5 +46,14 @@ using UnityEngine.SocialPlatforms.Impl;
                     hit.collider.GetComponent<Damageable>().TakeDamage(damage);
                 }
             }
+            cooldown = true;
+            StartCoroutine(waiter());
         }
     }
+
+    IEnumerator waiter()
+    {
+        yield return new WaitForSecondsRealtime(0.5f);
+        cooldown = false;
+    }
+}
