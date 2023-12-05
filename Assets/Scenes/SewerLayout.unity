@@ -8944,7 +8944,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
@@ -12980,6 +12980,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Poison Potion
       objectReference: {fileID: 0}
+    - target: {fileID: 4163299959404769907, guid: a1a8492d3c1f6b948836062e8b4f2022, type: 3}
+      propertyPath: m_TagString
+      value: Projectile
+      objectReference: {fileID: 0}
     - target: {fileID: 8787787823913417743, guid: a1a8492d3c1f6b948836062e8b4f2022, type: 3}
       propertyPath: throwableVersion
       value: 
@@ -16688,7 +16692,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -16798,7 +16802,7 @@ MonoBehaviour:
     heldCountText: {fileID: 1698200678}
   - background: {fileID: 1049638656}
     itemImage: {fileID: 1699606911}
-    heldCountText: {fileID: 0}
+    heldCountText: {fileID: 1797601791}
   - background: {fileID: 751400328}
     itemImage: {fileID: 366359384}
     heldCountText: {fileID: 0}
@@ -27607,6 +27611,8 @@ MonoBehaviour:
   - {fileID: 1480684294578705095}
   - {fileID: 9217527357543260066}
   - {fileID: 828483542}
+  - {fileID: 1974537254}
+  hotbarManager: {fileID: 1028925478}
 --- !u!114 &1798351092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30178,6 +30184,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1967034981}
   m_Mesh: {fileID: -8577550953178240769, guid: a59f6548c14dfa84ba2ca07e21ce1543, type: 3}
+--- !u!114 &1974537254 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8787787823913417743, guid: a1a8492d3c1f6b948836062e8b4f2022, type: 3}
+  m_PrefabInstance: {fileID: 766838405}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d47a891e58c0dd4bb3575774ce46f77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1977541541 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1352753540370996, guid: 43b3bfc3c2f2ff146a8d85e63d0a4e26, type: 3}
@@ -30359,7 +30376,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -33660,7 +33677,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8879451663980032697, guid: c549e6360bbe31340a468eb775f7d50b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 2.4
       objectReference: {fileID: 0}
     - target: {fileID: 8879451663980032697, guid: c549e6360bbe31340a468eb775f7d50b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -34152,6 +34169,7 @@ SceneRoots:
   - {fileID: 693751385}
   - {fileID: 1803766320}
   - {fileID: 4882419023523314412}
+  - {fileID: 3633468690390659234}
   - {fileID: 1346339752}
   - {fileID: 880533226}
   - {fileID: 1934027909}
@@ -34159,4 +34177,3 @@ SceneRoots:
   - {fileID: 355337296}
   - {fileID: 842434438}
   - {fileID: 1806321500}
-  - {fileID: 3633468690390659234}

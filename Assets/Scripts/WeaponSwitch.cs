@@ -145,6 +145,7 @@ public class WeaponSwitch : MonoBehaviour
         inventory[5].heldCount = PlayerPrefs.GetInt("NumHealthPotions");
         inventory[6].heldCount = PlayerPrefs.GetInt("NumFreezePotions");
         inventory[7].heldCount = PlayerPrefs.GetInt("NumPoisonPotions");
+        inventory[8].heldCount = PlayerPrefs.GetInt("NumNukePotions");
     }
 
 }

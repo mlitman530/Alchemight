@@ -66,7 +66,7 @@ public class HotbarManager : MonoBehaviour
 
     private void UpdateHeldCounts()
     {
-        for (int i = 1; i < slots.Count - 1; i++)
+        for (int i = 1; i < slots.Count; i++)
         {
             //int itemID = slots[i].GetItemID();
             slots[i].AddItem(slots[i].itemImage.sprite, heldCounts[i], i);
@@ -97,6 +97,7 @@ public class HotbarManager : MonoBehaviour
         heldCounts[5] = PlayerPrefs.GetInt("NumHealthPotions");
         heldCounts[6] = PlayerPrefs.GetInt("NumFreezePotions");
         heldCounts[7] = PlayerPrefs.GetInt("NumPoisonPotions");
+        heldCounts[8] = PlayerPrefs.GetInt("NumNukePotions");
         weaponSwitch.InitializeHeldCounts();
     }
 }

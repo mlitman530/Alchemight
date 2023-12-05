@@ -43,8 +43,6 @@ public class ThrowablePotion : MonoBehaviour
 
     public void Throw()
     {
-        Debug.Log("readyToThrow: " + readyToThrow);
-        Debug.Log("totalThrows: " + totalThrows);
         if (objectToThrowParent.GetComponent<Item>().isHeld && readyToThrow && totalThrows > 0)
         {
             readyToThrow = false;
@@ -63,7 +61,7 @@ public class ThrowablePotion : MonoBehaviour
             projectileRb.AddForce(forceToAdd, ForceMode.Impulse);
 
             totalThrows--;
-            weaponSwitch.DecrementHeldCount(objectToThrowParent.GetComponent<Item>().id);
+            //weaponSwitch.DecrementHeldCount(objectToThrowParent.GetComponent<Item>().id);
 
             Invoke(nameof(ResetThrow), throwCooldown);
         }

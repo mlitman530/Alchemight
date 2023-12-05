@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class ProjectileAddon : MonoBehaviour
 {
-
     private Rigidbody rb;
     public float radius;
     private bool targetHit;
@@ -28,9 +27,7 @@ public class ProjectileAddon : MonoBehaviour
     {
         if (collision.gameObject.tag != "Player" && collision.gameObject.tag != "Projectile")
         {
-
-
-            if (collision.gameObject.tag == "Enemy")
+            if (collision.gameObject.tag == "BasicEnemy" || collision.gameObject.tag == "TankEnemy" || collision.gameObject.tag == "SmallerEnemy")
             {
                 if (effect == "freeze")
                 {
@@ -38,7 +35,7 @@ public class ProjectileAddon : MonoBehaviour
                 }
                 else if (effect == "poison")
                 {
-
+                    PoisonEnemy(collision.contacts[0].point, radius);
                 }
                 else
                 {
@@ -58,7 +55,7 @@ public class ProjectileAddon : MonoBehaviour
         Collider[] hitColliders = Physics.OverlapSphere(center, radius);
         foreach (var hitCollider in hitColliders)
         {
-            if (hitCollider.gameObject.tag == "Enemy" && hitCollider.gameObject.GetComponent<Damageable>())
+            if (hitCollider.gameObject.tag == "BasicEnemy" || hitCollider.gameObject.tag == "TankEnemy" || hitCollider.gameObject.tag == "SmallerEnemy" && hitCollider.gameObject.GetComponent<Damageable>())
             {
                 hitCollider.gameObject.GetComponent<Damageable>().TakeDamage(damage);
             }
@@ -70,9 +67,9 @@ public class ProjectileAddon : MonoBehaviour
         Collider[] hitColliders = Physics.OverlapSphere(center, radius);
         foreach (var hitCollider in hitColliders)
         {
-            if (hitCollider.gameObject.tag == "Enemy" && hitCollider.gameObject.GetComponent<Damageable>())
+            if (hitCollider.gameObject.tag == "BasicEnemy" || hitCollider.gameObject.tag == "TankEnemy" || hitCollider.gameObject.tag == "SmallerEnemy" && hitCollider.gameObject.GetComponent<Damageable>())
             {
-                hitCollider.gameObject.GetComponent<Enemy>().Freeze();
+                hitCollider.gameObject.GetComponent<Damageable>().Freeze();
             }
         }
     }
@@ -81,9 +78,9 @@ public class ProjectileAddon : MonoBehaviour
         Collider[] hitColliders = Physics.OverlapSphere(center, radius);
         foreach (var hitCollider in hitColliders)
         {
-            if (hitCollider.gameObject.tag == "Enemy" && hitCollider.gameObject.GetComponent<Damageable>())
+            if (hitCollider.gameObject.tag == "BasicEnemy" || hitCollider.gameObject.tag == "TankEnemy" || hitCollider.gameObject.tag == "SmallerEnemy" && hitCollider.gameObject.GetComponent<Damageable>())
             {
-                hitCollider.gameObject.GetComponent<Enemy>().Poison(damageOverTime);
+                hitCollider.gameObject.GetComponent<Damageable>().Poison(damageOverTime);
             }
         }
     }

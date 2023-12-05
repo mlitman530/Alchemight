@@ -254,6 +254,7 @@ public class PlayerController : MonoBehaviour
         PlayerPrefs.SetInt("NumFirePotions", 0);
         PlayerPrefs.SetInt("NumFreezePotions", 0);
         PlayerPrefs.SetInt("NumPoisonPotions", 0);
+        PlayerPrefs.SetInt("NumNukePotions", 0);
     }
     
     public void TakeDamage(float damage)

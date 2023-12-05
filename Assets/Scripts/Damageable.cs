@@ -18,7 +18,7 @@ public class Damageable : MonoBehaviour
     public LootDrop lootDrops;
     public UnityEngine.UI.Slider healthBar;
     public UnityEngine.UI.Slider enemyHealthBar;
-    
+
 
     // Start is called before the first frame update
     void Awake()
@@ -36,7 +36,7 @@ public class Damageable : MonoBehaviour
         {
             currentHealth -= damage;
             enemyHealthBar.value = currentHealth; // enemy health bar
-                
+
             if (currentHealth <= 0)
             {
                 Die();
@@ -47,7 +47,7 @@ public class Damageable : MonoBehaviour
                 animator.SetTrigger("damage");
                 //flash red???
             }
-                
+
             // if (this.gameObject.tag == "Player") 
             // {
             //     currentPlayerHealth -= damage;
@@ -58,7 +58,7 @@ public class Damageable : MonoBehaviour
             //         GetComponent<Collider>().enabled = false;
             //     }
             // }
-            
+
         }
     }
 
@@ -72,7 +72,7 @@ public class Damageable : MonoBehaviour
             return;
         }
 
-        if (this.gameObject.tag == "BasicEnemy" || this.gameObject.tag == "TankEnemy" || this.gameObject.tag == "SmallerEnemy") 
+        if (this.gameObject.tag == "BasicEnemy" || this.gameObject.tag == "TankEnemy" || this.gameObject.tag == "SmallerEnemy")
         {
             animator.SetTrigger("die");
             lootDrops = this.GetComponent<LootDrop>();
@@ -92,5 +92,38 @@ public class Damageable : MonoBehaviour
 
     }
 
+    public void Freeze()
+    {
+        animator.SetTrigger("freeze");
+        StartCoroutine(waiter(3));
+        animator.SetBool("isPatrolling", true);
+    }
+
+    public void Poison(int damageOverTime)
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            currentHealth -= damageOverTime;
+            if (currentHealth <= 0)
+            {
+                //play enemy death animation
+                animator.SetTrigger("die");
+
+            }
+            else
+            {
+                //play hit animation
+                animator.SetTrigger("damage");
+            }
+            StartCoroutine(waiter(1));
+        }
+    }
+
+    IEnumerator waiter(int seconds)
+    {
+        Debug.Log("Wait start");
+        yield return new WaitForSeconds(seconds);
+        Debug.Log("Wait end");
+    }
 
 }
