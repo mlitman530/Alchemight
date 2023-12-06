@@ -18,7 +18,7 @@ public class Damageable : MonoBehaviour
     public LootDrop lootDrops;
     public UnityEngine.UI.Slider healthBar;
     public UnityEngine.UI.Slider enemyHealthBar;
-    public bool isDead;
+    public bool isDead = false;
 
 
     // Start is called before the first frame update
@@ -26,7 +26,6 @@ public class Damageable : MonoBehaviour
     {
         currentHealth = maxHealth;
         currentPlayerHealth = maxPlayerHealth;
-        isDead = false;
     }
 
     public void TakeDamage(float damage)
@@ -41,10 +40,11 @@ public class Damageable : MonoBehaviour
 
             if (currentHealth <= 0 && !isDead)
             {
-                Die();
                 isDead = true;
                 Debug.Log("SETTING ENEMY ISDEAD TO TRUE");
+                Die();
                 GetComponent<Collider>().enabled = false;
+
             }
             else if (isDead) 
             {
@@ -108,7 +108,6 @@ public class Damageable : MonoBehaviour
         // float freezeDuration = 3f;
         // Debug.Log("Wait start");
 
-
         // while (Time.time < startTime + freezeDuration)
         // {
         //     Debug.Log("Timer: " + Time.time);
@@ -116,8 +115,7 @@ public class Damageable : MonoBehaviour
         //     // This loop will continue for freezeDuration seconds.
         // }
         // Debug.Log("Wait end");
-        StartCoroutine(waiter(3));
-        
+        StartCoroutine(waiter(5));
     }
 
     public void Poison(int damageOverTime)

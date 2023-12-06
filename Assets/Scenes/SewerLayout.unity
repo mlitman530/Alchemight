@@ -6865,6 +6865,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2132650341}
     m_Modifications:
+    - target: {fileID: -3757436225585987483, guid: ac13347ac4122c14cb231afb54f515a5, type: 3}
+      propertyPath: m_Radius
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3837071624946322541, guid: ac13347ac4122c14cb231afb54f515a5, type: 3}
+      propertyPath: m_Name
+      value: Speed Potion(Ground)
+      objectReference: {fileID: 0}
     - target: {fileID: 2730074263542334518, guid: f62b31a3464faf14f934e38f9ee55eba, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 43
@@ -6928,14 +6936,6 @@ PrefabInstance:
     - target: {fileID: 5537283635842207538, guid: f62b31a3464faf14f934e38f9ee55eba, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -3757436225585987483, guid: ac13347ac4122c14cb231afb54f515a5, type: 3}
-      propertyPath: m_Radius
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3837071624946322541, guid: ac13347ac4122c14cb231afb54f515a5, type: 3}
-      propertyPath: m_Name
-      value: Speed Potion(Ground)
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -3757436225585987483, guid: ac13347ac4122c14cb231afb54f515a5, type: 3}
@@ -9101,6 +9101,7 @@ MonoBehaviour:
   lootDrops: {fileID: 714222361}
   healthBar: {fileID: 518561092}
   enemyHealthBar: {fileID: 1825347878}
+  isDead: 0
 --- !u!65 &714222355
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16348,6 +16349,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1469958401398919720, guid: 2825a76fe8782d84190c028c180dbba9, type: 3}
+      propertyPath: m_Radius
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7204903847477194912, guid: 2825a76fe8782d84190c028c180dbba9, type: 3}
+      propertyPath: 
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1664832842991199, guid: bfe2cdcaac2439946ae1d9e756460e27, type: 3}
       propertyPath: m_Name
       value: Black Chest
@@ -16391,14 +16400,6 @@ PrefabInstance:
     - target: {fileID: 3127846049240432487, guid: bfe2cdcaac2439946ae1d9e756460e27, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1469958401398919720, guid: 2825a76fe8782d84190c028c180dbba9, type: 3}
-      propertyPath: m_Radius
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7204903847477194912, guid: 2825a76fe8782d84190c028c180dbba9, type: 3}
-      propertyPath: 
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1469958401398919720, guid: 2825a76fe8782d84190c028c180dbba9, type: 3}
@@ -17056,6 +17057,7 @@ MonoBehaviour:
   lootDrops: {fileID: 0}
   healthBar: {fileID: 518561092}
   enemyHealthBar: {fileID: 441585823}
+  isDead: 0
 --- !u!65 &1025939988
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17072,7 +17074,7 @@ BoxCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1.3400493, y: 1.8786014, z: 0.8127998}
@@ -30538,6 +30540,7 @@ MonoBehaviour:
   lootDrops: {fileID: 1977541550}
   healthBar: {fileID: 518561092}
   enemyHealthBar: {fileID: 207135383}
+  isDead: 0
 --- !u!65 &1977541546
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -30554,7 +30557,7 @@ BoxCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
-  m_ProvidesContacts: 0
+  m_ProvidesContacts: 1
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1.3400493, y: 1.8786014, z: 0.8127998}
