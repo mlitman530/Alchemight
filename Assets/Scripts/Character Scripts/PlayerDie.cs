@@ -26,8 +26,6 @@ public class PlayerDie : MonoBehaviour
         PlayerPrefs.SetFloat("Jump", stats["Jump"]);
         PlayerPrefs.SetFloat("MaxHealth", stats["MaxHealth"]);
 
-        PlayerPrefs.SetInt("Gold", hotbarManager.GetGold());
-
         PlayerPrefs.SetInt("Attempts", numAttempts);
 
         SceneManager.LoadScene("DeathScreen");

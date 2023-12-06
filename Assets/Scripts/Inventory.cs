@@ -17,9 +17,6 @@ public class Inventory : MonoBehaviour
     private TextMeshProUGUI inventoryTitle;
     private GameObject goldTextObject;
     private TextMeshProUGUI goldText;
-
-    private int startingGoldCount = 0;
-
     public int currentGoldCount;
 
 
@@ -32,7 +29,6 @@ public class Inventory : MonoBehaviour
         inventoryText = inventoryTextObject.GetComponent<TextMeshProUGUI>();
         goldTextObject = GameObject.Find("Gold");
         goldText = goldTextObject.GetComponent<TextMeshProUGUI>();
-        PlayerPrefs.SetInt("Gold", startingGoldCount);
         currentGoldCount = PlayerPrefs.GetInt("Gold");
         RefreshInventory();
     }

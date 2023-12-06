@@ -23,6 +23,7 @@ public class MenuScript : MonoBehaviour
         PlayerPrefs.SetInt("SwordPurchased", 0);
         PlayerPrefs.SetInt("NumFirePotions", 0);
         PlayerPrefs.SetInt("NumFreezePotions", 0);
+        PlayerPrefs.SetInt("Gold", 0);
         PlayerPrefs.SetInt("Attempts", 0);
     }
 }
