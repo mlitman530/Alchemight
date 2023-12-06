@@ -143,6 +143,7 @@ public class Damageable : MonoBehaviour
             {
                 Die();
                 GetComponent<Collider>().enabled = false;
+                break;
             }
             else
             {

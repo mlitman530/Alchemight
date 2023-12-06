@@ -46,13 +46,12 @@ public class DrinkablePotion : MonoBehaviour
     public void drinkPotion()
     {
         Item potionItem = GetComponent<Item>();
-        Debug.Log("Potion is held: " + potionItem.isHeld);
         if (potionItem.isHeld)
         {
-            currentStrength = PlayerPrefs.GetInt("Current Strength");
-            currentSpeed = PlayerPrefs.GetInt("Current Speed");
-            currentHealth = PlayerPrefs.GetInt("Current Health");
-            currentJump = PlayerPrefs.GetInt("Current Jump");
+            currentStrength = PlayerPrefs.GetInt("Strength");
+            currentSpeed = PlayerPrefs.GetInt("Speed");
+            currentHealth = PlayerPrefs.GetInt("Health");
+            currentJump = PlayerPrefs.GetInt("Jump");
 
             PlayerPrefs.SetInt("Current Strength", currentStrength + tempStrength);
             PlayerPrefs.SetInt("Current Speed", currentSpeed + tempSpeed);

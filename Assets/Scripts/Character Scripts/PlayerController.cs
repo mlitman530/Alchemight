@@ -11,20 +11,20 @@ using UnityEngine.UI;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField, Tooltip("Player speed multiplier.")]
-    private float playerSpeed = 8f;
+    private float playerSpeed;
     [SerializeField, Tooltip("How how the player should jump.")]
-    private float jumpHeight = 1f;
+    private float jumpHeight;
     [SerializeField, Tooltip("Downwards force on the player.")]
     private float gravityValue = -18f;
     [SerializeField, Tooltip("Rotation Speed multiplier.")]
-    public float playerStrength = 10f;
+    public float playerStrength;
     private float rotationSpeed = 5f;
     [SerializeField, Tooltip("Animation blend speed multiplier.")]
     private float animationBlendDamp = .5f;
     [SerializeField, Tooltip("Input smooth damp speed.")]
     private float inputSmoothDamp = .1f;
     [SerializeField]
-    private float playerMaxHealth = 100;
+    private float playerMaxHealth;
     public float currentPlayerHealth;
     public Slider healthBar;
     private CharacterController controller;
@@ -50,7 +50,6 @@ public class PlayerController : MonoBehaviour
     private DrinkablePotion currentPotion;
     private ThrowablePotion throwablePotion;
 
-    private int numAttempts;
     private void Awake()
     {
         swordObject = GameObject.FindGameObjectWithTag("Melee");
@@ -59,7 +58,6 @@ public class PlayerController : MonoBehaviour
         weaponSwitcher = weaponHolder.GetComponent<WeaponSwitch>();
         throwablePotion = GetComponent<ThrowablePotion>();
         sword = swordObject.GetComponent<Sword>();
-        currentPlayerHealth = playerMaxHealth;
         //SetPlayerPrefs();
     }
     private void Start()
@@ -72,7 +70,7 @@ public class PlayerController : MonoBehaviour
         playerController = GetComponent<PlayerController>();
         selectionManager = playerController.gameObject.GetComponent<SelectionManager>();
         playerDie = GetComponent<PlayerDie>();
-        numAttempts = PlayerPrefs.GetInt("Attempts");
+        currentPlayerHealth = playerMaxHealth;
         SetStats();
     }
 
@@ -206,19 +204,20 @@ public class PlayerController : MonoBehaviour
 
     public void SetStats()
     {
-        if (numAttempts == 0)
+        Debug.Log("Attempts: " + PlayerPrefs.GetInt("Attempts"));
+        if (PlayerPrefs.GetInt("Attempts") == 0)
         {
-            playerStrength += PlayerPrefs.GetInt("Strength") + PlayerPrefs.GetInt("StrengthAddition");
-            playerSpeed += PlayerPrefs.GetInt("Speed") + PlayerPrefs.GetInt("SpeedAddition");
-            jumpHeight += (PlayerPrefs.GetInt("Jump") / 5) + PlayerPrefs.GetInt("JumpAddition") + 1;
-            playerMaxHealth += (PlayerPrefs.GetFloat("MaxHealth") * 10) + PlayerPrefs.GetInt("HealthAddition");
+            playerStrength = PlayerPrefs.GetInt("Strength") + PlayerPrefs.GetInt("InitialStrength") + PlayerPrefs.GetInt("StrengthAddition");
+            playerSpeed = PlayerPrefs.GetInt("Speed") + (PlayerPrefs.GetInt("InitialSpeed") / 2) + PlayerPrefs.GetInt("SpeedAddition");
+            jumpHeight = PlayerPrefs.GetInt("Jump") + (PlayerPrefs.GetInt("InitialJump") / 5) + PlayerPrefs.GetInt("JumpAddition");
+            playerMaxHealth += PlayerPrefs.GetFloat("MaxHealth") + (PlayerPrefs.GetInt("InitialMaxHealth") * 5) + PlayerPrefs.GetInt("HealthAddition");
         }
         else
         {
-            playerStrength += PlayerPrefs.GetInt("StrengthAddition");
-            playerSpeed += PlayerPrefs.GetInt("SpeedAddition");
-            jumpHeight += PlayerPrefs.GetInt("JumpAddition") + 1;
-            playerMaxHealth += PlayerPrefs.GetInt("HealthAddition");
+            playerStrength = PlayerPrefs.GetInt("Strength") + PlayerPrefs.GetInt("StrengthAddition");
+            playerSpeed = PlayerPrefs.GetInt("Speed") + PlayerPrefs.GetInt("SpeedAddition");
+            jumpHeight = PlayerPrefs.GetInt("Jump") + PlayerPrefs.GetInt("JumpAddition");
+            playerMaxHealth = PlayerPrefs.GetFloat("MaxHealth") + PlayerPrefs.GetInt("HealthAddition");
         }
 
         Debug.Log("Strength: " + playerStrength + " Speed: " + playerSpeed + " Jump: " + jumpHeight);
@@ -270,13 +269,12 @@ public class PlayerController : MonoBehaviour
         currentPlayerHealth -= damage;
         if (currentPlayerHealth <= 0)
         {
+            PlayerPrefs.SetInt("Strength", (int)playerStrength);
+            PlayerPrefs.SetInt("Speed", (int)playerSpeed);
+            PlayerPrefs.SetInt("Health", (int)playerMaxHealth);
+            PlayerPrefs.SetInt("Jump", (int)jumpHeight);
             playerDie.ToShop();
             GetComponent<Collider>().enabled = false;
         }
-    }
-
-    public int GetNumAttempts()
-    {
-        return numAttempts;
     }
 }

@@ -11,7 +11,7 @@ public class PlayerDie : MonoBehaviour
     public void ToShop()
     {
         Dictionary<string, float> stats = playerController.GetStats();
-        int numAttempts = playerController.GetNumAttempts();
+        int numAttempts = PlayerPrefs.GetInt("Attempts");
         // Dictionary<int, int> inv = hotbarManager.GetHeldCounts();
 
         // PlayerPrefs.SetInt("NumHealthPotions", inv[5]);
@@ -26,7 +26,7 @@ public class PlayerDie : MonoBehaviour
         PlayerPrefs.SetFloat("Jump", stats["Jump"]);
         PlayerPrefs.SetFloat("MaxHealth", stats["MaxHealth"]);
 
-        PlayerPrefs.SetInt("Attempts", numAttempts);
+        PlayerPrefs.SetInt("Attempts", numAttempts + 1);
 
         SceneManager.LoadScene("DeathScreen");
     }

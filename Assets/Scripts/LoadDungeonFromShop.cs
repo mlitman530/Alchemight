@@ -53,9 +53,6 @@ public class LoadDungeonFromShop : MonoBehaviour
         PlayerPrefs.SetInt("JumpAddition", inv[3]);
         PlayerPrefs.SetInt("SwordStrengthBoost", inv[4]*60);
         PlayerPrefs.SetInt("NumFirePotions", inv[5]);
-
-        numAttempts++;
-        PlayerPrefs.SetInt("Attempts",  numAttempts);
         
         fadePanelObject.SetActive(true);
         ImageFade.fadeIn();

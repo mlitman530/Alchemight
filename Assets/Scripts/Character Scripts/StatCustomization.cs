@@ -18,7 +18,7 @@ public class StatCustomizationController : MonoBehaviour
         // Initialize stat values
         for (int i = 0; i < statValues.Length; i++)
         {
-            statValues[i] = 5;
+            statValues[i] = 2;
             int statIndex = i; // Capture the current value of i for the button click event
 
             // Attach button click events with lambda expressions to capture the stat index
@@ -72,10 +72,10 @@ public class StatCustomizationController : MonoBehaviour
 
     public void DoneWithStatCustomization()
     {
-        PlayerPrefs.SetInt("Strength", statValues[0]);
-        PlayerPrefs.SetInt("Speed", statValues[1]);
-        PlayerPrefs.SetInt("Jump", statValues[2]);
-        PlayerPrefs.SetInt("MaxHealth", statValues[3]);
+        PlayerPrefs.SetInt("InitialStrength", statValues[0]);
+        PlayerPrefs.SetInt("InitialSpeed", statValues[1]);
+        PlayerPrefs.SetInt("InitialJump", statValues[2]);
+        PlayerPrefs.SetInt("InitialMaxHealth", statValues[3]);
         SceneManager.LoadScene("Shop");
     }
 }
