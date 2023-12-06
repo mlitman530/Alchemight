@@ -61,7 +61,7 @@ public class ThrowablePotion : MonoBehaviour
             projectileRb.AddForce(forceToAdd, ForceMode.Impulse);
 
             totalThrows--;
-            //weaponSwitch.DecrementHeldCount(objectToThrowParent.GetComponent<Item>().id);
+            weaponSwitch.DecrementHeldCount(objectToThrowParent.GetComponent<Item>().id);
 
             Invoke(nameof(ResetThrow), throwCooldown);
         }

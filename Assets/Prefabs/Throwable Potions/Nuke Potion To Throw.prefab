@@ -153,8 +153,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf95f17f65456144d9a97576aad83bd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 100
-  damage: 150
+  radius: 125
+  damage: 99
   damageOverTime: 0
   effect: 
 --- !u!199 &8812948945233126487

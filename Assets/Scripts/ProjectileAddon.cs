@@ -55,6 +55,7 @@ public class ProjectileAddon : MonoBehaviour
         Collider[] hitColliders = Physics.OverlapSphere(center, radius);
         foreach (var hitCollider in hitColliders)
         {
+            Debug.Log("Damage being delt: " + damage);
             if (hitCollider.gameObject.tag == "BasicEnemy" || hitCollider.gameObject.tag == "TankEnemy" || hitCollider.gameObject.tag == "SmallerEnemy" && hitCollider.gameObject.GetComponent<Damageable>())
             {
                 hitCollider.gameObject.GetComponent<Damageable>().TakeDamage(damage);
