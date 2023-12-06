@@ -10,7 +10,7 @@ public class Sword : MonoBehaviour
 
     private Animator anim;
     public AudioSource[] audios;
-    private bool cooldown = false;
+    public bool cooldown = false;
 
     [SerializeField] float range = 5f;
     [SerializeField] float damage;

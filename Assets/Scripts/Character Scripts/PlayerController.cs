@@ -138,6 +138,7 @@ public class PlayerController : MonoBehaviour
                 currentPotion = currentItem.GetComponent<DrinkablePotion>();
 
                 currentPotion.drinkPotion();
+                sword.cooldown = false;
             }
         }
         if (inputManager.GetPlayerThrow() && !pauseMenu.IsPaused())
@@ -148,6 +149,7 @@ public class PlayerController : MonoBehaviour
             if (currentItem.GetComponent<DrinkablePotion>() == null)
             {
                 throwablePotion.Throw();
+                sword.cooldown = false;
             }
         }
 
