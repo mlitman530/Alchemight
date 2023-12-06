@@ -76,12 +76,17 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        healthBar.value = (currentPlayerHealth/playerMaxHealth)*100;
+        healthBar.value = (currentPlayerHealth / playerMaxHealth) * 100;
         groundedPlayer = controller.isGrounded;
         // Make sure the player's velocity isn't negative while on the ground
         if (groundedPlayer && playerVelocity.y < 0)
         {
             playerVelocity.y = 0f;
+        }
+        if (transform.position.y < -30f)
+        {
+            Vector3 newPosition = new Vector3(transform.position.x, 7f, transform.position.z);
+            transform.position = newPosition;
         }
 
         // Move the player with the new input system
