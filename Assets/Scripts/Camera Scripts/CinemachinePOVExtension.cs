@@ -55,6 +55,6 @@ public class CinemachinePOVExtension : CinemachineExtension
     {
         horizontalSpeed = val + 25;
         verticalSpeed = val + 25;
-        Debug.Log("Sensitivity Set to " + (val + 25));
+        //Debug.Log("Sensitivity Set to " + (val + 25));
     }
 }
