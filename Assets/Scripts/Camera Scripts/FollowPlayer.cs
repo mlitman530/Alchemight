@@ -48,13 +48,8 @@ public class FollowPlayer : CinemachineExtension
                 // thus put startingRotation.y in the x value for Euler calculation.
                 // We add a negative in front of startingRotation.y to invert the axis.
                 state.RawOrientation = Quaternion.Euler(-startingRotation.y, startingRotation.x, 0f);
-
-                Debug.Log("Starting Rotation x: " + startingRotation.x);
-                Debug.Log("Starting Rotation y: " + startingRotation.y);
             }
         }
-        Debug.Log("Starting Rotation x: " + startingRotation.x);
-        Debug.Log("Starting Rotation y: " + startingRotation.y);
     }
 
     public void SetSensitivity(float val)
@@ -62,6 +57,6 @@ public class FollowPlayer : CinemachineExtension
         float newVal = val + 25;
         horizontalSpeed = newVal + 25;
         verticalSpeed = newVal + 25;
-        Debug.Log("Sensitivity Set to " + newVal);
+        //Debug.Log("Sensitivity Set to " + newVal);
     }
 }

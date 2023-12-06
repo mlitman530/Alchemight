@@ -45,7 +45,7 @@ public class ItemPurchase : MonoBehaviour
 
         if (GetComponentInChildren<Item>().purchaseCount > GetComponentInChildren<Item>().purchaseLimit)
         {
-            Debug.Log("Purchase Limit is reached");
+            //Debug.Log("Purchase Limit is reached");
             //this.gameObject.GetComponent<Button>().interactable = false;
             purchaseLimitObject.SetActive(true);
             audioSource.PlayOneShot(sounds[0]);
@@ -53,7 +53,7 @@ public class ItemPurchase : MonoBehaviour
         }
         else
         {
-            Debug.Log("Increased Purchase Count");
+            //Debug.Log("Increased Purchase Count");
             GetComponentInChildren<Item>().purchaseCount++;
 
         }
@@ -63,17 +63,17 @@ public class ItemPurchase : MonoBehaviour
 
     private bool checkCost()
     {
-        Debug.Log("Item cost: " + GetComponentInChildren<Item>().cost);
+        //Debug.Log("Item cost: " + GetComponentInChildren<Item>().cost);
         if (GetComponentInChildren<Item>().cost > PlayerPrefs.GetInt("Gold"))
         {
-            Debug.Log("Not enough gold");
+            //Debug.Log("Not enough gold");
             insufficientGoldObject.SetActive(true);
             audioSource.PlayOneShot(sounds[0]);
             return false;
         }
         else
         {
-            Debug.Log("Item Can Be Purchased");
+            //Debug.Log("Item Can Be Purchased");
             PlayerPrefs.SetInt("Gold", PlayerPrefs.GetInt("Gold") - GetComponentInChildren<Item>().cost);
             return true;
         }

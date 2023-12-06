@@ -70,7 +70,7 @@ public class WeaponSwitch : MonoBehaviour
         currentItemIndex = index;
         //Debug.Log("Current Item Index: " + currentItemIndex);
         currentItem = inventory[currentItemIndex];
-        Debug.Log("Current item held count: " + currentItem.heldCount);
+        //Debug.Log("Current item held count: " + currentItem.heldCount);
         currentItem.activateItem();
         // currentItemIndex = getCurrentItemIndex();
         // // Deactivate the current item first

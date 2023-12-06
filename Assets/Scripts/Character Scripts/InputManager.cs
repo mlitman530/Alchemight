@@ -119,7 +119,7 @@ public class InputManager : MonoBehaviour
         if (GetPlayerDrink())
         {
             currentItem = weaponSwitcher.getCurrentItem();
-            Debug.Log(currentItem);
+            //Debug.Log(currentItem);
 
             if (currentItem.GetComponent<DrinkablePotion>() != null)
             {

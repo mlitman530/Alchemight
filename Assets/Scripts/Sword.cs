@@ -36,7 +36,7 @@ public class Sword : MonoBehaviour
 
     IEnumerator waiter(float seconds)
     {
-        Debug.Log("Sword Swing Triggered, cooldown: " + cooldown);
+        //Debug.Log("Sword Swing Triggered, cooldown: " + cooldown);
         if (!cooldown)
         {
             RaycastHit hit;

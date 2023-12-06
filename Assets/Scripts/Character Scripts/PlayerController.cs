@@ -129,7 +129,7 @@ public class PlayerController : MonoBehaviour
         if (inputManager.GetPlayerDrink() && !pauseMenu.IsPaused())
         {
             currentItem = weaponSwitcher.getCurrentItem();
-            Debug.Log(currentItem);
+            //Debug.Log(currentItem);
 
             if (currentItem.GetComponent<DrinkablePotion>() != null)
             {
@@ -204,7 +204,7 @@ public class PlayerController : MonoBehaviour
 
     public void SetStats()
     {
-        Debug.Log("Attempts: " + PlayerPrefs.GetInt("Attempts"));
+        //Debug.Log("Attempts: " + PlayerPrefs.GetInt("Attempts"));
         if (PlayerPrefs.GetInt("Attempts") == 0)
         {
             playerStrength = PlayerPrefs.GetInt("StrengthForRun") + PlayerPrefs.GetInt("InitialStrength") + PlayerPrefs.GetInt("StrengthAddition");
@@ -220,7 +220,7 @@ public class PlayerController : MonoBehaviour
             playerMaxHealth = PlayerPrefs.GetFloat("HealthForRun") + PlayerPrefs.GetInt("HealthAddition");
         }
 
-        Debug.Log("Strength: " + playerStrength + " Speed: " + playerSpeed + " Jump: " + jumpHeight + "Health: " + playerMaxHealth);
+        //Debug.Log("Strength: " + playerStrength + " Speed: " + playerSpeed + " Jump: " + jumpHeight + "Health: " + playerMaxHealth);
         PlayerPrefs.SetInt("StrengthForRun", (int)playerStrength);
         PlayerPrefs.SetInt("SpeedForRun", (int)playerSpeed);
         PlayerPrefs.SetFloat("HealthForRun", playerMaxHealth);
@@ -233,7 +233,7 @@ public class PlayerController : MonoBehaviour
         playerSpeed = speed;
         jumpHeight = jump;
         playerMaxHealth = health;
-        Debug.Log("Stats Applied. Strength: " + playerStrength + " Speed: " + playerSpeed + " Jump: " + jumpHeight + "Health: " + playerMaxHealth);
+        //Debug.Log("Stats Applied. Strength: " + playerStrength + " Speed: " + playerSpeed + " Jump: " + jumpHeight + "Health: " + playerMaxHealth);
     }
 
     /*public void SetDefaultStats()

@@ -12,7 +12,7 @@ public class DeathScreen : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("Current gold (on death screen): " + PlayerPrefs.GetInt("Gold"));
+        //Debug.Log("Current gold (on death screen): " + PlayerPrefs.GetInt("Gold"));
         attemptsText.text = "Attempts: " + PlayerPrefs.GetInt("Attempts").ToString();
         waveReachedText.text = "Wave Reached: " + PlayerPrefs.GetInt("WaveReached", 0).ToString();
         highestWaveText.text = "Highest Wave Reached: " + PlayerPrefs.GetInt("HighestWaveReached", 0).ToString();

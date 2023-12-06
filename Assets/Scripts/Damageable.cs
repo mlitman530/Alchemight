@@ -41,14 +41,14 @@ public class Damageable : MonoBehaviour
             if (currentHealth <= 0 && !isDead)
             {
                 isDead = true;
-                Debug.Log("SETTING ENEMY ISDEAD TO TRUE");
+                //Debug.Log("SETTING ENEMY ISDEAD TO TRUE");
                 Die();
                 GetComponent<Collider>().enabled = false;
 
             }
             else if (isDead) 
             {
-                Debug.Log("DESTROYING ENEMY");
+                //Debug.Log("DESTROYING ENEMY");
                 Destroy(this.gameObject);
             }
             else
@@ -127,10 +127,10 @@ public class Damageable : MonoBehaviour
 
     IEnumerator waiter(int seconds)
     {
-        Debug.Log("Wait start");
+        //Debug.Log("Wait start");
         yield return new WaitForSeconds(seconds);
         animator.SetBool("isPatrolling", true);
-        Debug.Log("Wait end");
+        //Debug.Log("Wait end");
     }
 
     IEnumerator waiter2(int seconds, int damageOverTime)

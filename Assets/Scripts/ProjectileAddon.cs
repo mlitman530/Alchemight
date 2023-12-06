@@ -43,7 +43,7 @@ public class ProjectileAddon : MonoBehaviour
                 }
 
             }
-            Debug.Log("Hit " + collision.gameObject.name);
+            //Debug.Log("Hit " + collision.gameObject.name);
             //this.gameObject.GetComponent<ParticleSystem>().Play();
             Destroy(this.gameObject);
         }
@@ -55,7 +55,7 @@ public class ProjectileAddon : MonoBehaviour
         Collider[] hitColliders = Physics.OverlapSphere(center, radius);
         foreach (var hitCollider in hitColliders)
         {
-            Debug.Log("Damage being delt: " + damage);
+            //Debug.Log("Damage being delt: " + damage);
             if ((hitCollider.gameObject.tag == "BasicEnemy" || hitCollider.gameObject.tag == "TankEnemy" || hitCollider.gameObject.tag == "SmallerEnemy") && hitCollider.gameObject.GetComponent<Damageable>())
             {
                 hitCollider.gameObject.GetComponent<Damageable>().TakeDamage(damage);

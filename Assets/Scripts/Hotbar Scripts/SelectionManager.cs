@@ -10,7 +10,7 @@ public class SelectionManager : MonoBehaviour
         // Ensure hotbarManager is assigned
         if (hotbarManager == null)
         {
-            Debug.LogError("HotbarManager not assigned to SelectionManager!");
+            //Debug.LogError("HotbarManager not assigned to SelectionManager!");
             return;
         }
 

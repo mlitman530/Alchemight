@@ -15,7 +15,7 @@ public class LootDrop : MonoBehaviour
 
     public void DropCoins()
     {
-        Debug.Log("Dropping Coins");
+        //Debug.Log("Dropping Coins");
         Vector3 dropPosition = this.transform.position;
                 
         GameObject gold =  Instantiate(coinModel, dropPosition, new Quaternion(90, 90, 0, 0)); // Gold drop
@@ -26,7 +26,7 @@ public class LootDrop : MonoBehaviour
 
     public void DropPotions()
     {
-        Debug.Log("Dropping Loot");
+        //Debug.Log("Dropping Loot");
         Vector3 dropPosition = this.transform.position;
 
         if(Random.Range(0, 100) > 10)
@@ -41,7 +41,7 @@ public class LootDrop : MonoBehaviour
 
     public void DropKey()
     {
-        Debug.Log("Dropping Key");
+        //Debug.Log("Dropping Key");
         Vector3 dropPosition = this.transform.position;
 
         if (Random.Range(0, 100) > 90)

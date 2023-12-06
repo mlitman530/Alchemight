@@ -87,18 +87,18 @@ public class AttackState : StateMachineBehaviour
 
         if (isBasic)
          {
-             Debug.Log("BASIC ATTACK: " + basicDamage);
+             //Debug.Log("BASIC ATTACK: " + basicDamage);
              playerDamageable.TakeDamage(basicDamage);
          }
          if (isTank)
          {
-             Debug.Log("TANK ATTACK: " + tankDamage);
+             //Debug.Log("TANK ATTACK: " + tankDamage);
              playerDamageable.TakeDamage(tankDamage);
          }
         if (isSmaller)
         {
-            Debug.Log("SMALLER ATTACK: " + smallerDamage);
-             playerDamageable.TakeDamage(smallerDamage);
+            //Debug.Log("SMALLER ATTACK: " + smallerDamage);
+            playerDamageable.TakeDamage(smallerDamage);
         }
         //playerDamageable.TakeDamage(basicDamage);
     }

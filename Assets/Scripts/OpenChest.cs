@@ -39,7 +39,7 @@ public class OpenChest : MonoBehaviour
 
     public void DropPotions(string color)
     {
-        Debug.Log("Dropping Loot");
+        //Debug.Log("Dropping Loot");
         Vector3 dropPosition = this.transform.position;
 
         heightDif = this.transform.position.y;
@@ -140,7 +140,7 @@ public class OpenChest : MonoBehaviour
 
     public void DropCoins()
     {
-        Debug.Log("Dropping Coins");
+        //Debug.Log("Dropping Coins");
         Vector3 dropPosition = this.transform.position;
 
         GameObject gold = Instantiate(coinModel, dropPosition, new Quaternion(90, 90, 0, 0)); // Gold drop

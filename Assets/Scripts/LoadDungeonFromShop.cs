@@ -45,7 +45,7 @@ public class LoadDungeonFromShop : MonoBehaviour
             {
                 inv.Add(i, 0);
             }
-            Debug.Log("Item " + i + " count: " + inv[i]);
+            //Debug.Log("Item " + i + " count: " + inv[i]);
         }
         PlayerPrefs.SetInt("HealthAddition", inv[0]*5);
         PlayerPrefs.SetInt("StrengthAddition", inv[1]*5);

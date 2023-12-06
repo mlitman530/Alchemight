@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
 
     public void Freeze()
     {
-        Debug.Log("Enemy should freeze");
+        //Debug.Log("Enemy should freeze");
         animator.SetTrigger("freeze");
     }
 

@@ -49,7 +49,7 @@ public class InputSystemController : MonoBehaviour
         swordScript = sword.GetComponent<Sword>();
         if(swordScript != null)
         {
-            Debug.Log("Sword Script Found");
+            //Debug.Log("Sword Script Found");
         }
         //cameraTransform = Camera.main.transform;
         moveAction = playerInput.actions["Move"];
@@ -63,7 +63,7 @@ public class InputSystemController : MonoBehaviour
     void Update()
     {
         groundedPlayer = controller.isGrounded;
-        Debug.Log("Grounded: " + groundedPlayer);
+        //Debug.Log("Grounded: " + groundedPlayer);
 
         // Remove downwards force when player is grounded.
         if (groundedPlayer && playerVelocity.y < 0)
