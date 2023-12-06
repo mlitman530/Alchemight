@@ -9122,18 +9122,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.221133, y: 2.0378356, z: 1.1866477}
   m_Center: {x: 0.17903158, y: 0.9757281, z: 0.09309803}
---- !u!114 &714222357
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 714222349}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0753715d47cf8347864a75abf5437b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &714222358
 AudioSource:
   m_ObjectHideFlags: 0
@@ -9289,12 +9277,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e83554591f785348a3faa3adf2aac58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinModel: {fileID: 0}
+  coinModel: {fileID: 5459309052340335313, guid: 162d35cb9898b1d44ae3d1c888e6854d, type: 3}
   dropOffset: 1
   numberOfCoins: 1
   heightDif: 0
-  potionList: []
-  keyList: []
+  potionList:
+  - {fileID: 4039477454425254751, guid: b62c9ec5571abf24cae35af24ee42700, type: 3}
+  - {fileID: 7237493500908223990, guid: 2a400cad9dad29240a46af811d7d73b5, type: 3}
+  - {fileID: 2091356773650040004, guid: 73fc9b1d1b1d72748898f7d91199cafb, type: 3}
+  - {fileID: 7204903847477194912, guid: 2825a76fe8782d84190c028c180dbba9, type: 3}
+  - {fileID: 8102528314452191235, guid: c549e6360bbe31340a468eb775f7d50b, type: 3}
+  - {fileID: 3837071624946322541, guid: ac13347ac4122c14cb231afb54f515a5, type: 3}
+  - {fileID: 6147980854609028538, guid: e19a3a7ae8bcd9349861c150cc6eacb4, type: 3}
+  keyList:
+  - {fileID: 4217759147238918333, guid: 2acc7ffa7d931eb47b4090849c39264c, type: 3}
+  - {fileID: 8468711177648009968, guid: a50c165a859df0a4fab56e200971c789, type: 3}
+  - {fileID: 8399922933136557302, guid: c02ba0e9ef3aaf54a996f8c4884dd476, type: 3}
+  - {fileID: 1903818059715308453, guid: 4297b713b327cd34ba8f428c3b3c2a3b, type: 3}
 --- !u!1001 &715969916
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17053,7 +17052,7 @@ MonoBehaviour:
   animator: {fileID: 1025939990}
   audios:
   - {fileID: 1025939985}
-  lootDrops: {fileID: 0}
+  lootDrops: {fileID: 1025939992}
   healthBar: {fileID: 518561092}
   enemyHealthBar: {fileID: 441585823}
 --- !u!65 &1025939988
@@ -17121,12 +17120,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e83554591f785348a3faa3adf2aac58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinModel: {fileID: 0}
+  coinModel: {fileID: 5459309052340335313, guid: 162d35cb9898b1d44ae3d1c888e6854d, type: 3}
   dropOffset: 1
   numberOfCoins: 1
   heightDif: 0
-  potionList: []
-  keyList: []
+  potionList:
+  - {fileID: 4039477454425254751, guid: b62c9ec5571abf24cae35af24ee42700, type: 3}
+  - {fileID: 7237493500908223990, guid: 2a400cad9dad29240a46af811d7d73b5, type: 3}
+  - {fileID: 2091356773650040004, guid: 73fc9b1d1b1d72748898f7d91199cafb, type: 3}
+  - {fileID: 7204903847477194912, guid: 2825a76fe8782d84190c028c180dbba9, type: 3}
+  - {fileID: 8102528314452191235, guid: c549e6360bbe31340a468eb775f7d50b, type: 3}
+  - {fileID: 3837071624946322541, guid: ac13347ac4122c14cb231afb54f515a5, type: 3}
+  - {fileID: 6147980854609028538, guid: e19a3a7ae8bcd9349861c150cc6eacb4, type: 3}
+  keyList:
+  - {fileID: 4217759147238918333, guid: 2acc7ffa7d931eb47b4090849c39264c, type: 3}
+  - {fileID: 8468711177648009968, guid: a50c165a859df0a4fab56e200971c789, type: 3}
+  - {fileID: 8399922933136557302, guid: c02ba0e9ef3aaf54a996f8c4884dd476, type: 3}
+  - {fileID: 1903818059715308453, guid: 4297b713b327cd34ba8f428c3b3c2a3b, type: 3}
 --- !u!4 &1028925470 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2765175369677650675, guid: 47bbb568f5389a541b238aa196af1823, type: 3}
@@ -24888,9 +24898,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1352753540370996, guid: 43b3bfc3c2f2ff146a8d85e63d0a4e26, type: 3}
       insertIndex: -1
       addedObject: {fileID: 714222361}
-    - targetCorrespondingSourceObject: {fileID: 1352753540370996, guid: 43b3bfc3c2f2ff146a8d85e63d0a4e26, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 714222357}
   m_SourcePrefab: {fileID: 100100000, guid: 43b3bfc3c2f2ff146a8d85e63d0a4e26, type: 3}
 --- !u!1001 &1561168515
 PrefabInstance:
@@ -30603,12 +30610,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e83554591f785348a3faa3adf2aac58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coinModel: {fileID: 0}
+  coinModel: {fileID: 5459309052340335313, guid: 162d35cb9898b1d44ae3d1c888e6854d, type: 3}
   dropOffset: 1
-  numberOfCoins: 1
+  numberOfCoins: 2
   heightDif: 0
-  potionList: []
-  keyList: []
+  potionList:
+  - {fileID: 4039477454425254751, guid: b62c9ec5571abf24cae35af24ee42700, type: 3}
+  - {fileID: 7237493500908223990, guid: 2a400cad9dad29240a46af811d7d73b5, type: 3}
+  - {fileID: 2091356773650040004, guid: 73fc9b1d1b1d72748898f7d91199cafb, type: 3}
+  - {fileID: 7204903847477194912, guid: 2825a76fe8782d84190c028c180dbba9, type: 3}
+  - {fileID: 8102528314452191235, guid: c549e6360bbe31340a468eb775f7d50b, type: 3}
+  - {fileID: 3837071624946322541, guid: ac13347ac4122c14cb231afb54f515a5, type: 3}
+  - {fileID: 6147980854609028538, guid: e19a3a7ae8bcd9349861c150cc6eacb4, type: 3}
+  keyList:
+  - {fileID: 4217759147238918333, guid: 2acc7ffa7d931eb47b4090849c39264c, type: 3}
+  - {fileID: 8468711177648009968, guid: a50c165a859df0a4fab56e200971c789, type: 3}
+  - {fileID: 8399922933136557302, guid: c02ba0e9ef3aaf54a996f8c4884dd476, type: 3}
+  - {fileID: 1903818059715308453, guid: 4297b713b327cd34ba8f428c3b3c2a3b, type: 3}
 --- !u!4 &1980292585 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8460917321318470221, guid: 3964c23ae9838e84889ea6d65b5861aa, type: 3}
