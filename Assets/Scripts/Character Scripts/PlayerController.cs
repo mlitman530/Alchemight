@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
     private DrinkablePotion currentPotion;
     private ThrowablePotion throwablePotion;
 
-    private int numAttempts = 0;
+    private int numAttempts;
     private void Awake()
     {
         swordObject = GameObject.FindGameObjectWithTag("Melee");
@@ -69,6 +69,7 @@ public class PlayerController : MonoBehaviour
         cameraTransform = Camera.main.transform;
         playerController = GetComponent<PlayerController>();
         selectionManager = playerController.gameObject.GetComponent<SelectionManager>();
+        numAttempts = PlayerPrefs.GetInt("Attempts");
         SetStats();
     }
 
@@ -267,5 +268,10 @@ public class PlayerController : MonoBehaviour
             // TODO: SHOW DEATH SCENE
             GetComponent<Collider>().enabled = false;
         }
+    }
+
+    public int GetNumAttempts()
+    {
+        return numAttempts;
     }
 }
