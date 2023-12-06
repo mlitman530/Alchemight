@@ -18,7 +18,7 @@ public class Inventory : MonoBehaviour
     private GameObject goldTextObject;
     private TextMeshProUGUI goldText;
 
-    private int startingGoldCount = 20;
+    private int startingGoldCount = 0;
 
     public int currentGoldCount;
 

@@ -282,9 +282,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   heldCount: 0
-  purchaseLimit: 4
+  purchaseLimit: 3
   purchaseCount: 0
-  cost: 5
+  cost: 8
   isHeld: 0
   throwableVersion: {fileID: 0}
 --- !u!1 &65007657
@@ -1247,9 +1247,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 5
   heldCount: 0
-  purchaseLimit: 20
+  purchaseLimit: 10
   purchaseCount: 0
-  cost: 2
+  cost: 4
   isHeld: 0
   throwableVersion: {fileID: 0}
 --- !u!1 &655088048
@@ -4414,7 +4414,7 @@ MonoBehaviour:
   heldCount: 0
   purchaseLimit: 1
   purchaseCount: 0
-  cost: 5
+  cost: 10
   isHeld: 0
   throwableVersion: {fileID: 0}
 --- !u!1 &1372555485
@@ -4833,7 +4833,7 @@ MonoBehaviour:
   heldCount: 0
   purchaseLimit: 1
   purchaseCount: 0
-  cost: 8
+  cost: 10
   isHeld: 0
   throwableVersion: {fileID: 0}
 --- !u!1 &1531295549
