@@ -46,7 +46,7 @@ public class Damageable : MonoBehaviour
                 GetComponent<Collider>().enabled = false;
 
             }
-            else if (isDead) 
+            else if (isDead)
             {
                 //Debug.Log("DESTROYING ENEMY");
                 Destroy(this.gameObject);
@@ -77,24 +77,14 @@ public class Damageable : MonoBehaviour
         {
             UnityEngine.Cursor.lockState = CursorLockMode.None;
             UnityEngine.Cursor.visible = true;
-            
+
             SceneManager.LoadScene("Dead");
             return;
         }
 
         if (this.gameObject.tag == "BasicEnemy" || this.gameObject.tag == "TankEnemy" || this.gameObject.tag == "SmallerEnemy")
         {
-            animator.SetTrigger("die");
-            lootDrops = this.GetComponent<LootDrop>();
-
-            if (lootDrops != null)
-            {
-                lootDrops.setHeightOffset(this.gameObject.transform.position.y);
-                lootDrops.DropCoins(); // Trigger dropping coins on enemy death
-                lootDrops.DropPotions();
-                lootDrops.DropKey();
-            }
-            PlayerPrefs.SetInt("ZombiesKilled", PlayerPrefs.GetInt("ZombiesKilled") + 1);
+            StartCoroutine(waiter0());
         }
         else
         {
@@ -123,6 +113,23 @@ public class Damageable : MonoBehaviour
     public void Poison(int damageOverTime)
     {
         StartCoroutine(waiter2(2, damageOverTime));
+    }
+
+    IEnumerator waiter0()
+    {
+        animator.SetTrigger("die");
+        lootDrops = this.GetComponent<LootDrop>();
+
+        if (lootDrops != null)
+        {
+            lootDrops.setHeightOffset(this.gameObject.transform.position.y);
+            lootDrops.DropCoins(); // Trigger dropping coins on enemy death
+            lootDrops.DropPotions();
+            lootDrops.DropKey();
+        }
+        PlayerPrefs.SetInt("ZombiesKilled", PlayerPrefs.GetInt("ZombiesKilled") + 1);
+        yield return new WaitForSeconds(3);
+        Destroy(gameObject);
     }
 
     IEnumerator waiter(int seconds)
