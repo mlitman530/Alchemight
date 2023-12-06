@@ -12,9 +12,9 @@ public class Sword : MonoBehaviour
     public AudioSource[] audios;
     private bool cooldown = false;
 
-        [SerializeField] float range = 5f;
+    [SerializeField] float range = 5f;
     [SerializeField] float damage;
-    //[SerializeField] float swingDelay = .5f;
+    [SerializeField] float swingDelay = .5f;
 
     private void OnEnable()
     {
@@ -30,6 +30,11 @@ public class Sword : MonoBehaviour
     }
 
     public void Swing()
+    {
+        StartCoroutine(waiter(swingDelay));
+    }
+
+    IEnumerator waiter(float seconds)
     {
         if (!cooldown)
         {
@@ -47,13 +52,8 @@ public class Sword : MonoBehaviour
                 }
             }
             cooldown = true;
-            StartCoroutine(waiter());
+            yield return new WaitForSeconds(seconds);
+            cooldown = false;
         }
-    }
-
-    IEnumerator waiter()
-    {
-        yield return new WaitForSecondsRealtime(0.5f);
-        cooldown = false;
     }
 }

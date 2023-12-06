@@ -2121,6 +2121,7 @@ MonoBehaviour:
   - {fileID: 139716418}
   range: 5
   damage: 20
+  swingDelay: 0.5
 --- !u!95 &139716421
 Animator:
   serializedVersion: 5
@@ -7189,7 +7190,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 4e2f9e13e2b099841a2fcde00b62696c, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.702
+  m_Volume: 0.399
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -9099,7 +9100,7 @@ MonoBehaviour:
   - {fileID: 714222358}
   lootDrops: {fileID: 714222361}
   healthBar: {fileID: 518561092}
-  enemyHealthBar: {fileID: 0}
+  enemyHealthBar: {fileID: 1825347878}
 --- !u!65 &714222355
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17054,7 +17055,7 @@ MonoBehaviour:
   - {fileID: 1025939985}
   lootDrops: {fileID: 0}
   healthBar: {fileID: 518561092}
-  enemyHealthBar: {fileID: 0}
+  enemyHealthBar: {fileID: 441585823}
 --- !u!65 &1025939988
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -30536,7 +30537,7 @@ MonoBehaviour:
   - {fileID: 1977541543}
   lootDrops: {fileID: 1977541550}
   healthBar: {fileID: 518561092}
-  enemyHealthBar: {fileID: 0}
+  enemyHealthBar: {fileID: 207135383}
 --- !u!65 &1977541546
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -34335,7 +34336,6 @@ SceneRoots:
   - {fileID: 1489492260}
   - {fileID: 613156526}
   - {fileID: 224320712}
-  - {fileID: 1474333651}
   - {fileID: 1495095171}
   - {fileID: 1559914433}
   - {fileID: 1084908820}
@@ -34355,3 +34355,4 @@ SceneRoots:
   - {fileID: 1806321500}
   - {fileID: 770899135}
   - {fileID: 520512053}
+  - {fileID: 1474333651}
