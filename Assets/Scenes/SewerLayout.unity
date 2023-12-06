@@ -2121,6 +2121,7 @@ MonoBehaviour:
   - {fileID: 139716418}
   range: 5
   damage: 20
+  swingDelay: 0.5
 --- !u!95 &139716421
 Animator:
   serializedVersion: 5
@@ -9099,7 +9100,7 @@ MonoBehaviour:
   - {fileID: 714222358}
   lootDrops: {fileID: 714222361}
   healthBar: {fileID: 518561092}
-  enemyHealthBar: {fileID: 0}
+  enemyHealthBar: {fileID: 1825347878}
 --- !u!65 &714222355
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17054,7 +17055,7 @@ MonoBehaviour:
   - {fileID: 1025939985}
   lootDrops: {fileID: 0}
   healthBar: {fileID: 518561092}
-  enemyHealthBar: {fileID: 0}
+  enemyHealthBar: {fileID: 441585823}
 --- !u!65 &1025939988
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -30536,7 +30537,7 @@ MonoBehaviour:
   - {fileID: 1977541543}
   lootDrops: {fileID: 1977541550}
   healthBar: {fileID: 518561092}
-  enemyHealthBar: {fileID: 0}
+  enemyHealthBar: {fileID: 207135383}
 --- !u!65 &1977541546
 BoxCollider:
   m_ObjectHideFlags: 0
