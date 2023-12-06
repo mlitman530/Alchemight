@@ -15,6 +15,7 @@ public class PauseMenu : MonoBehaviour
         isPaused = !pauseMenu.activeSelf;
         Time.timeScale = isPaused ? 0f : 1f;
         audioSource.Pause();
+        UnityEngine.Cursor.visible = true;
         pauseMenu.SetActive(true);
         UI.SetActive(false);
     }
@@ -28,6 +29,7 @@ public class PauseMenu : MonoBehaviour
         isPaused = !pauseMenu.activeSelf;
         Time.timeScale = isPaused ? 0f : 1f;
         audioSource.Play();
+        UnityEngine.Cursor.visible = false;
         pauseMenu.SetActive(false);
         UI.SetActive(true);
     }

@@ -20,7 +20,7 @@ public class PlayerDie : MonoBehaviour
         // PlayerPrefs.SetInt("NumJumpPotions", inv[4]);
         // PlayerPrefs.SetInt("SwordPurchased", inv[0]);
         // PlayerPrefs.SetInt("NumFirePotions", inv[1]);
-
+        UnityEngine.Cursor.visible = true;
         PlayerPrefs.SetFloat("Strength", stats["Strength"]);
         PlayerPrefs.SetFloat("Speed", stats["Speed"]);
         PlayerPrefs.SetFloat("Jump", stats["Jump"]);

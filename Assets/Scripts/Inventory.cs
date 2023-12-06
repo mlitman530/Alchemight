@@ -5,7 +5,9 @@ using System.Linq;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+#if UNITY_EDITOR
 using static UnityEditor.Progress;
+#endif
 
 public class Inventory : MonoBehaviour
 {
