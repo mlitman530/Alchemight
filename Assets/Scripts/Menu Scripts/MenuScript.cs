@@ -16,6 +16,7 @@ public class MenuScript : MonoBehaviour
     }
     private void ResetPlayerPrefs()
     {
+        PlayerPrefs.SetInt("HighestWave", 0);
         PlayerPrefs.SetInt("NumHealthPotions", 0);
         PlayerPrefs.SetInt("NumStrengthPotions", 0);
         PlayerPrefs.SetInt("NumSpeedPotions", 0);

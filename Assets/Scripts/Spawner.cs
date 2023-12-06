@@ -21,6 +21,7 @@ public class Spawner : MonoBehaviour
     void Start()
     {
         currentWave = 1;
+        PlayerPrefs.SetInt("Wave", currentWave);
         currentZombiesKilled = 0;
         zombiesRequiredForNextWave = scalingFactor * currentWave;
 
@@ -41,6 +42,7 @@ public class Spawner : MonoBehaviour
         if (currentZombiesKilled > zombiesRequiredForNextWave)
         {
             currentWave++;
+            PlayerPrefs.SetInt("Wave", currentWave);
             zombiesRequiredForNextWave = scalingFactor * currentWave;
 
             // Stop the current coroutine and start a new one for the next wave

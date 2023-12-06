@@ -14,8 +14,13 @@ public class DeathScreen : MonoBehaviour
     {
         //Debug.Log("Current gold (on death screen): " + PlayerPrefs.GetInt("Gold"));
         attemptsText.text = "Attempts: " + PlayerPrefs.GetInt("Attempts").ToString();
-        waveReachedText.text = "Wave Reached: " + PlayerPrefs.GetInt("WaveReached", 0).ToString();
-        highestWaveText.text = "Highest Wave Reached: " + PlayerPrefs.GetInt("HighestWaveReached", 0).ToString();
+        waveReachedText.text = "Wave Reached: " + PlayerPrefs.GetInt("Wave").ToString();
+        PlayerPrefs.SetInt("WaveReached", PlayerPrefs.GetInt("Wave"));
+        if (PlayerPrefs.GetInt("WaveReached") > PlayerPrefs.GetInt("HighestWave"))
+        {
+            PlayerPrefs.SetInt("HighestWave", PlayerPrefs.GetInt("WaveReached"));
+        }
+        highestWaveText.text = "Highest Wave Reached: " + PlayerPrefs.GetInt("HighestWave").ToString();
     }
 
     public void BackToShop()
