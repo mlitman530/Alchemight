@@ -18,6 +18,7 @@ public class Damageable : MonoBehaviour
     public LootDrop lootDrops;
     public UnityEngine.UI.Slider healthBar;
     public UnityEngine.UI.Slider enemyHealthBar;
+    public bool isDead;
 
 
     // Start is called before the first frame update
@@ -25,6 +26,7 @@ public class Damageable : MonoBehaviour
     {
         currentHealth = maxHealth;
         currentPlayerHealth = maxPlayerHealth;
+        isDead = false;
     }
 
     public void TakeDamage(float damage)
@@ -37,10 +39,17 @@ public class Damageable : MonoBehaviour
             currentHealth -= damage;
             enemyHealthBar.value = currentHealth; // enemy health bar
 
-            if (currentHealth <= 0)
+            if (currentHealth <= 0 && !isDead)
             {
                 Die();
+                isDead = true;
+                Debug.Log("SETTING ENEMY ISDEAD TO TRUE");
                 GetComponent<Collider>().enabled = false;
+            }
+            else if (isDead) 
+            {
+                Debug.Log("DESTROYING ENEMY");
+                Destroy(this.gameObject);
             }
             else
             {
