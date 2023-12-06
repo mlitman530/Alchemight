@@ -30,26 +30,14 @@ public class ItemPurchase : MonoBehaviour
     }
     void Start()
     {
-
         purchaseLimitObject.SetActive(false);
         insufficientGoldObject.SetActive(false);
-
-
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     private void getId()
     {
         Item purchasedItem = GetComponentInChildren<Item>();
-
         itemId = purchasedItem.id;
-        Debug.Log(itemId);
     }
 
     private bool checkPurchaseLimit()
@@ -75,6 +63,7 @@ public class ItemPurchase : MonoBehaviour
 
     private bool checkCost()
     {
+        Debug.Log("Item cost: " + GetComponentInChildren<Item>().cost);
         if (GetComponentInChildren<Item>().cost > PlayerPrefs.GetInt("Gold"))
         {
             Debug.Log("Not enough gold");
@@ -86,22 +75,20 @@ public class ItemPurchase : MonoBehaviour
         {
             Debug.Log("Item Can Be Purchased");
             PlayerPrefs.SetInt("Gold", PlayerPrefs.GetInt("Gold") - GetComponentInChildren<Item>().cost);
-            
+            return true;
         }
-        return true;
+        return false;
     }
 
     private void addItemToInventory()
     {
         playerInventory.inventory.Add(itemId);
         audioSource.PlayOneShot(sounds[1]);
-        Debug.Log("Inventory Count: " + playerInventory.inventory.Count);
+        //Debug.Log("Inventory Count: " + playerInventory.inventory.Count);
         if (PurchasableItems.itemRegistry.ContainsKey(itemId))
         {
             GameObject itemObject = PurchasableItems.itemRegistry[itemId];
-
-
-            Debug.Log("Item added to inventory: " + itemObject.name);
+            //Debug.Log("Item added to inventory: " + itemObject.name);
         }
         else
         {
@@ -120,7 +107,6 @@ public class ItemPurchase : MonoBehaviour
         if (checkPurchaseLimit() && checkCost())
         {
             addItemToInventory();
-
         }
         //clearItem();
     }

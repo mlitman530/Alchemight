@@ -338,7 +338,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cost: {fileID: 0}
-  cost: 0
+  cost: 4
   parent: {fileID: 0}
   item: {fileID: 0}
   parentButton: {fileID: 0}
@@ -1742,7 +1742,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cost: {fileID: 0}
-  cost: 0
+  cost: 10
   parent: {fileID: 0}
   item: {fileID: 0}
   parentButton: {fileID: 0}
@@ -3227,7 +3227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cost: {fileID: 0}
-  cost: 0
+  cost: 50
   parent: {fileID: 0}
   item: {fileID: 0}
   parentButton: {fileID: 0}
@@ -3719,7 +3719,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cost: {fileID: 0}
-  cost: 0
+  cost: 4
   parent: {fileID: 0}
   item: {fileID: 0}
   parentButton: {fileID: 0}
@@ -5922,7 +5922,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cost: {fileID: 0}
-  cost: 0
+  cost: 8
   parent: {fileID: 0}
   item: {fileID: 0}
   parentButton: {fileID: 0}
@@ -6210,7 +6210,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cost: {fileID: 0}
-  cost: 0
+  cost: 10
   parent: {fileID: 0}
   item: {fileID: 0}
   parentButton: {fileID: 0}

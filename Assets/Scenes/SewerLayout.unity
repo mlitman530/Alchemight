@@ -3684,7 +3684,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tempStrength: 0
   tempSpeed: 0
-  tempHealth: 5
+  tempHealth: 10
   tempJump: 0
   controller: {fileID: 1028925480}
 --- !u!4 &254528451 stripped

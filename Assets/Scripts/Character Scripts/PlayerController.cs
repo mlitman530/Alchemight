@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
     private Transform cameraTransform;
     private Vector2 currentInputVector;
     private Vector2 animationVelocity;
+    private PlayerDie playerDie;
 
     private PauseMenu pauseMenu;
 
@@ -70,12 +71,14 @@ public class PlayerController : MonoBehaviour
         cameraTransform = Camera.main.transform;
         playerController = GetComponent<PlayerController>();
         selectionManager = playerController.gameObject.GetComponent<SelectionManager>();
+        playerDie = GetComponent<PlayerDie>();
         numAttempts = PlayerPrefs.GetInt("Attempts");
         SetStats();
     }
 
     void Update()
     {
+        healthBar.value = currentPlayerHealth;
         groundedPlayer = controller.isGrounded;
         // Make sure the player's velocity isn't negative while on the ground
         if (groundedPlayer && playerVelocity.y < 0)
@@ -263,10 +266,9 @@ public class PlayerController : MonoBehaviour
     {
 
         currentPlayerHealth -= damage;
-        healthBar.value = currentPlayerHealth;
         if (currentPlayerHealth <= 0)
         {
-            // TODO: SHOW DEATH SCENE
+            playerDie.ToShop();
             GetComponent<Collider>().enabled = false;
         }
     }
