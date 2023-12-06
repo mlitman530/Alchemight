@@ -95,35 +95,52 @@ public class Damageable : MonoBehaviour
     public void Freeze()
     {
         animator.SetTrigger("freeze");
+        // float startTime = Time.time;
+        // float freezeDuration = 3f;
+        // Debug.Log("Wait start");
+
+
+        // while (Time.time < startTime + freezeDuration)
+        // {
+        //     Debug.Log("Timer: " + Time.time);
+        //     // Perform other actions during the freeze here if needed.
+        //     // This loop will continue for freezeDuration seconds.
+        // }
+        // Debug.Log("Wait end");
         StartCoroutine(waiter(3));
-        animator.SetBool("isPatrolling", true);
+        
     }
 
     public void Poison(int damageOverTime)
     {
-        for (int i = 0; i < 10; i++)
-        {
-            currentHealth -= damageOverTime;
-            if (currentHealth <= 0)
-            {
-                //play enemy death animation
-                animator.SetTrigger("die");
-
-            }
-            else
-            {
-                //play hit animation
-                animator.SetTrigger("damage");
-            }
-            StartCoroutine(waiter(1));
-        }
+        StartCoroutine(waiter2(2, damageOverTime));
     }
 
     IEnumerator waiter(int seconds)
     {
         Debug.Log("Wait start");
         yield return new WaitForSeconds(seconds);
+        animator.SetBool("isPatrolling", true);
         Debug.Log("Wait end");
+    }
+
+    IEnumerator waiter2(int seconds, int damageOverTime)
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            currentHealth -= damageOverTime;
+            enemyHealthBar.value = currentHealth; // enemy health bar
+            if (currentHealth <= 0)
+            {
+                Die();
+                GetComponent<Collider>().enabled = false;
+            }
+            else
+            {
+                animator.SetTrigger("damage");
+            }
+            yield return new WaitForSeconds(seconds);
+        }
     }
 
 }

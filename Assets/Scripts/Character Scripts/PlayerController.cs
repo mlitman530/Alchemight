@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine.UI;
 
 /// <summary>
@@ -52,7 +53,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         swordObject = GameObject.FindGameObjectWithTag("Melee");
-       
+
         weaponHolder = GameObject.Find("Weapon Holder");
         weaponSwitcher = weaponHolder.GetComponent<WeaponSwitch>();
         throwablePotion = GetComponent<ThrowablePotion>();
@@ -214,12 +215,12 @@ public class PlayerController : MonoBehaviour
             jumpHeight += PlayerPrefs.GetInt("JumpAddition") + 1;
             playerMaxHealth += PlayerPrefs.GetInt("HealthAddition");
         }
-        
+
         Debug.Log("Strength: " + playerStrength + " Speed: " + playerSpeed + " Jump: " + jumpHeight);
-        PlayerPrefs.SetInt("Strength", (int) playerStrength);
-        PlayerPrefs.SetInt("Speed", (int) playerSpeed);
-        PlayerPrefs.SetInt("Health", (int) playerMaxHealth);
-        PlayerPrefs.SetInt("Jump", (int) jumpHeight);
+        PlayerPrefs.SetInt("Strength", (int)playerStrength);
+        PlayerPrefs.SetInt("Speed", (int)playerSpeed);
+        PlayerPrefs.SetInt("Health", (int)playerMaxHealth);
+        PlayerPrefs.SetInt("Jump", (int)jumpHeight);
     }
 
     public void ApplyStats(int strength, int speed, int jump, int health)
@@ -257,10 +258,10 @@ public class PlayerController : MonoBehaviour
         PlayerPrefs.SetInt("NumPoisonPotions", 0);
         PlayerPrefs.SetInt("NumNukePotions", 0);
     }
-    
+
     public void TakeDamage(float damage)
     {
-        
+
         currentPlayerHealth -= damage;
         healthBar.value = currentPlayerHealth;
         if (currentPlayerHealth <= 0)
