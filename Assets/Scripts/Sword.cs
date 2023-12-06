@@ -26,7 +26,7 @@ public class Sword : MonoBehaviour
 
     public void Update()
     {
-        damage = PlayerPrefs.GetInt("Strength");
+        damage = (PlayerPrefs.GetInt("StrengthForRun") + PlayerPrefs.GetInt("tempStrength")) / 2;
     }
 
     public void Swing()
