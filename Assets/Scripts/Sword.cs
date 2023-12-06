@@ -12,7 +12,7 @@ public class Sword : MonoBehaviour
     public AudioSource[] audios;
     private bool cooldown = false;
 
-        [SerializeField] float range = 5f;
+    [SerializeField] float range = 5f;
     [SerializeField] float damage;
     //[SerializeField] float swingDelay = .5f;
 
@@ -31,29 +31,19 @@ public class Sword : MonoBehaviour
 
     public void Swing()
     {
-        if (!cooldown)
+        RaycastHit hit;
+        audios[0].Play();
+        anim.SetTrigger("Swing");
+        if (Physics.Raycast(cam.position, cam.forward, out hit, range))
         {
-            RaycastHit hit;
-            audios[0].Play();
-            anim.SetTrigger("Swing");
-            if (Physics.Raycast(cam.position, cam.forward, out hit, range))
+
+            //print(hit.collider.name);
+            if (hit.collider.GetComponent<Damageable>() != null)
             {
-
-                //print(hit.collider.name);
-                if (hit.collider.GetComponent<Damageable>() != null)
-                {
-                    audios[1].Play();
-                    hit.collider.GetComponent<Damageable>().TakeDamage(damage);
-                }
+                audios[1].Play();
+                hit.collider.GetComponent<Damageable>().TakeDamage(damage);
             }
-            cooldown = true;
-            StartCoroutine(waiter());
         }
-    }
 
-    IEnumerator waiter()
-    {
-        yield return new WaitForSecondsRealtime(0.5f);
-        cooldown = false;
     }
 }

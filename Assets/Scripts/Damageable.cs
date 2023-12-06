@@ -95,8 +95,20 @@ public class Damageable : MonoBehaviour
     public void Freeze()
     {
         animator.SetTrigger("freeze");
+        // float startTime = Time.time;
+        // float freezeDuration = 3f;
+        // Debug.Log("Wait start");
+
+
+        // while (Time.time < startTime + freezeDuration)
+        // {
+        //     Debug.Log("Timer: " + Time.time);
+        //     // Perform other actions during the freeze here if needed.
+        //     // This loop will continue for freezeDuration seconds.
+        // }
+        // Debug.Log("Wait end");
         StartCoroutine(waiter(3));
-        animator.SetBool("isPatrolling", true);
+        
     }
 
     public void Poison(int damageOverTime)
@@ -123,6 +135,7 @@ public class Damageable : MonoBehaviour
     {
         Debug.Log("Wait start");
         yield return new WaitForSeconds(seconds);
+        animator.SetBool("isPatrolling", true);
         Debug.Log("Wait end");
     }
 
