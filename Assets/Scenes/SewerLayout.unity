@@ -23081,7 +23081,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tempStrength: 0
-  tempSpeed: 5
+  tempSpeed: 4
   tempHealth: 0
   tempJump: 0
   controller: {fileID: 1028925480}

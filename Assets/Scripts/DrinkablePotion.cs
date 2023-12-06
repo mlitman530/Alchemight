@@ -23,15 +23,15 @@ public class DrinkablePotion : MonoBehaviour
 
     void Start()
     {
-        PlayerPrefs.SetInt("Current Strength", PlayerPrefs.GetInt("Strength"));
-        PlayerPrefs.SetInt("Current Speed", PlayerPrefs.GetInt("Speed"));
-        PlayerPrefs.SetInt("Current Health", PlayerPrefs.GetInt("Health"));
-        PlayerPrefs.SetInt("Current Jump", PlayerPrefs.GetInt("Jump"));
+        currentStrength = PlayerPrefs.GetInt("StrengthForRun");
+        currentSpeed = PlayerPrefs.GetInt("SpeedForRun");
+        currentHealth = PlayerPrefs.GetInt("HealthForRun");
+        currentJump = PlayerPrefs.GetInt("JumpForRun");
 
-        currentStrength = PlayerPrefs.GetInt("Strength");
-        currentSpeed = PlayerPrefs.GetInt("Speed");
-        currentHealth = PlayerPrefs.GetInt("Health");
-        currentJump = PlayerPrefs.GetInt("Jump");
+        PlayerPrefs.SetInt("Current Strength", currentStrength);
+        PlayerPrefs.SetInt("Current Speed", currentSpeed);
+        PlayerPrefs.SetInt("Current Health", currentHealth);
+        PlayerPrefs.SetInt("Current Jump", currentJump);
 
         hotbarManager = FindObjectOfType<HotbarManager>();  // Find the HotbarManager
     }

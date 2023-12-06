@@ -23,10 +23,10 @@ public class MenuScript : MonoBehaviour
         PlayerPrefs.SetInt("SwordPurchased", 0);
         PlayerPrefs.SetInt("NumFirePotions", 0);
         PlayerPrefs.SetInt("NumFreezePotions", 0);
-        PlayerPrefs.SetInt("Strength", 5);
-        PlayerPrefs.SetInt("Speed", 5);
-        PlayerPrefs.SetInt("Health", 100);
-        PlayerPrefs.SetInt("Jump", 1);
+        PlayerPrefs.SetInt("StrengthForRun", 5);
+        PlayerPrefs.SetInt("SpeedForRun", 5);
+        PlayerPrefs.SetFloat("HealthForRun", 100);
+        PlayerPrefs.SetInt("JumpForRun", 1);
         PlayerPrefs.SetInt("Gold", 10);
         PlayerPrefs.SetInt("Attempts", 0);
         PlayerPrefs.SetInt("ZombiesKilled", 0);

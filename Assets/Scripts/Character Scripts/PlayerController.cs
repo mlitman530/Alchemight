@@ -70,13 +70,13 @@ public class PlayerController : MonoBehaviour
         playerController = GetComponent<PlayerController>();
         selectionManager = playerController.gameObject.GetComponent<SelectionManager>();
         playerDie = GetComponent<PlayerDie>();
-        currentPlayerHealth = playerMaxHealth;
         SetStats();
+        currentPlayerHealth = playerMaxHealth;
     }
 
     void Update()
     {
-        healthBar.value = currentPlayerHealth;
+        healthBar.value = (currentPlayerHealth/playerMaxHealth)*100;
         groundedPlayer = controller.isGrounded;
         // Make sure the player's velocity isn't negative while on the ground
         if (groundedPlayer && playerVelocity.y < 0)
@@ -207,24 +207,24 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Attempts: " + PlayerPrefs.GetInt("Attempts"));
         if (PlayerPrefs.GetInt("Attempts") == 0)
         {
-            playerStrength = PlayerPrefs.GetInt("Strength") + PlayerPrefs.GetInt("InitialStrength") + PlayerPrefs.GetInt("StrengthAddition");
-            playerSpeed = PlayerPrefs.GetInt("Speed") + (PlayerPrefs.GetInt("InitialSpeed") / 2) + PlayerPrefs.GetInt("SpeedAddition");
-            jumpHeight = PlayerPrefs.GetInt("Jump") + (PlayerPrefs.GetInt("InitialJump") / 5) + PlayerPrefs.GetInt("JumpAddition");
-            playerMaxHealth += PlayerPrefs.GetFloat("MaxHealth") + (PlayerPrefs.GetInt("InitialMaxHealth") * 5) + PlayerPrefs.GetInt("HealthAddition");
+            playerStrength = PlayerPrefs.GetInt("StrengthForRun") + PlayerPrefs.GetInt("InitialStrength") + PlayerPrefs.GetInt("StrengthAddition");
+            playerSpeed = PlayerPrefs.GetInt("SpeedForRun") + (PlayerPrefs.GetInt("InitialSpeed") / 2) + PlayerPrefs.GetInt("SpeedAddition");
+            jumpHeight = PlayerPrefs.GetInt("JumpForRun") + (PlayerPrefs.GetInt("InitialJump") / 5) + PlayerPrefs.GetInt("JumpAddition");
+            playerMaxHealth = PlayerPrefs.GetFloat("HealthForRun") + (PlayerPrefs.GetInt("InitialMaxHealth") * 5) + PlayerPrefs.GetInt("HealthAddition");
         }
         else
         {
-            playerStrength = PlayerPrefs.GetInt("Strength") + PlayerPrefs.GetInt("StrengthAddition");
-            playerSpeed = PlayerPrefs.GetInt("Speed") + PlayerPrefs.GetInt("SpeedAddition");
-            jumpHeight = PlayerPrefs.GetInt("Jump") + PlayerPrefs.GetInt("JumpAddition");
-            playerMaxHealth = PlayerPrefs.GetFloat("MaxHealth") + PlayerPrefs.GetInt("HealthAddition");
+            playerStrength = PlayerPrefs.GetInt("StrengthForRun") + PlayerPrefs.GetInt("StrengthAddition");
+            playerSpeed = PlayerPrefs.GetInt("SpeedForRun") + PlayerPrefs.GetInt("SpeedAddition");
+            jumpHeight = PlayerPrefs.GetInt("JumpForRun") + PlayerPrefs.GetInt("JumpAddition");
+            playerMaxHealth = PlayerPrefs.GetFloat("HealthForRun") + PlayerPrefs.GetInt("HealthAddition");
         }
 
-        Debug.Log("Strength: " + playerStrength + " Speed: " + playerSpeed + " Jump: " + jumpHeight);
-        PlayerPrefs.SetInt("Strength", (int)playerStrength);
-        PlayerPrefs.SetInt("Speed", (int)playerSpeed);
-        PlayerPrefs.SetInt("Health", (int)playerMaxHealth);
-        PlayerPrefs.SetInt("Jump", (int)jumpHeight);
+        Debug.Log("Strength: " + playerStrength + " Speed: " + playerSpeed + " Jump: " + jumpHeight + "Health: " + playerMaxHealth);
+        PlayerPrefs.SetInt("StrengthForRun", (int)playerStrength);
+        PlayerPrefs.SetInt("SpeedForRun", (int)playerSpeed);
+        PlayerPrefs.SetFloat("HealthForRun", playerMaxHealth);
+        PlayerPrefs.SetInt("JumpForRun", (int)jumpHeight);
     }
 
     public void ApplyStats(int strength, int speed, int jump, int health)
@@ -270,10 +270,10 @@ public class PlayerController : MonoBehaviour
         currentPlayerHealth -= damage;
         if (currentPlayerHealth <= 0)
         {
-            PlayerPrefs.SetInt("Strength", (int)playerStrength);
-            PlayerPrefs.SetInt("Speed", (int)playerSpeed);
-            PlayerPrefs.SetInt("Health", (int)playerMaxHealth);
-            PlayerPrefs.SetInt("Jump", (int)jumpHeight);
+            // PlayerPrefs.SetInt("Strength", (int)playerStrength);
+            // PlayerPrefs.SetInt("Speed", (int)playerSpeed);
+            // PlayerPrefs.SetInt("Health", (int)playerMaxHealth);
+            // PlayerPrefs.SetInt("Jump", (int)jumpHeight);
             playerDie.ToShop();
             GetComponent<Collider>().enabled = false;
         }
