@@ -48,21 +48,21 @@ public class DrinkablePotion : MonoBehaviour
         Item potionItem = GetComponent<Item>();
         if (potionItem.isHeld)
         {
-            currentStrength = PlayerPrefs.GetInt("Strength");
-            currentSpeed = PlayerPrefs.GetInt("Speed");
-            currentHealth = PlayerPrefs.GetInt("Health");
-            currentJump = PlayerPrefs.GetInt("Jump");
+            currentStrength = PlayerPrefs.GetInt("Current Strength");
+            currentSpeed = PlayerPrefs.GetInt("Current Speed");
+            currentHealth = PlayerPrefs.GetInt("Current Health");
+            currentJump = PlayerPrefs.GetInt("Current Jump");
 
             PlayerPrefs.SetInt("Current Strength", currentStrength + tempStrength);
             PlayerPrefs.SetInt("Current Speed", currentSpeed + tempSpeed);
             PlayerPrefs.SetInt("Current Health", currentHealth + tempHealth);
             PlayerPrefs.SetInt("Current Jump", currentJump + (tempJump / 5));
             controller.currentPlayerHealth += tempHealth;
+            controller.ApplyStats(currentStrength + tempStrength, currentSpeed + tempSpeed, currentJump + (tempJump / 5), currentHealth + tempHealth);
             potionItem.SetHeldCount(potionItem.heldCount - 1);
             hotbarManager.IncrementHeldCount(potionItem.id, potionItem.heldCount);
             uses++;
             trackTempStats();
-            controller.ApplyStats(currentStrength, currentSpeed, currentJump, currentHealth);
         }
     }
 

@@ -233,6 +233,7 @@ public class PlayerController : MonoBehaviour
         playerSpeed = speed;
         jumpHeight = jump;
         playerMaxHealth = health;
+        Debug.Log("Stats Applied. Strength: " + playerStrength + " Speed: " + playerSpeed + " Jump: " + jumpHeight + "Health: " + playerMaxHealth);
     }
 
     /*public void SetDefaultStats()
