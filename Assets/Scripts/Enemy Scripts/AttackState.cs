@@ -20,7 +20,7 @@ public class AttackState : StateMachineBehaviour
     private Damageable damageable;
     private PlayerController playerDamageable; 
     private float lastAttackTime;
-    public float attackCooldown = 3f;
+    public float attackCooldown = 1f;
     
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -63,12 +63,12 @@ public class AttackState : StateMachineBehaviour
     {
         animator.transform.LookAt(new Vector3(player.transform.position.x, 0, player.transform.position.z));
         float distance = Vector3.Distance(player.position, animator.transform.position);
-        if (distance > 6.0f) {
+        if (distance > 3.5f) {
             animator.SetBool("isAttacking", false);
         }
-        if (distance < 5.5f) 
+        if (distance < 3.5f) 
         {
-            if (Time.time - lastAttackTime > attackCooldown && distance <= 5.5f)
+            if (Time.time - lastAttackTime > attackCooldown && distance <= 3.5f)
             {
                 AttackPlayer();
                 lastAttackTime = Time.time;
