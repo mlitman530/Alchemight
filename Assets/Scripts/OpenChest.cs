@@ -44,57 +44,59 @@ public class OpenChest : MonoBehaviour
 
         heightDif = this.transform.position.y;
         int randomNum = Random.Range(0, 100);
-        if (randomNum >= 95)
+        if (color != "Starter")
         {
-            int potionToDrop = Random.Range(0, potionList.Length);
-            for (int i = 0; i < 20; i++)
+            if (randomNum >= 95)
             {
-                GameObject DroppedPotion = Instantiate(potionList[potionToDrop], dropPosition, Quaternion.identity);
+                int potionToDrop = Random.Range(0, potionList.Length);
+                for (int i = 0; i < 20; i++)
+                {
+                    GameObject DroppedPotion = Instantiate(potionList[potionToDrop], dropPosition, Quaternion.identity);
 
-                DroppedPotion.GetComponent<ItemBobber>().setHeightOffset(heightDif - 1);
+                    DroppedPotion.GetComponent<ItemBobber>().setHeightOffset(heightDif - 1);
+                }
+            }
+            if (randomNum < 95 && randomNum >= 85)
+            {
+                int potionToDrop = Random.Range(0, potionList.Length);
+                for (int i = 0; i < 15; i++)
+                {
+                    GameObject DroppedPotion = Instantiate(potionList[potionToDrop], dropPosition, Quaternion.identity);
+
+                    DroppedPotion.GetComponent<ItemBobber>().setHeightOffset(heightDif - 1);
+                }
+            }
+            if (randomNum < 85 && randomNum >= 65)
+            {
+                int potionToDrop = Random.Range(0, potionList.Length);
+                for (int i = 0; i < 10; i++)
+                {
+                    GameObject DroppedPotion = Instantiate(potionList[potionToDrop], dropPosition, Quaternion.identity);
+
+                    DroppedPotion.GetComponent<ItemBobber>().setHeightOffset(heightDif - 1);
+                }
+            }
+            if (randomNum < 65 && randomNum >= 35)
+            {
+                int potionToDrop = Random.Range(0, potionList.Length);
+                for (int i = 0; i < 6; i++)
+                {
+                    GameObject DroppedPotion = Instantiate(potionList[potionToDrop], dropPosition, Quaternion.identity);
+
+                    DroppedPotion.GetComponent<ItemBobber>().setHeightOffset(heightDif - 1);
+                }
+            }
+            if (randomNum < 35 && randomNum >= 0)
+            {
+                int potionToDrop = Random.Range(0, potionList.Length);
+                for (int i = 0; i < 3; i++)
+                {
+                    GameObject DroppedPotion = Instantiate(potionList[potionToDrop], dropPosition, Quaternion.identity);
+
+                    DroppedPotion.GetComponent<ItemBobber>().setHeightOffset(heightDif - 1);
+                }
             }
         }
-        if (randomNum < 95 && randomNum >= 85)
-        {
-            int potionToDrop = Random.Range(0, potionList.Length);
-            for (int i = 0; i < 15; i++)
-            {
-                GameObject DroppedPotion = Instantiate(potionList[potionToDrop], dropPosition, Quaternion.identity);
-
-                DroppedPotion.GetComponent<ItemBobber>().setHeightOffset(heightDif - 1);
-            }
-        }
-        if (randomNum < 85 && randomNum >= 65)
-        {
-            int potionToDrop = Random.Range(0, potionList.Length);
-            for (int i = 0; i < 10; i++)
-            {
-                GameObject DroppedPotion = Instantiate(potionList[potionToDrop], dropPosition, Quaternion.identity);
-
-                DroppedPotion.GetComponent<ItemBobber>().setHeightOffset(heightDif - 1);
-            }
-        }
-        if (randomNum < 65 && randomNum >= 35)
-        {
-            int potionToDrop = Random.Range(0, potionList.Length);
-            for (int i = 0; i < 6; i++)
-            {
-                GameObject DroppedPotion = Instantiate(potionList[potionToDrop], dropPosition, Quaternion.identity);
-
-                DroppedPotion.GetComponent<ItemBobber>().setHeightOffset(heightDif - 1);
-            }
-        }
-        if (randomNum < 35 && randomNum >= 0)
-        {
-            int potionToDrop = Random.Range(0, potionList.Length);
-            for (int i = 0; i < 3; i++)
-            {
-                GameObject DroppedPotion = Instantiate(potionList[potionToDrop], dropPosition, Quaternion.identity);
-
-                DroppedPotion.GetComponent<ItemBobber>().setHeightOffset(heightDif - 1);
-            }
-        }
-
         if(color == "Gold")
         {
             for(int i = 0; i < 50; i++)
@@ -118,6 +120,16 @@ public class OpenChest : MonoBehaviour
         }
         if (color == "Red")
         {
+            for (int i = 0; i < 5; i++)
+            {
+                DropCoins();
+            }
+        }
+        if (color == "Starter")
+        {
+            int potionToDrop = Random.Range(0, 4);
+            GameObject DroppedPotion = Instantiate(potionList[potionToDrop], dropPosition, Quaternion.identity);
+            DroppedPotion.GetComponent<ItemBobber>().setHeightOffset(heightDif - 1);
             for (int i = 0; i < 5; i++)
             {
                 DropCoins();
@@ -157,6 +169,7 @@ public class OpenChest : MonoBehaviour
                 audioSource.PlayOneShot(chestOpen);
                 DropPotions("Gold");
                 player.GetComponent<KeyTracker>().goldKeyCount--;
+                PlayerPrefs.SetInt("GoldChestOpened", 1);
                 // Destroy the pickup object
                 Destroy(gameObject);
             }
@@ -165,6 +178,7 @@ public class OpenChest : MonoBehaviour
                 audioSource.PlayOneShot(chestOpen);
                 DropPotions("Black");
                 player.GetComponent<KeyTracker>().blackKeyCount--;
+                PlayerPrefs.SetInt("BlackChestOpened", 1);
                 // Destroy the pickup object
                 Destroy(gameObject);
             }
@@ -173,6 +187,7 @@ public class OpenChest : MonoBehaviour
                 audioSource.PlayOneShot(chestOpen);
                 DropPotions("Green");
                 player.GetComponent<KeyTracker>().greenKeyCount--;
+                PlayerPrefs.SetInt("GreenChestOpened", 1);
                 // Destroy the pickup object
                 Destroy(gameObject);
             }
@@ -181,6 +196,14 @@ public class OpenChest : MonoBehaviour
                 audioSource.PlayOneShot(chestOpen);
                 DropPotions("Red");
                 player.GetComponent<KeyTracker>().redKeyCount--;
+                PlayerPrefs.SetInt("RedChestOpened", 1);
+                // Destroy the pickup object
+                Destroy(gameObject);
+            }
+            else if (this.tag == "Starter")
+            {
+                audioSource.PlayOneShot(chestOpen);
+                DropPotions("Starter");
                 // Destroy the pickup object
                 Destroy(gameObject);
             }

@@ -20,6 +20,7 @@ public class DeathScreen : MonoBehaviour
 
     public void BackToShop()
     {
+        PlayerPrefs.SetInt("ZombiesKilled", 0);
         SceneManager.LoadScene("Shop");
     }
 

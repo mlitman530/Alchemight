@@ -16,6 +16,7 @@ TagManager:
   - Green
   - Red
   - GoldChest
+  - Starter
   layers:
   - Default
   - TransparentFX

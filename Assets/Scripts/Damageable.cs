@@ -77,6 +77,7 @@ public class Damageable : MonoBehaviour
         {
             UnityEngine.Cursor.lockState = CursorLockMode.None;
             UnityEngine.Cursor.visible = true;
+            
             SceneManager.LoadScene("Dead");
             return;
         }
@@ -93,6 +94,7 @@ public class Damageable : MonoBehaviour
                 lootDrops.DropPotions();
                 lootDrops.DropKey();
             }
+            PlayerPrefs.SetInt("ZombiesKilled", PlayerPrefs.GetInt("ZombiesKilled") + 1);
         }
         else
         {

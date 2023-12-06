@@ -25,5 +25,6 @@ public class MenuScript : MonoBehaviour
         PlayerPrefs.SetInt("NumFreezePotions", 0);
         PlayerPrefs.SetInt("Gold", 0);
         PlayerPrefs.SetInt("Attempts", 0);
+        PlayerPrefs.SetInt("ZombiesKilled", 0);
     }
 }
