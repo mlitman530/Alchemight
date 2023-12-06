@@ -14,7 +14,7 @@ public class Sword : MonoBehaviour
 
     [SerializeField] float range = 5f;
     [SerializeField] float damage;
-    //[SerializeField] float swingDelay = .5f;
+    [SerializeField] float swingDelay = .5f;
 
     private void OnEnable()
     {
@@ -31,19 +31,29 @@ public class Sword : MonoBehaviour
 
     public void Swing()
     {
-        RaycastHit hit;
-        audios[0].Play();
-        anim.SetTrigger("Swing");
-        if (Physics.Raycast(cam.position, cam.forward, out hit, range))
+        StartCoroutine(waiter(swingDelay));
+    }
+
+    IEnumerator waiter(float seconds)
+    {
+        if (!cooldown)
         {
-
-            //print(hit.collider.name);
-            if (hit.collider.GetComponent<Damageable>() != null)
+            RaycastHit hit;
+            audios[0].Play();
+            anim.SetTrigger("Swing");
+            if (Physics.Raycast(cam.position, cam.forward, out hit, range))
             {
-                audios[1].Play();
-                hit.collider.GetComponent<Damageable>().TakeDamage(damage);
-            }
-        }
 
+                //print(hit.collider.name);
+                if (hit.collider.GetComponent<Damageable>() != null)
+                {
+                    audios[1].Play();
+                    hit.collider.GetComponent<Damageable>().TakeDamage(damage);
+                }
+            }
+            cooldown = true;
+            yield return new WaitForSeconds(seconds);
+            cooldown = false;
+        }
     }
 }

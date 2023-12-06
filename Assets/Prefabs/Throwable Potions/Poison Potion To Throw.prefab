@@ -156,9 +156,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf95f17f65456144d9a97576aad83bd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 15
-  damage: 12
-  damageOverTime: 12
+  radius: 1.5
+  damage: 15
+  damageOverTime: 15
   effect: poison
 --- !u!199 &-8233545723969819705
 ParticleSystemRenderer:

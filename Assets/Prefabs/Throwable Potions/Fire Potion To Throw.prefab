@@ -153,8 +153,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf95f17f65456144d9a97576aad83bd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 10
-  damage: 100
+  radius: 1.5
+  damage: 75
+  damageOverTime: 0
+  effect: 
 --- !u!199 &-6330533488776749906
 ParticleSystemRenderer:
   serializedVersion: 6
